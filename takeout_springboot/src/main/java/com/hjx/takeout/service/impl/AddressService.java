@@ -15,7 +15,29 @@ public class AddressService implements IAddressService {
     AddressMapper addressMapper;
 
     @Override
-    public List<Address> listAddress() {
-        return addressMapper.listAddress();
+    public List<Address> list(Integer id) {
+        return addressMapper.list(id);
     }
+
+    @Override
+    public void add(Address address) {
+        addressMapper.add(address);
+    }
+
+    @Override
+    public Address getById(Integer id) {
+        return addressMapper.getById(id);
+    }
+
+    @Override
+    public void update(Address address) {
+        addressMapper.updateById(address);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        addressMapper.deleteById(id);
+    }
+
+
 }

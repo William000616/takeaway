@@ -5,5 +5,13 @@ import com.hjx.takeout.entity.Address;
 import java.util.List;
 
 public interface IAddressService {
-    List<Address> listAddress();
+    List<Address> list(Integer id);
+
+    void add(Address address);
+
+    Address getById(Integer id);
+
+    void update(Address address);
+
+    void deleteById(Integer id);
 }

@@ -9,5 +9,13 @@ import java.util.List;
 @Mapper
 public interface AddressMapper {
 
-    List<Address> listAddress();
+    List<Address> list(Integer id);
+
+    void add(Address address);
+
+    Address getById(Integer id);
+
+    void updateById(Address address);
+
+    void deleteById(Integer id);
 }

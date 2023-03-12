@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class Address {
-    private String areaCode;
+    private Integer a_id;
     private String name;
     private String tel;
-    private String addressDetail;
-    private String uid;
+    private String address;
+    private Integer u_id;
 }

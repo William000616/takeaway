@@ -4,23 +4,28 @@
 <mapper namespace="com.hjx.takeout.mapper.AddressMapper">
 
     <!--根据用户id查询所有address-->
-    <select id="listAddress" resultType="com.hjx.takeout.entity.Address">
-        select * from address
+    <select id="list" resultType="com.hjx.takeout.entity.Address">
+        select * from address where u_id = #{id}
     </select>
 
-<!--    &lt;!&ndash;根据用户id修改address&ndash;&gt;-->
-<!--    <update id="updateAddressById" parameterType="address">-->
-<!--        update address set name = #{name},tel = #{tel},area_code = #{areaCode},address = #{address},-->
-<!--        province = #{province},city = #{city},county = #{county} where a_id = #{aId}-->
-<!--    </update>-->
+    <!--根据id修改address-->
+    <update id="updateById">
+        update address set name = #{name},tel = #{tel},address = #{address}
+        where a_id = #{a_id}
+    </update>
 
-<!--    &lt;!&ndash;添加address&ndash;&gt;-->
-<!--    <insert id="addAddress" parameterType="addressVO">-->
-<!--        insert into address(area_code, name, tel,  address, province, city, county, u_id) values (#{areaCode},#{name},#{tel},#{addressDetail},#{province},#{city},#{county},#{uid})-->
-<!--    </insert>-->
+    <!--添加address-->
+    <insert id="add">
+        insert into address(name, tel, address, u_id) values (#{name},#{tel},#{address},#{u_id})
+    </insert>
 
-<!--    &lt;!&ndash;根据aid获取address&ndash;&gt;-->
-<!--    <select id="findAddressByAid" resultType="address">-->
-<!--        select * from address where a_id = #{aid}-->
-<!--    </select>-->
+    <!--根据aid获取address-->
+    <select id="getById" resultType="com.hjx.takeout.entity.Address">
+        select * from address where a_id = #{id}
+    </select>
+
+    <!--根据aid删除address-->
+    <delete id="deleteById">
+        delete from address where a_id = #{id}
+    </delete>
 </mapper>
