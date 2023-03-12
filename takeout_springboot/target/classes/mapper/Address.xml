@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hjx.takeout.mapper.AddressMapper">
+
+    <!--根据用户id查询所有address-->
+    <select id="listAddress" resultType="com.hjx.takeout.entity.Address">
+        select * from address
+    </select>
+
+<!--    &lt;!&ndash;根据用户id修改address&ndash;&gt;-->
+<!--    <update id="updateAddressById" parameterType="address">-->
+<!--        update address set name = #{name},tel = #{tel},area_code = #{areaCode},address = #{address},-->
+<!--        province = #{province},city = #{city},county = #{county} where a_id = #{aId}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash;添加address&ndash;&gt;-->
+<!--    <insert id="addAddress" parameterType="addressVO">-->
+<!--        insert into address(area_code, name, tel,  address, province, city, county, u_id) values (#{areaCode},#{name},#{tel},#{addressDetail},#{province},#{city},#{county},#{uid})-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash;根据aid获取address&ndash;&gt;-->
+<!--    <select id="findAddressByAid" resultType="address">-->
+<!--        select * from address where a_id = #{aid}-->
+<!--    </select>-->
+</mapper>

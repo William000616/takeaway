@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0a06cc67-7d36-4c6d-95c2-e9f96f68fd1d" name="变更" comment="变更">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_32.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_4_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_12_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_2_4_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_4_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_17_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_17_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_71.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_71.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_71.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_22_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_5_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_2_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_2_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_2_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_26.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_36.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_36.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/TakeoutSpringbootApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/AddressController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/entity/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/AddressMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IAddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/AddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Address.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/test/java/com/hjx/takeout/TakeoutSpringbootApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/takeout.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/店铺查找-1632128942718.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/店铺查找.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/店铺管理员商品管理-1632128971078.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/店铺管理员商品管理.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/店铺管理员店铺页面-1632128964261.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/店铺管理员店铺页面.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/店铺首页-1632128950196.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/店铺首页.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/用户端首页-1632128929981.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/用户端首页.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/登录-1632128922101.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/登录.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/管理员店铺管理-1632128981558.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/管理员店铺管理.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/管理员用户管理-1632128992958.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.assets/管理员用户管理.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/ProjectApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/AddressVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/GoodDataVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/GoodInfoVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/GoodVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/NewOrderInfoVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/OrderFreeVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/OrderInfoVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/OrderVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/ShopManagerRegisterVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/ShopsVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/VO/UsersVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/config/CrossConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/AddressController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/DeliveryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/ManagerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/RiderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/ShopController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/UploadDownController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/AddressMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/CategoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/DeliveryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/GoodMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/OrderGoodMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/OrderMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/ShopManagerMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/ShopMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/Delivery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/Good.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/OrderGood.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/Shop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/ShopManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/pojo/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/response/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/AddressService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/DeliveryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/ShopManagerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/ShopService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/impl/AddressServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/impl/CategoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/impl/DeliveryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/impl/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/impl/ShopManagerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/impl/ShopServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/utils/DateUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/utils/PageTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/java/com/lky/project/utils/SendSms.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/AddressMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/CategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/DeliveryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/GoodMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/OrderGoodMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/OrderMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/ShopManagerMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/ShopMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/main/resources/mappers/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/src/test/java/com/lky/project/ProjectApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/upload/20210812125747dinner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/upload/fruit_20210812130636.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/upload/fruit_20210812130849.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/upload/fruit_20210812131410.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/upload/nuddle_20210812130931.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/upload/package_20210812130358.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/springboot-project/upload/rice_20210812131040.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/dessert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/dinner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/fruit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/juice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/kfc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/kfcBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/kfcLogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/nuddle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/package.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/paysuccess.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/rice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/soda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/takeout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/tea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/water.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/pic/wine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/shops.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/20210902154820.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/KFCLogo_20210812213306.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/a1_20210817103739.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/a1_20210817104638.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/a1_20210817105622.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/a1_20210817110441.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/dinner_20210823214850.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/hls_20210818164509.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/hls_20210818164655.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/hls_20210902151725.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-劲脆鸡腿堡_20210905135730.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-劲辣鸡腿堡套餐_20210905170434.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-吮指原味鸡_20210905140231.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-奥利奥花淇淋_20210905140431.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-脆鸡八分堡_20210905135706.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-脆鸡八分堡套餐_20210905170344.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-脆鸡八分堡套餐_20210905170416.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-芙蓉荟萃汤_20210905140310.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-菌菇四宝汤_20210905140342.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-葡式蛋挞(经典)_20210905140454.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-葡式蛋挞(经典)_20210905140531.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-香甜玉米棒_20210905140357.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-香辣鸡翅_20210905140205.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-香辣鸡腿堡_20210905135751.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/kfc-香辣鸡腿堡_20210905140138.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/nuddle_20210818162520.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/nuddle_20210823214454.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/nuddle_20210823214649.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/p1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/p2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/p3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/p4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/p5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/p6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/p7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/rice_20210823214411.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-双层红云热辣堡_20210901171830.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-双层鳕鱼堡_20210901171704.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-密汁手扒鸡_20210905134524.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-烤翅_20210901171917.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-牛肉堡_20210901171624.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-薯条_20210901171946.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-辣辣辣条半鸡_20210905134603.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-香辣鸡翅_20210901171744.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/华莱士-香辣鸡腿堡_20210901171554.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/卡布奇诺 (热)_20210901150538.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/可口可乐_20210901150358.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/大嘴安格斯_20210901144748.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/大嘴安格斯_20210901144829.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/大嘴安格斯_20210901145131.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/大嘴安格斯_20210901145400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/大嘴安格斯_20210901145424.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/大饼卷酱卤肉丝+醇豆浆_20210905140647.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/安格斯厚牛堡-原味-天椒_20210901145522.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/安格斯厚牛堡-原味-天椒_20210901145603.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小狐狸_20210905195214.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小狐狸_20210905195332.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小狐狸_20210905195419.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小狐狸_20210905195431.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小狐狸_20210905195449.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小狐狸_20210905195612.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小狗_20210905195633.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小黄鸭2_20210905125455.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小黄鸭2_20210905133849.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小黄鸭_20210905112153.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小黄鸭_20210906112013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/小黄鸭_20210909221632.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/柠檬风味红茶_20210901150438.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/汉堡王_20210901143053.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/牛奶_20210901172142.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/狠霸王牛堡_20210901145759.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/狠霸王鱼堡_20210901145837.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/狠霸王鸡堡_20210901145652.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/王道川蜀鸡翅_20210901150110.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/王道椒香鸡腿_20210901150258.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/美式_20210901150611.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/芝芝安格斯_20210901143828.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/芝芝安格斯_20210901144634.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/芝芝安格斯_20210901144807.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蓝莓味雪王大圣代_20210905193433.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/薯条_20210831101536.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/薯条_20210831101941.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/薯霸王_20210901145951.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-冰淇淋红茶_20210905193556.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-冰鲜柠檬水_20210905193711.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-吃土摇摇奶昔_20210905193738.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-奥利奥味雪王大圣代_20210905193147.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-棒打鲜橙_20210905193506.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-红茶_20210905193912.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-红豆奶茶_20210905193634.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-草莓味雪王大圣代_20210905193404.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-蓝莓摇摇奶昔_20210905193951.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-马来西亚白咖啡_20210905194051.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城-黑糖珍珠奶茶_20210905193802.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城logo (2)_20210905175244.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/蜜雪冰城logo_20210905175221.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/public/upload/雪碧_20210905140918.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/About.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/ManagerLogin.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/Register.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/RegisterType.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/RiderLogin.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/RiderRegister.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/SMRegister.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/SRegister.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/ShopManagerRegister.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/UserLogin.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/UserRegister.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/AllShops.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/Blank.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/CategoryManage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/DataMessage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/EditShopMessage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/GoodsManage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/NewOrder.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/OldOrder.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/RiderManager.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/ShopApplyFor.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/ShopManagerManager.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/ShopMessage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/manager/UserManager.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/rider/Blank.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/rider/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/rider/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/rider/My.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/rider/MyOrder.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/rider/OrderDetail.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/rider/OrderInfo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Address.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/AddressAdd.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/AddressEdit.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Message.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/My.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Order.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/OrderInfo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Pay.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/PaySuccess.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Search.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Shop.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/vue-project/src/views/user/Swipe.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-master/waimai_project.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2MsB33XtzTBK2HHH5HCWE8jWFkI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8 (2)" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/毕业设计/study-master/springboot-project" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager">
+    <configuration name="TakeoutSpringbootApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hjx.takeout.TakeoutSpringbootApplication" />
+      <module name="takeout" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hjx.takeout.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TakeoutSpringbootApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="0a06cc67-7d36-4c6d-95c2-e9f96f68fd1d" name="变更" comment="" />
+      <created>1678546215291</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678546215291</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
