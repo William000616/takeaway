@@ -1,33 +1,32 @@
 import request from '../utils/request';
 
-export const fetchData = query => {
-    // console.log(query)
+export const GetUser = query => {
     return request({
-        // url: './table.json',
-        url: '/admin',
+        url: '/user/list',
         method: 'get',
         params: query
-        
     });
 };
 export const userAdd = query => {
-    // console.log(query)
     return request({
-        // url: './table.json',
-        url: '/admin',
+        url: '/user/add',
         method: 'post',
         data: query
-        
+    });
+};
+export const userDelete = query => {
+    return request({
+        url: '/user/delete',
+        method: 'post',
+        data: query
     });
 };
 export const userEdit = query => {
-    // console.log(query)
     return request({
-        // url: './table.json',
-        url: '/admin/update',
+        url: '/user/update',
         method: 'put',
         data: query
-        
+
     });
 };
 export const MachineData = query => {
@@ -37,7 +36,7 @@ export const MachineData = query => {
         url: '/device',
         method: 'get',
         params: query
-        
+
     });
 };
 export const MachineEdit = query => {
@@ -47,7 +46,7 @@ export const MachineEdit = query => {
         url: '/device/update',
         method: 'put',
         data: query
-        
+
     });
 };
 export const GroupData = query => {
@@ -57,7 +56,7 @@ export const GroupData = query => {
         url: '/deviceGroup',
         method: 'get',
         params: query
-        
+
     });
 };
 export const MaterialData = query => {
@@ -67,7 +66,7 @@ export const MaterialData = query => {
         url: '/material/page',
         method: 'get',
         params: query
-        
+
     });
 };
 export const MaterialDelete = query => {
@@ -76,8 +75,8 @@ export const MaterialDelete = query => {
         // url: './table.json',
         url: '/material/delete',
         method: 'put',
-        data: {id:query}
-        
+        data: { id: query }
+
     });
 };
 export const ProgramData = query => {
@@ -87,7 +86,7 @@ export const ProgramData = query => {
         url: '/programs',
         method: 'get',
         params: query
-        
+
     });
 };
 export const MaterialCreate = query => {
@@ -96,8 +95,8 @@ export const MaterialCreate = query => {
         // url: './table.json',
         url: '/programs',
         method: 'post',
-        data:query
-        
+        data: query
+
     });
 };
 export const NoticeData = query => {
@@ -107,7 +106,7 @@ export const NoticeData = query => {
         url: '/notice',
         method: 'get',
         params: query
-        
+
     });
 };
 export const NoticeCreate = query => {
@@ -116,17 +115,17 @@ export const NoticeCreate = query => {
         // url: './table.json',
         url: '/notice',
         method: 'post',
-        data:query
-        
+        data: query
+
     });
 };
 export const imgPub = query => {
-        // console.log(query)
-        return request({
-            // url: './table.json',
-            url: '/android/operation',
-            method: 'post',
-            data:query
-            
-        });
-    };
+    // console.log(query)
+    return request({
+        // url: './table.json',
+        url: '/android/operation',
+        method: 'post',
+        data: query
+
+    });
+};

@@ -81,7 +81,7 @@ export default {
             if (radio.value === 3) {
 
             } else if (radio.value === 6) {
-                router.push("/shopDashboard");
+                router.push("/shopInfoForm");
             } else {
                 router.push("/dashboard");
             }

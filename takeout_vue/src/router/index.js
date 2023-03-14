@@ -3,11 +3,59 @@ import {
   createWebHashHistory
 } from "vue-router";
 import Home from "../views/Home.vue";
+import ShopHome from "../views/ShopHome.vue";
 
 const routes = [
   {
     path: '/',
     redirect: '/Login'
+  },
+  {
+    path: "/",
+    name: "ShopHome",
+    component: ShopHome,
+    children: [
+      {
+        path: "/shopInfoForm",
+        name: "shopInfoForm",
+        meta: {
+          title: '店铺信息'
+        },
+        component: () => import( /* webpackChunkName: "form" */ "../views/ShopInfoForm.vue")
+      },
+      {
+        path: "/good",
+        name: "good",
+        meta: {
+          title: '菜品列表'
+        },
+        component: () => import( /* webpackChunkName: "table" */ "../views/GoodTable.vue")
+      },
+      {
+        path: "/category",
+        name: "category",
+        meta: {
+          title: '类别列表'
+        },
+        component: () => import( /* webpackChunkName: "table" */ "../views/CategoryTable.vue")
+      },
+      {
+        path: "/order",
+        name: "order",
+        meta: {
+          title: '订单列表'
+        },
+        component: () => import( /* webpackChunkName: "table" */ "../views/OrderTable.vue")
+      },
+      {
+        path: "/newOrder",
+        name: "newOrder",
+        meta: {
+          title: '新的订单'
+        },
+        component: () => import( /* webpackChunkName: "table" */ "../views/NewOrderTable.vue")
+      },
+    ]
   },
   {
     path: "/",
@@ -29,21 +77,24 @@ const routes = [
           title: '表格'
         },
         component: () => import( /* webpackChunkName: "table" */ "../views/BaseTable.vue")
-      }, {
-        path: "/tableS",
-        name: "basetableS",
+      },
+      {
+        path: "/shop",
+        name: "shop",
         meta: {
           title: '商家列表'
         },
         component: () => import( /* webpackChunkName: "table" */ "../views/ShopTable.vue")
-      }, {
-        path: "/tableG",
-        name: "basetableG",
-        meta: {
-          title: '菜品列表'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/GoodTable.vue")
       },
+      {
+        path: "/newShop",
+        name: "newShop",
+        meta: {
+          title: '店铺申请'
+        },
+        component: () => import( /* webpackChunkName: "table" */ "../views/NewShop.vue")
+      },
+
       // {
       //   path: "/programadd",
       //   name: "programadd",
@@ -96,35 +147,40 @@ const routes = [
       //   },
       //   component: () => import( /* webpackChunkName: "table" */ "../views/MachineList.vue")
       // },
+
       {
-        path: "/tableO",
-        name: "basetableO",
+        path: "/users",
+        name: "users",
         meta: {
-          title: '订单列表'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/OrderTable.vue")
-      }, {
-        path: "/tableUser",
-        name: "basetableU",
-        meta: {
-          title: '账户管理'
+          title: '用户管理'
         },
         component: () => import( /* webpackChunkName: "table" */ "../views/UserManager.vue")
-      }, {
+      },
+      {
+        path: "/shopManager",
+        name: "shopManager",
+        meta: {
+          title: '店铺账号管理'
+        },
+        component: () => import( /* webpackChunkName: "table" */ "../views/ShopManager.vue")
+      },
+      {
         path: "/charts",
         name: "basecharts",
         meta: {
           title: '图表'
         },
         component: () => import( /* webpackChunkName: "charts" */ "../views/BaseCharts.vue")
-      }, {
-        path: "/form",
-        name: "baseform",
-        meta: {
-          title: '表单'
-        },
-        component: () => import( /* webpackChunkName: "form" */ "../views/BaseForm.vue")
-      }, {
+      },
+      // {
+      //   path: "/form",
+      //   name: "baseform",
+      //   meta: {
+      //     title: '表单'
+      //   },
+      //   component: () => import( /* webpackChunkName: "form" */ "../views/BaseForm.vue")
+      // },
+      {
         path: "/tabs",
         name: "tabs",
         meta: {

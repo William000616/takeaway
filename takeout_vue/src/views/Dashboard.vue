@@ -165,16 +165,16 @@ export default {
     let ship = "10";
     let music = "20";
     const activeName = ref('second')
-    const getData = () => {
-      MachineData().then((res) => {
-        var list = res.data
-        // console.log(list.records)
-        // tableData.value = list.records;
-        num_m.value = list.records.length || 2;
-      });
+    // const getData = () => {
+    //   MachineData().then((res) => {
+    //     var list = res.data
+    //     // console.log(list.records)
+    //     // tableData.value = list.records;
+    //     num_m.value = list.records.length || 2;
+    //   });
 
-    };
-    getData();
+    // };
+    // getData();
     const name = localStorage.getItem("ms_username");
     // const role = name === "admin" ? "超级管理员" : "普通用户";
     const data = reactive([
