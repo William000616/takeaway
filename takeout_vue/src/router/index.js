@@ -66,7 +66,7 @@ const routes = [
         path: "/dashboard",
         name: "dashboard",
         meta: {
-          title: '系统首页'
+          title: '首页概览'
         },
         component: () => import( /* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
       },
@@ -152,7 +152,7 @@ const routes = [
         path: "/users",
         name: "users",
         meta: {
-          title: '用户管理'
+          title: '顾客管理'
         },
         component: () => import( /* webpackChunkName: "table" */ "../views/UserManager.vue")
       },

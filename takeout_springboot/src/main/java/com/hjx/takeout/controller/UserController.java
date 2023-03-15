@@ -1,7 +1,7 @@
 package com.hjx.takeout.controller;
 
 import com.hjx.takeout.common.Result;
-import com.hjx.takeout.entity.Address;
+import com.hjx.takeout.controller.request.UserRequest;
 import com.hjx.takeout.entity.User;
 import com.hjx.takeout.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,8 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/list")
-    public Result list(){
-        List<User> user=userService.list();
-        return Result.success(user);
+    public Result list(UserRequest userRequest){
+        return Result.success(userService.list(userRequest));
     }
 
     @PutMapping("/update")

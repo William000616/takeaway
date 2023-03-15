@@ -10,10 +10,10 @@
         <div class="container">
             <div class="handle-box">
                 <span>账户名：</span>
-                <el-input v-model="query.username" size="small" placeholder="请输入账户名称" class="handle-input mr10">
+                <el-input v-model="params.username" size="small" placeholder="请输入账户名称" class="handle-input mr10">
                 </el-input>
                 <span>手机号码：</span>
-                <el-input v-model="query.phone" size="small" placeholder="请输入手机号码" class="handle-input mr10">
+                <el-input v-model="params.phone" size="small" placeholder="请输入手机号码" class="handle-input mr10">
                 </el-input>
                 <el-button @click="handleClean">重置</el-button>
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
@@ -49,8 +49,8 @@
                 </el-table-column>
             </el-table>
             <div class="pagination">
-                <el-pagination background layout="total, prev, pager, next" :current-page="query.pageIndex"
-                    :page-size="query.pageSize" :total="pageTotal" @current-change="handlePageChange"></el-pagination>
+                <el-pagination background layout="total, prev, pager, next" :current-page="params.pageNum"
+                    :page-size="params.pageSize" :total="pageTotal" @current-change="handlePageChange"></el-pagination>
             </div>
         </div>
 
@@ -117,52 +117,45 @@ import { GetUser, userAdd, userEdit, userDelete } from "../api/index";
 export default {
     name: "basetable",
     setup() {
-        const query = reactive({
-            name: "",
+        const params = reactive({
             username: "",
-            score: "",
-            stat: "",
-            pageIndex: 1,
+            phone: "",
+            pageNum: 1,
             pageSize: 10,
-            search: "",
         });
-
-        const tableData = ref([
-            {
-            }
-
-        ]);
+        const tableData = ref([]);
         const pageTotal = ref(0);
         // 获取表格数据
         const getData = () => {
-            GetUser().then((res) => {
-                var list = res.data
-                tableData.value = list;
-                pageTotal.value = list.length || 50;
+            GetUser(params).then((res) => {
+                if (res.code === '200') {
+                    var list = res.data.list
+                    tableData.value = list;
+                    pageTotal.value = res.data.total || 50;
+                }
+
             });
         };
         getData();
-
         // 查询操作
         const handleClean = () => {
-            query.pageIndex = 1;
-            query.accountName = "";
-            query.mechanism = "";
-            query.role = "";
-            query.enable = "";
+            params.username = "";
+            params.phone = "";
+            getData();
         };
         const handleSearch = () => {
-            query.search = query.accountName
-            fetchData(query).then((res) => {
-                var list = res.data
-                tableData.value = list.records;
-                pageTotal.value = list.records.length || 50;
+            console.log(params)
+            GetUser(params).then((res) => {
+                if (res.code === '200') {
+                    var list = res.data.list
+                    tableData.value = list;
+                    pageTotal.value = res.data.total || 50;
+                }
             });
-            handleClean()
         };
         // 分页导航
         const handlePageChange = (val) => {
-            query.pageIndex = val;
+            params.pageNum = val;
             getData();
         };
 
@@ -235,7 +228,6 @@ export default {
 
         };
         const saveCreate = (query) => {
-            console.log(query)
             if (query.username === '' || query.password === '' || query.name === '' || query.phone === '' || query.score === '') {
                 ElMessage.error(`新用户详情不能为空`);
             } else {
@@ -270,14 +262,13 @@ export default {
         };
 
         return {
-            // data,
-            query,
             tableData,
             pageTotal,
             editVisible,
             createVisible,
             form,
             New,
+            params,
             handleSearch,
             handlePageChange,
             handleDelete,

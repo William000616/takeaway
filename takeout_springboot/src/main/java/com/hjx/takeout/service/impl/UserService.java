@@ -1,5 +1,8 @@
 package com.hjx.takeout.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.hjx.takeout.controller.request.UserRequest;
 import com.hjx.takeout.entity.User;
 import com.hjx.takeout.mapper.UserMapper;
 import com.hjx.takeout.service.IUserService;
@@ -15,8 +18,10 @@ public class UserService implements IUserService {
     UserMapper userMapper;
 
     @Override
-    public List<User> list() {
-        return userMapper.list();
+    public Object list(UserRequest userRequest) {
+        PageHelper.startPage(userRequest.getPageNum(), userRequest.getPageSize());
+        List<User> users =userMapper.list(userRequest);
+        return new PageInfo<>(users);
     }
 
     @Override

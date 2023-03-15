@@ -5,7 +5,16 @@
 
     <!--根据用户id查询所有普通user-->
     <select id="list" resultType="com.hjx.takeout.entity.User">
-        select * from user where r_id = 1
+        select * from user
+        <where>
+            <if test="username!=null and username != ''">
+                username like concat('%',#{username},'%')
+            </if>
+            <if test="phone!=null and phone != ''">
+                phone like concat('%',#{username},'%')
+            </if>
+            and r_id = 1
+        </where>
     </select>
 
     <!--根据id修改user-->
