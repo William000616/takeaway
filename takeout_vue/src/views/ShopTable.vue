@@ -16,29 +16,29 @@
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
             </div>
             <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
-                <el-table-column prop="username" label="店铺名"></el-table-column>
+                <el-table-column prop="shop_name" label="店铺名"></el-table-column>
                 <el-table-column label="店铺logo(查看大图)" align="center">
                     <template #default="scope">
                         <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]">
                         </el-image>
                     </template>
                 </el-table-column>
-                <el-table-column prop="name" label="营业许可证"></el-table-column>
-                <el-table-column prop="phone" label="起送费"></el-table-column>
-                <el-table-column prop="score" label="配送费"></el-table-column>
-                <el-table-column prop="phone" label="配送时间"></el-table-column>
-                <el-table-column prop="score" label="总销量"></el-table-column>
-                <el-table-column prop="score" label="店长"></el-table-column>
-                <el-table-column prop="score" label="联系方式"></el-table-column>
-                <el-table-column prop="score" label="店铺地址"></el-table-column>
-                <el-table-column prop="score" label="店铺描述"></el-table-column>
+                <el-table-column prop="license" label="营业许可证"></el-table-column>
+                <el-table-column prop="min_cost" label="起送费"></el-table-column>
+                <el-table-column prop="delivery_cost" label="配送费"></el-table-column>
+                <el-table-column prop="delivery_time" label="配送时间"></el-table-column>
+                <el-table-column prop="total_sales" label="总销量"></el-table-column>
+                <el-table-column prop="name" label="店长"></el-table-column>
+                <el-table-column prop="phone" label="联系方式"></el-table-column>
+                <el-table-column prop="address_detail" label="店铺地址"></el-table-column>
+                <el-table-column prop="desc" label="店铺描述"></el-table-column>
                 <el-table-column prop="stat" label="状态">
                     <template #default="scope">
                         <el-tag @click="handleState(scope.$index, scope.row)" :type="
                             scope.row.stat === 1
                                 ? 'success'
                                 : 'danger'
-                        ">{{ scope.row.stat === 1 ? '启用' : '停用' }}</el-tag>
+                        ">{{ scope.row.stat === 1 ? '营业中' : '停用' }}</el-tag>
 
                     </template>
                 </el-table-column>
@@ -115,7 +115,7 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetUser, userAdd, userEdit, userDelete } from "../api/index";
+import { GetShop, userAdd, userEdit, userDelete } from "../api/index";
 export default {
     name: "basetable",
     setup() {
@@ -129,7 +129,7 @@ export default {
         const pageTotal = ref(0);
         // 获取表格数据
         const getData = () => {
-            GetUser(params).then((res) => {
+            GetShop(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;

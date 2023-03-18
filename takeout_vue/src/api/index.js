@@ -1,5 +1,21 @@
 import request from '../utils/request';
 
+export const UserLogin = query => {
+    return request({
+        url: '/user/login',
+        method: 'post',
+        data: query
+    });
+};
+
+export const ManagerLogin = query => {
+    return request({
+        url: '/manager/login',
+        method: 'post',
+        data: query
+    });
+};
+
 export const GetUser = query => {
     return request({
         url: '/user/list',
@@ -17,8 +33,8 @@ export const userAdd = query => {
 export const userDelete = query => {
     return request({
         url: '/user/delete',
-        method: 'post',
-        data: query
+        method: 'delete',
+        params: query
     });
 };
 export const userEdit = query => {
@@ -27,6 +43,43 @@ export const userEdit = query => {
         method: 'put',
         data: query
 
+    });
+};
+export const GetManager = query => {
+    return request({
+        url: '/manager/list',
+        method: 'get',
+        params: query
+    });
+};
+export const managerAdd = query => {
+    return request({
+        url: '/manager/add',
+        method: 'post',
+        data: query
+    });
+};
+export const managerDelete = query => {
+    return request({
+        url: '/manager/delete',
+        method: 'delete',
+        params: query
+    });
+};
+export const managerEdit = query => {
+    return request({
+        url: '/manager/update',
+        method: 'put',
+        data: query
+
+    });
+};
+
+export const GetShop = query => {
+    return request({
+        url: '/shop/list',
+        method: 'get',
+        params: query
     });
 };
 export const MachineData = query => {

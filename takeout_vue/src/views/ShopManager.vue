@@ -23,7 +23,7 @@
                 <el-table-column prop="username" label="账户名"></el-table-column>
                 <el-table-column prop="name" label="真实姓名"></el-table-column>
                 <el-table-column prop="phone" label="手机号"></el-table-column>
-                <el-table-column prop="score" label="身份证号"></el-table-column>
+                <el-table-column prop="identity_number" label="身份证号"></el-table-column>
                 <el-table-column prop="stat" label="状态">
                     <template #default="scope">
                         <el-tag @click="handleState(scope.$index, scope.row)" :type="
@@ -61,7 +61,7 @@
                     <el-input v-model="form.name"></el-input>
                 </el-form-item>
                 <el-form-item label="身份证号">
-                    <el-input v-model="form.score"></el-input>
+                    <el-input v-model="form.identity_number"></el-input>
                 </el-form-item>
                 <el-form-item label="手机号">
                     <el-input v-model="form.phone"></el-input>
@@ -88,7 +88,7 @@
                     <el-input v-model="New.name"></el-input>
                 </el-form-item>
                 <el-form-item label="身份证号">
-                    <el-input v-model="New.score"></el-input>
+                    <el-input v-model="New.identity_number"></el-input>
                 </el-form-item>
                 <el-form-item label="手机号">
                     <el-input v-model="New.phone"></el-input>
@@ -107,7 +107,7 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetUser, userAdd, userEdit, userDelete } from "../api/index";
+import { GetManager, managerAdd, managerEdit, managerDelete } from "../api/index";
 export default {
     name: "basetable",
     setup() {
@@ -121,7 +121,7 @@ export default {
         const pageTotal = ref(0);
         // 获取表格数据
         const getData = () => {
-            GetUser(params).then((res) => {
+            GetManager(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
@@ -138,8 +138,7 @@ export default {
             getData();
         };
         const handleSearch = () => {
-            console.log(params)
-            GetUser(params).then((res) => {
+            GetManager(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
@@ -161,8 +160,8 @@ export default {
             })
                 .then(() => {
                     ElMessage.success("删除成功");
-                    tableData.value.splice(index, 1);
-                    userDelete(row);
+                    managerDelete(row);
+                    getData();
                 })
                 .catch(() => { });
         };
@@ -175,16 +174,15 @@ export default {
             username: "",
             password: "",
             name: "",
-            score: "",
-            name: "",
+            identity_number: "",
             phone: "",
 
         });
         let form = reactive({
-            u_id: "",
+            s_m_id: "",
             username: "",
             password: "",
-            score: "",
+            identity_number: "",
             stat: "",
             name: "",
             phone: "",
@@ -203,7 +201,7 @@ export default {
         const handleState = (index, row) => {
             if (row.stat == 1) {
                 row.stat = 0
-                userEdit(row).then((res) => {
+                managerEdit(row).then((res) => {
                     ElMessage.success(`状态修改成功`);
                     getData();
                 });
@@ -211,7 +209,7 @@ export default {
             }
             else {
                 row.stat = 1
-                userEdit(row).then((res) => {
+                managerEdit(row).then((res) => {
                     ElMessage.success(`状态修改成功`);
                     getData();
                 });
@@ -225,11 +223,16 @@ export default {
             if (query.username === '' || query.password === '' || query.name === '' || query.phone === '' || query.score === '') {
                 ElMessage.error(`新用户详情不能为空`);
             } else {
-                userAdd(query).then((res) => {
+                managerAdd(query).then((res) => {
                     if (res.code === "200") {
                         ElMessage.success(`新用户创建成功`);
                         createVisible.value = false;
                         getData();
+                        New.identity_number = '';
+                        New.username = '';
+                        New.name = '';
+                        New.password = '';
+                        New.phone = '';
                     } else {
                         ElMessage.error(`创建失败`);
                     }
@@ -242,10 +245,10 @@ export default {
             if (query.username === '' || query.password === '' || query.name === '' || query.phone === '' || query.score === '') {
                 ElMessage.error(`用户详情不能修改为空`);
             } else {
-                userEdit(query).then((res) => {
+                managerEdit(query).then((res) => {
                     if (res.code === "200") {
                         editVisible.value = false;
-                        ElMessage.success(`修改第 ${idx + 1} 行成功`);
+                        ElMessage.success(`修改成功`);
                         getData();
                     } else {
                         ElMessage.error(`修改失败`);

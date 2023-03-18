@@ -1,6 +1,7 @@
 package com.hjx.takeout.mapper;
 
 
+import com.hjx.takeout.controller.request.LoginRequest;
 import com.hjx.takeout.controller.request.UserRequest;
 import com.hjx.takeout.entity.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,5 +16,7 @@ public interface UserMapper {
 
     void add(User user);
 
-    void delete(User user);
+    void delete(Integer u_id);
+
+    User login(LoginRequest request);
 }

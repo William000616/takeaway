@@ -11,7 +11,7 @@
                 username like concat('%',#{username},'%')
             </if>
             <if test="phone!=null and phone != ''">
-                phone like concat('%',#{username},'%')
+                and phone like concat('%',#{phone},'%')
             </if>
             and r_id = 1
         </where>
@@ -28,10 +28,10 @@
         insert into user(name,phone,username,password,r_id,stat,score) values (#{name},#{phone},#{username},#{password},1,0,#{score})
     </insert>
 
-<!--    &lt;!&ndash;根据aid获取address&ndash;&gt;-->
-<!--    <select id="getById" resultType="com.hjx.takeout.entity.Address">-->
-<!--        select * from address where a_id = #{id}-->
-<!--    </select>-->
+    <!--登录-->
+    <select id="login" resultType="com.hjx.takeout.entity.User">
+        select * from user where username = #{username} and password = #{password}
+    </select>
 
     <!--根据uid删除user-->
     <delete id="delete">

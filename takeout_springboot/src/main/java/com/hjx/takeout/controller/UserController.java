@@ -1,6 +1,7 @@
 package com.hjx.takeout.controller;
 
 import com.hjx.takeout.common.Result;
+import com.hjx.takeout.controller.request.LoginRequest;
 import com.hjx.takeout.controller.request.UserRequest;
 import com.hjx.takeout.entity.User;
 import com.hjx.takeout.service.impl.UserService;
@@ -34,9 +35,14 @@ public class UserController {
         return Result.success();
     }
 
-    @PostMapping("/delete")
-    public Result delete(@RequestBody User user){
-        userService.delete(user);
+    @PostMapping("/login")
+    public Result login(@RequestBody LoginRequest request){
+        return Result.success(userService.login(request));
+    }
+
+    @DeleteMapping("/delete")
+    public Result delete(@RequestParam Integer u_id){
+        userService.delete(u_id);
         return Result.success();
     }
 

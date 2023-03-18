@@ -36,7 +36,7 @@ import { ref, reactive } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
-import axios from 'axios';
+import { UserLogin, ManagerLogin } from "../api/index";
 export default {
     setup() {
         const router = useRouter();
@@ -60,33 +60,59 @@ export default {
         const login = ref(null);
         const radio = ref(3)
         const submitForm = () => {
-            // if (param.username == "" || param.password == "") {
-            //     ElMessage.error("账号或密码不能为空");
-            // } else {
-            //     axios.post("/admin/login", {
-            //         accountName: param.username,
-            //         password: param.password,
-            //     })
-            //         .then((res) => {
-            //             console.log(res.data.data.realName);
-            //             if (res.data.code === "-1") {
-            //                 ElMessage.error("账号或密码错误！！");
-            //             } else {
-            //                 if (res.data.data.enable === "停用") {
-            //                     ElMessage.error("该账号已被停用！")
-            //                 } else {
-            ElMessage.success("登录成功");
-            localStorage.setItem("ms_realName", 'huang');
-            localStorage.setItem("ms_username", 'param.username');
-            if (radio.value === 3) {
+            login.value.validate((valid) => {
+                if (valid) {
+                    if (radio.value === 3) {
+                        UserLogin(param).then((res) => {
+                            if (res.code === '200') {
+                                // router.push("/shopInfoForm");
+                                ElMessage.success("登录成功");
+                                localStorage.setItem("ms_realName", res.data.name);
+                                localStorage.setItem("ms_username", 'param.username');
+                            } else {
+                                ElMessage.error(res.msg);
+                            }
+                        })
+                    } else if (radio.value === 6) {
+                        ManagerLogin(param).then((res) => {
+                            if (res.code === '200') {
+                                if (res.data.stat === 1) {
+                                    router.push("/shopInfoForm");
+                                    ElMessage.success("登录成功");
+                                    localStorage.setItem("ms_realName", res.data.name);
+                                    localStorage.setItem("ms_username", 'param.username');
+                                } else {
+                                    ElMessage.error("该账号已被停用！");
+                                }
 
-            } else if (radio.value === 6) {
-                router.push("/shopInfoForm");
-            } else {
-                router.push("/dashboard");
-            }
+                            } else {
+                                ElMessage.error(res.msg);
+                            }
+                        })
+
+                    } else {
+                        UserLogin(param).then((res) => {
+                            if (res.code === '200') {
+                                if (res.data.r_id === 3) {
+                                    router.push("/dashboard");
+                                    ElMessage.success("登录成功");
+                                    localStorage.setItem("ms_realName", '超级管理员');
+                                    localStorage.setItem("ms_username", 'admin');
+                                } else {
+                                    ElMessage.error('非管理员账号！');
+                                }
+
+                            } else {
+                                ElMessage.error(res.msg);
+                            }
+                        })
+
+                    }
+                }
+            })
+
+
         };
-
         const store = useStore();
         store.commit("clearTags");
 

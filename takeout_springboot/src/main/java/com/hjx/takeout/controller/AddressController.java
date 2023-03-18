@@ -41,8 +41,8 @@ public class AddressController {
         return Result.success();
     }
 
-    @DeleteMapping("/delete/{id}")
-    public Result delete(@PathVariable Integer id){
+    @DeleteMapping("/delete")
+    public Result delete(@RequestParam Integer id){
         addressService.deleteById(id);
         return Result.success();
     }
