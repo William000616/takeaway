@@ -24,4 +24,16 @@ public class ShopService implements IShopService {
         return new PageInfo<>(shop);
     }
 
+    @Override
+    public Object listAdd(ShopRequest shopRequest) {
+        PageHelper.startPage(shopRequest.getPageNum(), shopRequest.getPageSize());
+        List<Shop> shop =shopMapper.listAdd(shopRequest);
+        return new PageInfo<>(shop);
+    }
+
+    @Override
+    public void update(Shop shop) {
+        shopMapper.updateByID(shop);
+    }
+
 }

@@ -139,15 +139,15 @@
 <script>
 import Schart from "vue-schart";
 import { onMounted, reactive, ref } from "vue";
-import { MachineData, ProgramData, NoticeData } from "../api/index";
+import { GetShop, ProgramData, NoticeData } from "../api/index";
 export default {
   name: "dashboard",
   components: { Schart },
   setup() {
     onMounted(() => {
-      ProgramData().then((res) => {
+      GetShop().then((res) => {
         var list = res.data
-        num_p.value = list.records.length || 2;
+        num_m.value = res.data.total;
       })
       NoticeData().then((res) => {
         var list = res.data

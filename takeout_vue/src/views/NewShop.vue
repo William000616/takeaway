@@ -10,31 +10,30 @@
         <div class="container">
             <div class="handle-box">
                 <span>店铺名：</span>
-                <el-input v-model="params.username" size="small" placeholder="请输入店铺名称" class="handle-input mr10">
+                <el-input v-model="params.shop_name" size="small" placeholder="请输入店铺名称" class="handle-input mr10">
                 </el-input>
                 <el-button @click="handleClean">重置</el-button>
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
             </div>
             <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
-                <el-table-column prop="username" label="店铺名"></el-table-column>
+                <el-table-column prop="shop_name" label="店铺名"></el-table-column>
                 <el-table-column label="店铺logo(查看大图)" align="center">
                     <template #default="scope">
                         <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]">
                         </el-image>
                     </template>
                 </el-table-column>
-                <el-table-column prop="name" label="营业许可证"></el-table-column>
-                <el-table-column prop="phone" label="起送费"></el-table-column>
-                <el-table-column prop="score" label="配送费"></el-table-column>
-                <el-table-column prop="phone" label="起送费"></el-table-column>
-                <el-table-column prop="score" label="店长"></el-table-column>
-                <el-table-column prop="score" label="联系方式"></el-table-column>
-                <el-table-column prop="score" label="店铺地址"></el-table-column>
+                <el-table-column prop="license" label="营业许可证"></el-table-column>
+                <el-table-column prop="min_cost" label="起送费"></el-table-column>
+                <el-table-column prop="delivery_cost" label="配送费"></el-table-column>
+                <el-table-column prop="name" label="店长"></el-table-column>
+                <el-table-column prop="phone" label="联系方式"></el-table-column>
+                <el-table-column prop="address_detail" label="店铺地址"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
-                        <el-button type="text" @click="handleEdit(scope.$index, scope.row)">编辑
-                        </el-button>
-                        <el-button type="text" class="red" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                        <!-- <el-button type="text" @click="handleEdit(scope.$index, scope.row)">编辑
+                        </el-button> -->
+                        <el-button type="text" @click="handleDelete(scope.$index, scope.row)">审核</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -103,13 +102,12 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetUser, userAdd, userEdit, userDelete } from "../api/index";
+import { GetShopAdd, UpdateShop, userEdit, userDelete } from "../api/index";
 export default {
     name: "basetable",
     setup() {
         const params = reactive({
-            username: "",
-            phone: "",
+            shop_name: "",
             pageNum: 1,
             pageSize: 10,
         });
@@ -117,7 +115,7 @@ export default {
         const pageTotal = ref(0);
         // 获取表格数据
         const getData = () => {
-            GetUser(params).then((res) => {
+            GetShopAdd(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
@@ -129,13 +127,11 @@ export default {
         getData();
         // 查询操作
         const handleClean = () => {
-            params.username = "";
-            params.phone = "";
+            params.shop_name = "";
             getData();
         };
         const handleSearch = () => {
-            console.log(params)
-            GetUser(params).then((res) => {
+            GetShopAdd(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
@@ -152,13 +148,14 @@ export default {
         // 删除操作
         const handleDelete = (index, row) => {
             // 二次确认删除
-            ElMessageBox.confirm("确定要删除吗？", "提示", {
+            ElMessageBox.confirm("您要同意这家店铺申请吗？", "店铺审核", {
                 type: "warning",
             })
                 .then(() => {
-                    ElMessage.success("删除成功");
-                    tableData.value.splice(index, 1);
-                    userDelete(row);
+                    ElMessage.success("批准成功");
+                    row.stat = 1;
+                    UpdateShop(row);
+                    getData();
                 })
                 .catch(() => { });
         };

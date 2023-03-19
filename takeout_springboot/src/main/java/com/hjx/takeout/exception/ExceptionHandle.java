@@ -14,6 +14,6 @@ public class ExceptionHandle {
 
     @ExceptionHandler(value = Exception.class)
     public Result exceptionError(Exception e) throws Exception{
-        return Result.error("");
+        return Result.error(e.getMessage());
     }
 }

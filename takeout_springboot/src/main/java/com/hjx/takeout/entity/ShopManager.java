@@ -12,4 +12,5 @@ public class ShopManager {
     private Integer r_id;
     private String identity_number;
     private Integer stat;
+    private Integer s_id;//外
 }

@@ -9,4 +9,5 @@ public class ManagerLoginDTO {
     private String name;
     private Integer r_id;
     private Integer stat;
+    private Integer s_id;
 }

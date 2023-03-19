@@ -10,7 +10,7 @@
         <div class="container">
             <div class="handle-box">
                 <span>店铺名：</span>
-                <el-input v-model="params.username" size="small" placeholder="请输入店铺名称" class="handle-input mr10">
+                <el-input v-model="params.shop_name" size="small" placeholder="请输入店铺名称" class="handle-input mr10">
                 </el-input>
                 <el-button @click="handleClean">重置</el-button>
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
@@ -32,13 +32,13 @@
                 <el-table-column prop="phone" label="联系方式"></el-table-column>
                 <el-table-column prop="address_detail" label="店铺地址"></el-table-column>
                 <el-table-column prop="desc" label="店铺描述"></el-table-column>
-                <el-table-column prop="stat" label="状态">
+                <el-table-column prop="stat" label="状态（点击修改状态）">
                     <template #default="scope">
                         <el-tag @click="handleState(scope.$index, scope.row)" :type="
                             scope.row.stat === 1
                                 ? 'success'
                                 : 'danger'
-                        ">{{ scope.row.stat === 1 ? '营业中' : '停用' }}</el-tag>
+                        ">{{ scope.row.stat === 1 ? '营业中' : '暂停营业' }}</el-tag>
 
                     </template>
                 </el-table-column>
@@ -46,7 +46,7 @@
                     <template #default="scope">
                         <el-button type="text" @click="handleEdit(scope.$index, scope.row)">编辑
                         </el-button>
-                        <el-button type="text" class="red" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                        <!-- <el-button type="text" class="red" @click="handleDelete(scope.$index, scope.row)">删除</el-button> -->
                     </template>
                 </el-table-column>
             </el-table>
@@ -59,19 +59,19 @@
         <!-- 编辑弹出框 -->
         <el-dialog title="编辑" v-model="editVisible" width="30%">
             <el-form label-width="70px">
-                <el-form-item label="账户名">
-                    <el-input v-model="form.username"></el-input>
+                <el-form-item label="起送费">
+                    <el-input v-model="form.min_cost"></el-input>
                 </el-form-item>
-                <el-form-item label="密码">
-                    <el-input v-model="form.password" type="password" placeholder="Please input password" show-password />
+                <el-form-item label="配送费">
+                    <el-input v-model="form.delivery_cost" />
                 </el-form-item>
-                <el-form-item label="真实姓名">
-                    <el-input v-model="form.name"></el-input>
+                <el-form-item label="配送时间">
+                    <el-input v-model="form.delivery_time"></el-input>
                 </el-form-item>
-                <el-form-item label="身份证号">
-                    <el-input v-model="form.score"></el-input>
+                <el-form-item label="店铺地址">
+                    <el-input v-model="form.address_detail"></el-input>
                 </el-form-item>
-                <el-form-item label="手机号">
+                <el-form-item label="联系方式">
                     <el-input v-model="form.phone"></el-input>
                 </el-form-item>
             </el-form>
@@ -115,13 +115,12 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetShop, userAdd, userEdit, userDelete } from "../api/index";
+import { GetShop, userAdd, UpdateShop, userDelete } from "../api/index";
 export default {
     name: "basetable",
     setup() {
         const params = reactive({
-            username: "",
-            phone: "",
+            shop_name: "",
             pageNum: 1,
             pageSize: 10,
         });
@@ -141,13 +140,11 @@ export default {
         getData();
         // 查询操作
         const handleClean = () => {
-            params.username = "";
-            params.phone = "";
+            params.shop_name = "";
             getData();
         };
         const handleSearch = () => {
-            console.log(params)
-            GetUser(params).then((res) => {
+            GetShop(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
@@ -189,12 +186,12 @@ export default {
 
         });
         let form = reactive({
-            u_id: "",
-            username: "",
-            password: "",
-            score: "",
+            s_id: "",
+            address_detail: "",
+            delivery_time: "",
+            min_cost: "",
             stat: "",
-            name: "",
+            delivery_cost: "",
             phone: "",
 
         });
@@ -209,9 +206,10 @@ export default {
             editVisible.value = true;
         };
         const handleState = (index, row) => {
+            // console.log(row)
             if (row.stat == 1) {
-                row.stat = 0
-                userEdit(row).then((res) => {
+                row.stat = 2
+                UpdateShop(row).then((res) => {
                     ElMessage.success(`状态修改成功`);
                     getData();
                 });
@@ -219,7 +217,7 @@ export default {
             }
             else {
                 row.stat = 1
-                userEdit(row).then((res) => {
+                UpdateShop(row).then((res) => {
                     ElMessage.success(`状态修改成功`);
                     getData();
                 });
@@ -247,10 +245,11 @@ export default {
 
         }
         const saveEdit = (query) => {
+            console.log(query)
             if (query.username === '' || query.password === '' || query.name === '' || query.phone === '' || query.score === '') {
                 ElMessage.error(`用户详情不能修改为空`);
             } else {
-                userEdit(query).then((res) => {
+                UpdateShop(query).then((res) => {
                     if (res.code === "200") {
                         editVisible.value = false;
                         ElMessage.success(`修改第 ${idx + 1} 行成功`);

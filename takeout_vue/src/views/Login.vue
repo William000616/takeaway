@@ -80,6 +80,7 @@ export default {
                                     router.push("/shopInfoForm");
                                     ElMessage.success("登录成功");
                                     localStorage.setItem("ms_realName", res.data.name);
+                                    localStorage.setItem("s_id", res.data.s_id);
                                     localStorage.setItem("ms_username", 'param.username');
                                 } else {
                                     ElMessage.error("该账号已被停用！");

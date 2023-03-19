@@ -35,6 +35,6 @@
 
     <!--登录-->
     <select id="login" resultType="com.hjx.takeout.entity.ShopManager">
-        select * from shop_manager where username = #{username} and password = #{password}
+        select shop_manager.*,shop.s_id from shop_manager,shop where shop_manager.username = #{username} and shop_manager.password = #{password} and shop.s_m_id = shop_manager.s_m_id
     </select>
 </mapper>

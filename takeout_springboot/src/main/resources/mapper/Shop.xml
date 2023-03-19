@@ -3,14 +3,35 @@
 
 <mapper namespace="com.hjx.takeout.mapper.ShopMapper">
 
-    <!--根据用户id查询所有普通user-->
+    <!--根据所有店铺-->
     <select id="list" resultType="com.hjx.takeout.entity.Shop">
-        select * from shop
+        select shop.* , shop_manager.name
+        from shop,shop_manager
         <where>
             <if test="shop_name!=null and shop_name != ''">
-                shop_name like concat('%',#{shop_name},'%')
+                shop.shop_name like concat('%',#{shop_name},'%')
             </if>
-            and stat = 1
+            and shop.stat != 0
+            and shop.s_m_id=shop_manager.s_m_id
         </where>
     </select>
+
+    <!--根据所有店铺申请-->
+    <select id="listAdd" resultType="com.hjx.takeout.entity.Shop">
+        select shop.* , shop_manager.name
+        from shop,shop_manager
+        <where>
+            <if test="shop_name!=null and shop_name != ''">
+                shop.shop_name like concat('%',#{shop_name},'%')
+            </if>
+            and shop.stat = 0
+            and shop.s_m_id=shop_manager.s_m_id
+        </where>
+    </select>
+
+    <!--根据id修改shop-->
+    <update id="updateByID">
+        update shop set stat = #{stat},phone = #{phone},delivery_cost = #{delivery_cost},min_cost = #{min_cost},address_detail = #{address_detail},delivery_time = #{delivery_time}
+        where s_id = #{s_id}
+    </update>
 </mapper>

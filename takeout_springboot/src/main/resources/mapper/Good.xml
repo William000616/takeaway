@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hjx.takeout.mapper.GoodMapper">
+
+    <!--根据用户id查询所有普通good-->
+    <select id="list" resultType="com.hjx.takeout.entity.Good">
+        select * from good
+        <where>
+            <if test="good_name!=null and good_name != ''">
+                good_name like concat('%',#{good_name},'%')
+            </if>
+            and s_id = #{s_id}
+        </where>
+    </select>
+
+    <!--根据id修改good-->
+    <update id="updateById">
+        update good set good_name = #{good_name},good_pic = #{good_pic},price = #{price},c_id = #{c_id}
+        where g_id = #{g_id}
+    </update>
+
+    <!--添加good-->
+    <insert id="add">
+        insert into good(good_name,good_pic,price,c_id,sales,s_id) values (#{good_name},#{good_pic},#{price},#{c_id},0,#{s_id})
+    </insert>
+
+    <!--根据uid删除good-->
+    <delete id="delete">
+        delete from good where g_id = #{g_id}
+    </delete>
+</mapper>

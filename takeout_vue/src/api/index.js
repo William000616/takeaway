@@ -82,6 +82,63 @@ export const GetShop = query => {
         params: query
     });
 };
+export const GetShopAdd = query => {
+    return request({
+        url: '/shop/listAdd',
+        method: 'get',
+        params: query
+    });
+};
+export const UpdateShop = query => {
+    return request({
+        url: '/shop/update',
+        method: 'put',
+        data: query
+    });
+};
+
+export const GetCategory = query => {
+    return request({
+        url: '/category/list',
+        method: 'get',
+        params: query
+    });
+};
+export const categoryAdd = query => {
+    return request({
+        url: '/category/add',
+        method: 'post',
+        data: query
+    });
+};
+export const categoryDelete = query => {
+    return request({
+        url: '/category/delete',
+        method: 'delete',
+        params: query
+    });
+};
+export const GetGood = query => {
+    return request({
+        url: '/good/list',
+        method: 'get',
+        params: query
+    });
+};
+export const goodAdd = query => {
+    return request({
+        url: '/good/add',
+        method: 'post',
+        data: query
+    });
+};
+export const goodDelete = query => {
+    return request({
+        url: '/good/delete',
+        method: 'delete',
+        params: query
+    });
+};
 export const MachineData = query => {
     // console.log(query)
     return request({
