@@ -14,4 +14,6 @@ public interface ShopMapper {
     List<Shop> listAdd(ShopRequest shopRequest);
 
     void updateByID(Shop shop);
+
+    List<Shop> listById(Integer s_id);
 }

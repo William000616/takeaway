@@ -82,6 +82,13 @@ export const GetShop = query => {
         params: query
     });
 };
+export const GetShopById = query => {
+    return request({
+        url: '/shop/listById',
+        method: 'get',
+        params: query
+    });
+};
 export const GetShopAdd = query => {
     return request({
         url: '/shop/listAdd',
@@ -137,6 +144,41 @@ export const goodDelete = query => {
         url: '/good/delete',
         method: 'delete',
         params: query
+    });
+};
+export const goodEdit = query => {
+    return request({
+        url: '/good/update',
+        method: 'put',
+        data: query
+    });
+};
+export const GetAddress = query => {
+    return request({
+        url: '/address/list',
+        method: 'get',
+        params: query
+    });
+};
+export const addAddress = query => {
+    return request({
+        url: '/address/add',
+        method: 'post',
+        data: query
+    });
+};
+export const deleteAddress = query => {
+    return request({
+        url: '/address/delete',
+        method: 'delete',
+        params: query
+    });
+};
+export const updateAddress = query => {
+    return request({
+        url: '/address/update',
+        method: 'put',
+        data: query
     });
 };
 export const MachineData = query => {

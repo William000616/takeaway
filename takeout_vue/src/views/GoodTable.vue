@@ -25,7 +25,7 @@
                     </template>
                 </el-table-column>
                 <el-table-column prop="price" label="价格"></el-table-column>
-                <el-table-column prop="c_id" label="类别"></el-table-column>
+                <el-table-column prop="category_name" label="类别"></el-table-column>
                 <el-table-column prop="sales" label="销量"></el-table-column>
                 <el-table-column prop="desc" label="描述"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
@@ -45,20 +45,19 @@
         <!-- 编辑弹出框 -->
         <el-dialog title="编辑" v-model="editVisible" width="40%">
             <el-form :model="form" :rules="rules" ref="Edit" label-width="70px">
-                <el-form-item label="账户名" prop="username">
-                    <el-input v-model="form.username"></el-input>
+                <el-form-item label="商品名" prop="good_name">
+                    <el-input v-model="form.good_name"></el-input>
                 </el-form-item>
-                <el-form-item label="密码" prop="password">
-                    <el-input v-model="form.password" type="password" placeholder="Please input password" show-password />
+                <el-form-item label="图片" prop="password">
+                    <el-input v-model="form.password" />
                 </el-form-item>
-                <el-form-item label="姓名" prop="name">
-                    <el-input v-model="form.name"></el-input>
+                <el-form-item label="价格" prop="price">
+                    <el-input v-model="form.price"></el-input>
                 </el-form-item>
-                <el-form-item label="积分" prop="score">
-                    <el-input v-model.number="form.score"></el-input>
-                </el-form-item>
-                <el-form-item label="手机号" prop="phone">
-                    <el-input v-model="form.phone"></el-input>
+                <el-form-item label="类别" prop="category">
+                    <el-select v-model="form.c_id" class="m-2" placeholder="类别" size="large">
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+                    </el-select>
                 </el-form-item>
             </el-form>
             <template #footer>
@@ -72,20 +71,19 @@
         <!-- 新建弹出框 -->
         <el-dialog title="新建账户" v-model="createVisible" width="30%">
             <el-form :model="New" :rules="rules" ref="Create" label-width="70px">
-                <el-form-item label="账户名" prop="username">
-                    <el-input v-model="New.username"></el-input>
+                <el-form-item label="商品名" prop="good_name">
+                    <el-input v-model="New.good_name"></el-input>
                 </el-form-item>
-                <el-form-item label="密码" prop="password">
-                    <el-input v-model="New.password" type="password" placeholder="Please input password" show-password />
+                <el-form-item label="图片" prop="password">
+                    <el-input v-model="New.password" />
                 </el-form-item>
-                <el-form-item label="姓名" prop="name">
-                    <el-input v-model="New.name"></el-input>
+                <el-form-item label="价格" prop="price">
+                    <el-input v-model="New.price"></el-input>
                 </el-form-item>
-                <el-form-item label="积分" prop="score">
-                    <el-input v-model.number="New.score"></el-input>
-                </el-form-item>
-                <el-form-item label="手机号" prop="phone">
-                    <el-input v-model="New.phone"></el-input>
+                <el-form-item label="类别" prop="category">
+                    <el-select v-model="New.c_id" class="m-2" placeholder="类别" size="large">
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+                    </el-select>
                 </el-form-item>
             </el-form>
             <template #footer>
@@ -101,36 +99,37 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetGood, goodAdd, userEdit, goodDelete } from "../api/index";
+import { GetGood, goodAdd, goodDelete, GetCategory, goodEdit } from "../api/index";
 export default {
     name: "basetable",
     setup() {
+        const options = ref([]);
         const params = reactive({
             good_name: "",
             pageNum: 1,
             pageSize: 10,
         });
         const rules = {
-            username: [
-                {
-                    required: true,
-                    message: "请输入用户名",
-                    trigger: "blur",
-                },
-            ],
-            password: [
-                { required: true, message: "请输入密码", trigger: "blur" },
-            ],
-            phone: [
-                { required: true, message: "请输入手机号码", trigger: "blur" },
-            ],
-            score: [
-                { required: true, message: "请输入星级", trigger: "blur" },
-                { type: 'number', message: '积分必须是数字' },
-            ],
-            name: [
-                { required: true, message: "请输入姓名", trigger: "blur" },
-            ],
+            // username: [
+            //     {
+            //         required: true,
+            //         message: "请输入用户名",
+            //         trigger: "blur",
+            //     },
+            // ],
+            // password: [
+            //     { required: true, message: "请输入密码", trigger: "blur" },
+            // ],
+            // phone: [
+            //     { required: true, message: "请输入手机号码", trigger: "blur" },
+            // ],
+            // score: [
+            //     { required: true, message: "请输入星级", trigger: "blur" },
+            //     { type: 'number', message: '积分必须是数字' },
+            // ],
+            // name: [
+            //     { required: true, message: "请输入姓名", trigger: "blur" },
+            // ],
         };
         const tableData = ref([]);
         const pageTotal = ref(0);
@@ -140,12 +139,38 @@ export default {
             GetGood(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
+                    list.map((e) => {
+                        options.value.map((item) => {
+                            if (item.value === e.c_id) {
+                                e.category_name = item.label;
+                            }
+                        })
+                    })
                     tableData.value = list;
                     pageTotal.value = res.data.total || 50;
                 }
 
             });
         };
+        const getCategory = () => {
+            params.s_id = localStorage.getItem("s_id");
+            GetCategory(params).then((res) => {
+                if (res.code === '200') {
+                    let list = res.data;
+                    let newList = [];
+                    list.map((e) => {
+                        let obj = {
+                            label: e.category_name,
+                            value: e.c_id
+                        }
+                        newList.push(obj)
+                        options.value = newList;
+                    })
+                }
+
+            });
+        };
+        getCategory();
         getData();
         // 查询操作
         const handleClean = () => {
@@ -202,13 +227,12 @@ export default {
 
         });
         let form = reactive({
-            u_id: "",
-            username: "",
-            password: "",
-            score: "",
-            stat: "",
-            name: "",
-            phone: "",
+            g_id: "",
+            good_name: "",
+            good_pic: "",
+            price: "",
+            c_id: "",
+            s_id: "",
 
         });
 
@@ -245,6 +269,7 @@ export default {
         const saveCreate = (query) => {
             // Create.value.validate((valid) => {
             //     if (valid) {
+            query.s_id = localStorage.getItem("s_id");
             goodAdd(query).then((res) => {
                 if (res.code === "200") {
                     ElMessage.success(`创建成功`);
@@ -265,20 +290,20 @@ export default {
 
         }
         const saveEdit = (query) => {
-            Edit.value.validate((valid) => {
-                if (valid) {
-                    userEdit(query).then((res) => {
-                        if (res.code === "200") {
-                            editVisible.value = false;
-                            ElMessage.success(`修改第 ${idx + 1} 行成功`);
-                            getData();
-                        } else {
-                            ElMessage.error(`修改失败`);
-                        }
-
-                    });
+            // Edit.value.validate((valid) => {
+            //     if (valid) {
+            goodEdit(query).then((res) => {
+                if (res.code === "200") {
+                    editVisible.value = false;
+                    ElMessage.success(`修改成功`);
+                    getData();
+                } else {
+                    ElMessage.error(`修改失败`);
                 }
-            })
+
+            });
+            //     }
+            // })
         };
 
         return {
@@ -292,6 +317,7 @@ export default {
             rules,
             Create,
             Edit,
+            options,
             handleSearch,
             handlePageChange,
             handleDelete,

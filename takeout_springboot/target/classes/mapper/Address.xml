@@ -5,7 +5,7 @@
 
     <!--根据用户id查询所有address-->
     <select id="list" resultType="com.hjx.takeout.entity.Address">
-        select * from address where u_id = #{id}
+        select * from address where u_id = #{u_id}
     </select>
 
     <!--根据id修改address-->
@@ -26,6 +26,6 @@
 
     <!--根据aid删除address-->
     <delete id="deleteById">
-        delete from address where a_id = #{id}
+        delete from address where a_id = #{a_id}
     </delete>
 </mapper>

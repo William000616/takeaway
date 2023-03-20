@@ -15,8 +15,8 @@ public class AddressService implements IAddressService {
     AddressMapper addressMapper;
 
     @Override
-    public List<Address> list(Integer id) {
-        return addressMapper.list(id);
+    public List<Address> list(Integer u_id) {
+        return addressMapper.list(u_id);
     }
 
     @Override
@@ -35,8 +35,8 @@ public class AddressService implements IAddressService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        addressMapper.deleteById(id);
+    public void deleteById(Integer a_id) {
+        addressMapper.deleteById(a_id);
     }
 
 

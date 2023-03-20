@@ -20,6 +20,11 @@ public class ShopController {
         return Result.success(shopService.list(shopRequest));
     }
 
+    @GetMapping("/listById")
+    public Result listById(@RequestParam Integer s_id){
+        return Result.success(shopService.listById(s_id));
+    }
+
     @GetMapping("/listAdd")
     public Result listAdd(ShopRequest shopRequest){
         return Result.success(shopService.listAdd(shopRequest));

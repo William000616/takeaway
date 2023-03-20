@@ -4,11 +4,43 @@ import {
 } from "vue-router";
 import Home from "../views/Home.vue";
 import ShopHome from "../views/ShopHome.vue";
+import UserHome from "../views/UserHome.vue";
 
 const routes = [
   {
     path: '/',
     redirect: '/Login'
+  },
+  {
+    path: "/",
+    name: "UserHome",
+    component: UserHome,
+    children: [
+      {
+        path: "/allShop",
+        name: "allShop",
+        meta: {
+          title: '店铺信息'
+        },
+        component: () => import( /* webpackChunkName: "form" */ "../views/Shop.vue")
+      },
+      {
+        path: "/myOrder",
+        name: "myOrder",
+        meta: {
+          title: '我的订单'
+        },
+        component: () => import( /* webpackChunkName: "table" */ "../views/MyOrder.vue")
+      },
+      {
+        path: "/myAddress",
+        name: "myAddress",
+        meta: {
+          title: '我的地址'
+        },
+        component: () => import( /* webpackChunkName: "table" */ "../views/MyAddress.vue")
+      },
+    ]
   },
   {
     path: "/",
@@ -223,14 +255,16 @@ const routes = [
           title: '自定义图标'
         },
         component: () => import( /* webpackChunkName: "icon" */ "../views/Icon.vue")
-      }, {
-        path: '/404',
-        name: '404',
-        meta: {
-          title: '找不到页面'
-        },
-        component: () => import( /* webpackChunkName: "404" */ '../views/404.vue')
-      }, {
+      },
+      // {
+      //   path: '/404',
+      //   name: '404',
+      //   meta: {
+      //     title: '找不到页面'
+      //   },
+      //   component: () => import( /* webpackChunkName: "404" */ '../views/404.vue')
+      // },
+      {
         path: '/403',
         name: '403',
         meta: {

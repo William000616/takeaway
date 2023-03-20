@@ -11,4 +11,6 @@ public interface IShopService {
     Object listAdd(ShopRequest shopRequest);
 
     void update(Shop shop);
+
+    Object listById(Integer s_id);
 }

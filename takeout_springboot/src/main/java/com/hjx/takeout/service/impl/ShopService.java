@@ -9,6 +9,7 @@ import com.hjx.takeout.service.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,6 +35,12 @@ public class ShopService implements IShopService {
     @Override
     public void update(Shop shop) {
         shopMapper.updateByID(shop);
+    }
+
+    @Override
+    public Object listById(Integer s_id) {
+        List<Shop> shop=shopMapper.listById(s_id);
+        return shop;
     }
 
 }

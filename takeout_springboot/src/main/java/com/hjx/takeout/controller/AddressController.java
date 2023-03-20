@@ -17,9 +17,8 @@ public class AddressController {
     IAddressService addressService;
 
     @GetMapping("/list")
-    public Result list(String uid){
-        Integer id = Integer.valueOf(uid);
-        List<Address> address=addressService.list(id);
+    public Result list(@RequestParam Integer u_id){
+        List<Address> address=addressService.list(u_id);
         return Result.success(address);
     }
 
@@ -42,8 +41,8 @@ public class AddressController {
     }
 
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam Integer id){
-        addressService.deleteById(id);
+    public Result delete(@RequestParam Integer a_id){
+        addressService.deleteById(a_id);
         return Result.success();
     }
 }

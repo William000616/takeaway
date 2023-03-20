@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface AddressMapper {
 
-    List<Address> list(Integer id);
+    List<Address> list(Integer u_id);
 
     void add(Address address);
 
@@ -17,5 +17,5 @@ public interface AddressMapper {
 
     void updateById(Address address);
 
-    void deleteById(Integer id);
+    void deleteById(Integer a_id);
 }

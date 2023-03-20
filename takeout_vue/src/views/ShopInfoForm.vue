@@ -10,58 +10,33 @@
         </div>
         <div class="container">
             <div class="form-box">
-                <el-form ref="formRef" :rules="rules" :model="form" label-width="80px">
-                    <el-form-item label="表单名称" prop="name">
-                        <el-input v-model="form.name"></el-input>
+                <el-form ref="formRef" :rules="rules" :model="form" label-width="200px">
+                    <el-form-item label="店铺名" prop="shop_name">
+                        <el-input v-model="form.shop_name"></el-input>
                     </el-form-item>
-                    <el-form-item label="选择器" prop="region">
-                        <el-select v-model="form.region" placeholder="请选择">
-                            <el-option key="bbk" label="步步高" value="bbk"></el-option>
-                            <el-option key="xtc" label="小天才" value="xtc"></el-option>
-                            <el-option key="imoo" label="imoo" value="imoo"></el-option>
-                        </el-select>
+                    <el-form-item label="店铺Logo" prop="logo_src">
+                        <el-input v-model="form.logo_src"></el-input>
                     </el-form-item>
-                    <el-form-item label="日期时间">
-                        <el-col :span="11">
-                            <el-form-item prop="date1">
-                                <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"
-                                    style="width: 100%;"></el-date-picker>
-                            </el-form-item>
-                        </el-col>
-                        <el-col class="line" :span="2">-</el-col>
-                        <el-col :span="11">
-                            <el-form-item prop="date2">
-                                <el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;">
-                                </el-time-picker>
-                            </el-form-item>
-                        </el-col>
+                    <el-form-item label="联系电话" prop="phone">
+                        <el-input v-model="form.phone"></el-input>
                     </el-form-item>
-                    <el-form-item label="城市级联" prop="options">
-                        <el-cascader :options="options" v-model="form.options"></el-cascader>
+                    <el-form-item label="营业许可证" prop="license">
+                        <el-input v-model="form.license" disabled></el-input>
                     </el-form-item>
-                    <el-form-item label="选择开关" prop="delivery">
-                        <el-switch v-model="form.delivery"></el-switch>
+                    <el-form-item label="配送费￥" prop="delivery_cost">
+                        <el-input v-model="form.delivery_cost"></el-input>
                     </el-form-item>
-                    <el-form-item label="多选框" prop="type">
-                        <el-checkbox-group v-model="form.type">
-                            <el-checkbox label="步步高" name="type"></el-checkbox>
-                            <el-checkbox label="小天才" name="type"></el-checkbox>
-                            <el-checkbox label="imoo" name="type"></el-checkbox>
-                        </el-checkbox-group>
+                    <el-form-item label="预估配送时间(分钟)" prop="delivery_time">
+                        <el-input v-model="form.delivery_time"></el-input>
                     </el-form-item>
-                    <el-form-item label="单选框" prop="resource">
-                        <el-radio-group v-model="form.resource">
-                            <el-radio label="步步高"></el-radio>
-                            <el-radio label="小天才"></el-radio>
-                            <el-radio label="imoo"></el-radio>
-                        </el-radio-group>
+                    <el-form-item label="起送费￥" prop="min_cost">
+                        <el-input v-model="form.min_cost"></el-input>
                     </el-form-item>
-                    <el-form-item label="文本框" prop="desc">
-                        <el-input type="textarea" rows="5" v-model="form.desc"></el-input>
+                    <el-form-item label="店铺详细地址" prop="address_detail">
+                        <el-input v-model="form.address_detail"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmit">表单提交</el-button>
-                        <el-button @click="onReset">重置表单</el-button>
+                        <el-button type="primary" @click="onSubmit">提交修改</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -70,87 +45,59 @@
 </template>
 
 <script>
-import { reactive, ref } from "vue";
-import { ElMessage } from "element-plus";
+import { onMounted, reactive, ref } from "vue";
+import { ElMessage } from "element-plus"; GetShopById
+import { GetShopById, UpdateShop } from "../api/index";
 export default {
     name: "baseform",
     setup() {
-        const options = [
-            {
-                value: "guangdong",
-                label: "广东省",
-                children: [
-                    {
-                        value: "guangzhou",
-                        label: "广州市",
-                        children: [
-                            {
-                                value: "tianhe",
-                                label: "天河区",
-                            },
-                            {
-                                value: "haizhu",
-                                label: "海珠区",
-                            },
-                        ],
-                    },
-                    {
-                        value: "dongguan",
-                        label: "东莞市",
-                        children: [
-                            {
-                                value: "changan",
-                                label: "长安镇",
-                            },
-                            {
-                                value: "humen",
-                                label: "虎门镇",
-                            },
-                        ],
-                    },
-                ],
-            },
-            {
-                value: "hunan",
-                label: "湖南省",
-                children: [
-                    {
-                        value: "changsha",
-                        label: "长沙市",
-                        children: [
-                            {
-                                value: "yuelu",
-                                label: "岳麓区",
-                            },
-                        ],
-                    },
-                ],
-            },
-        ];
+        const params = reactive({
+            s_id: ""
+        });
         const rules = {
-            name: [
-                { required: true, message: "请输入表单名称", trigger: "blur" },
-            ],
+            // name: [
+            //     { required: true, message: "请输入表单名称", trigger: "blur" },
+            // ],
         };
         const formRef = ref(null);
-        const form = reactive({
-            name: "",
-            region: "",
-            date1: "",
-            date2: "",
-            delivery: true,
-            type: ["步步高"],
-            resource: "小天才",
-            desc: "",
-            options: [],
+        const form = ref({
+            s_id: "",
+            address_detail: "",
+            delivery_time: "",
+            min_cost: "",
+            stat: "",
+            delivery_cost: "",
+            phone: "",
+            shop_name: "",
+            license: "",
+            logo_src: ""
+
         });
+        const getData = () => {
+            params.s_id = localStorage.getItem("s_id");
+            GetShopById(params).then((res) => {
+                if (res.code === '200') {
+                    var list = res.data
+                    form.value = list[0];
+                }
+
+            });
+        };
+        getData();
+
         // 提交
         const onSubmit = () => {
             // 表单校验
             formRef.value.validate((valid) => {
                 if (valid) {
-                    console.log(form);
-                    ElMessage.success("提交成功！");
+                    console.log(form.value);
+                    UpdateShop(form.value).then((res) => {
+                        if (res.code === '200') {
+                            ElMessage.success("修改成功！");
+                            getData();
+                        }
+                    })
+
                 } else {
                     return false;
                 }
@@ -162,7 +109,6 @@ export default {
         };
 
         return {
-            options,
             rules,
             formRef,
             form,

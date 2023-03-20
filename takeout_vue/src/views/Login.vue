@@ -65,10 +65,15 @@ export default {
                     if (radio.value === 3) {
                         UserLogin(param).then((res) => {
                             if (res.code === '200') {
-                                // router.push("/shopInfoForm");
-                                ElMessage.success("登录成功");
-                                localStorage.setItem("ms_realName", res.data.name);
-                                localStorage.setItem("ms_username", 'param.username');
+                                if (res.data.r_id === 1) {
+                                    router.push("/allShop");
+                                    ElMessage.success("登录成功");
+                                    localStorage.setItem("ms_realName", res.data.name);
+                                    localStorage.setItem("u_id", res.data.u_id);
+                                    localStorage.setItem("ms_username", 'param.username');
+                                } else {
+                                    ElMessage.error('非普通用户账号！');
+                                }
                             } else {
                                 ElMessage.error(res.msg);
                             }

@@ -5,7 +5,7 @@ import com.hjx.takeout.entity.Address;
 import java.util.List;
 
 public interface IAddressService {
-    List<Address> list(Integer id);
+    List<Address> list(Integer u_id);
 
     void add(Address address);
 
@@ -13,5 +13,5 @@ public interface IAddressService {
 
     void update(Address address);
 
-    void deleteById(Integer id);
+    void deleteById(Integer a_id);
 }

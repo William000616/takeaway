@@ -7,6 +7,6 @@ public interface ICategoryService {
     Object list(Integer s_id);
 
     void add(Category user);
-//
+
     void delete(Integer c_id);
 }
