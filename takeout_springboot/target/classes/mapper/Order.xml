@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hjx.takeout.mapper.OrderMapper">
+
+    <!--根据用户id查询所有order-->
+    <select id="list" resultType="com.hjx.takeout.entity.Order">
+        select * from order_takeout
+        <where>
+            <if test="order_Number!=null and order_Number != ''">
+                order_Number like concat('%',#{order_Number},'%')
+            </if>
+            <if test="u_id!=null and u_id != ''">
+                and u_id like concat('%',#{u_id},'%')
+            </if>
+        </where>
+    </select>
+
+    <!--根据orderId查询所有good-->
+    <select id="listById" resultType="com.hjx.takeout.entity.GoodOrder">
+        select order_good.*,good.good_name,good.price from order_good,good where order_good.o_id = #{o_id} and good.g_id=order_good.g_id
+    </select>
+
+<!--    &lt;!&ndash;根据id修改good&ndash;&gt;-->
+<!--    <update id="updateById">-->
+<!--        update good set good_name = #{good_name},good_pic = #{good_pic},price = #{price},c_id = #{c_id}-->
+<!--        where g_id = #{g_id}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash;添加good&ndash;&gt;-->
+<!--    <insert id="add">-->
+<!--        insert into good(good_name,good_pic,price,c_id,sales,s_id) values (#{good_name},#{good_pic},#{price},#{c_id},0,#{s_id})-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash;根据uid删除good&ndash;&gt;-->
+<!--    <delete id="delete">-->
+<!--        delete from good where g_id = #{g_id}-->
+<!--    </delete>-->
+</mapper>

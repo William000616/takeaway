@@ -10,7 +10,9 @@
             <if test="good_name!=null and good_name != ''">
                 good_name like concat('%',#{good_name},'%')
             </if>
-            and s_id = #{s_id}
+            <if test="s_id!=null and s_id != ''">
+                and s_id = #{s_id}
+            </if>
         </where>
     </select>
 

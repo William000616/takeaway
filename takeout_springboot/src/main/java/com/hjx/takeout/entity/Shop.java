@@ -17,6 +17,6 @@ public class Shop {
     private String address_detail;
     private String delivery_time;
     private String desc;
-    private String name;//多表查询
+    private String name;//外
 
 }

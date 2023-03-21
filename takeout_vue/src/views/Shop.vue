@@ -17,22 +17,17 @@
             </div>
             <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
                 <el-table-column prop="shop_name" label="店铺名"></el-table-column>
-                <el-table-column label="店铺logo(查看大图)" align="center">
+                <el-table-column label="店铺logo" align="center">
                     <template #default="scope">
                         <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]">
                         </el-image>
                     </template>
                 </el-table-column>
-                <el-table-column prop="license" label="营业许可证"></el-table-column>
-                <el-table-column prop="min_cost" label="起送费"></el-table-column>
-                <el-table-column prop="delivery_cost" label="配送费"></el-table-column>
-                <el-table-column prop="delivery_time" label="配送时间"></el-table-column>
+                <el-table-column prop="min_cost" label="起送费￥"></el-table-column>
+                <el-table-column prop="delivery_cost" label="配送费￥"></el-table-column>
+                <el-table-column prop="delivery_time" label="配送时间(分钟)"></el-table-column>
                 <el-table-column prop="total_sales" label="总销量"></el-table-column>
-                <el-table-column prop="name" label="店长"></el-table-column>
-                <el-table-column prop="phone" label="联系方式"></el-table-column>
-                <el-table-column prop="address_detail" label="店铺地址"></el-table-column>
-                <el-table-column prop="desc" label="店铺描述"></el-table-column>
-                <el-table-column prop="stat" label="状态（点击修改状态）">
+                <el-table-column prop="stat" label="营业状态">
                     <template #default="scope">
                         <el-tag @click="handleState(scope.$index, scope.row)" :type="
                             scope.row.stat === 1
@@ -42,9 +37,9 @@
 
                     </template>
                 </el-table-column>
-                <el-table-column label="操作" width="180" align="center">
+                <el-table-column label="进入店铺" width="180" align="center">
                     <template #default="scope">
-                        <el-button type="text" @click="handleEdit(scope.$index, scope.row)">编辑
+                        <el-button v-if="scope.row.stat === 1" type="text" @click="handleEdit(scope.$index, scope.row)">进入
                         </el-button>
                         <!-- <el-button type="text" class="red" @click="handleDelete(scope.$index, scope.row)">删除</el-button> -->
                     </template>

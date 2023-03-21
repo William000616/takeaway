@@ -10,21 +10,16 @@
         <div class="container">
             <div class="handle-box">
                 <span>订单号：</span>
-                <el-input v-model="params.good_name" size="small" placeholder="请输入账户名称" class="handle-input mr10">
-                </el-input>
-                <span>下单用户：</span>
-                <el-input v-model="params.good_name" size="small" placeholder="请输入账户名称" class="handle-input mr10">
+                <el-input v-model="params.good_name" size="small" placeholder="请输入订单号" class="handle-input mr10">
                 </el-input>
                 <el-button @click="handleClean">重置</el-button>
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
             </div>
             <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
-                <el-table-column prop="good_name" label="订单号"></el-table-column>
-                <el-table-column prop="price" label="下单用户"></el-table-column>
-                <el-table-column prop="category_name" label="订单详情"></el-table-column>
-                <el-table-column prop="sales" label="送达地址"></el-table-column>
-                <el-table-column prop="desc" label="创建时间"></el-table-column>
-                <el-table-column prop="desc" label="接单时间"></el-table-column>
+                <el-table-column prop="sales" label="商家Logo"></el-table-column>
+                <el-table-column prop="category_name" label="商家"></el-table-column>
+                <el-table-column prop="desc" label="下单时间"></el-table-column>
+                <el-table-column prop="desc" label="订单总价"></el-table-column>
                 <el-table-column prop="stat" label="订单状态">
                     <template #default="scope">
                         <el-tag @click="handleState(scope.$index, scope.row)" :type="
@@ -37,7 +32,7 @@
                 </el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
-                        <el-button type="text" @click="handleDelete(scope.$index, scope.row)">修改状态</el-button>
+                        <el-button type="text" @click="handleEdit(scope.$index, scope.row)">订单详情</el-button>
                     </template>
                 </el-table-column>
             </el-table>

@@ -19,7 +19,7 @@
               <div class="grid-content grid-con-2">
                 <i class="el-icon-lx-hot grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">{{ num_p }}</div>
+                  <div class="grid-num">{{ num_g }}</div>
                   <div>菜品数量</div>
                 </div>
               </div>
@@ -30,7 +30,7 @@
               <div class="grid-content grid-con-3">
                 <i class="el-icon-lx-text grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">{{ num_plan }}</div>
+                  <div class="grid-num">{{ }}</div>
                   <div>订单数量</div>
                 </div>
               </div>
@@ -139,23 +139,21 @@
 <script>
 import Schart from "vue-schart";
 import { onMounted, reactive, ref } from "vue";
-import { GetShop, ProgramData, NoticeData } from "../api/index";
+import { GetShop, GetGood, NoticeData } from "../api/index";
 export default {
   name: "dashboard",
   components: { Schart },
   setup() {
     onMounted(() => {
       GetShop().then((res) => {
-        var list = res.data
         num_m.value = res.data.total;
       })
-      NoticeData().then((res) => {
-        var list = res.data
-        num_plan.value = list.records.length || 2;
+      GetGood().then((res) => {
+        num_g.value = res.data.total;
       })
     })
     let num_p = ref("321");
-    let num_plan = ref("321");
+    let num_g = ref("321");
     let num_m = ref("321");
     let sb_l = 0;
     let sb_z = 1;
@@ -242,7 +240,7 @@ export default {
 
     return {
       num_p,
-      num_plan,
+      num_g,
       num_m,
       name,
       data,
