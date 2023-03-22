@@ -41,4 +41,5 @@ public class GoodService implements IGoodService {
         goodMapper.delete(g_id);
     }
 
+
 }

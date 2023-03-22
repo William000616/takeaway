@@ -3,7 +3,7 @@
 
 <mapper namespace="com.hjx.takeout.mapper.GoodMapper">
 
-    <!--根据用户id查询所有普通good-->
+    <!--根据用户id查询所有good-->
     <select id="list" resultType="com.hjx.takeout.entity.Good">
         select * from good
         <where>
@@ -12,6 +12,9 @@
             </if>
             <if test="s_id!=null and s_id != ''">
                 and s_id = #{s_id}
+            </if>
+            <if test="c_id!=null and c_id != ''">
+                and c_id = #{c_id}
             </if>
         </where>
     </select>

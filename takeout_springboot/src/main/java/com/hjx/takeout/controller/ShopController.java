@@ -2,6 +2,7 @@ package com.hjx.takeout.controller;
 
 import com.hjx.takeout.common.Result;
 import com.hjx.takeout.controller.request.ShopRequest;
+import com.hjx.takeout.entity.Good;
 import com.hjx.takeout.entity.Shop;
 import com.hjx.takeout.service.impl.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,12 @@ public class ShopController {
     @PutMapping("/update")
     public Result update(@RequestBody Shop shop){
         shopService.update(shop);
+        return Result.success();
+    }
+
+    @PostMapping("/add")
+    public Result add(@RequestBody Shop shop){
+        shopService.add(shop);
         return Result.success();
     }
 }

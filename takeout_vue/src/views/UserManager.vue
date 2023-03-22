@@ -17,7 +17,6 @@
                 </el-input>
                 <el-button @click="handleClean">重置</el-button>
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
-                <el-button type="primary" @click="handleCreate">新建账户</el-button>
             </div>
             <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
                 <el-table-column prop="username" label="账户名"></el-table-column>

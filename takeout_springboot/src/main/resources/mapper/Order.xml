@@ -13,6 +13,7 @@
             <if test="u_id!=null and u_id != ''">
                 and u_id like concat('%',#{u_id},'%')
             </if>
+            and order_Stat != 0
         </where>
     </select>
 

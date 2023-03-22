@@ -49,7 +49,7 @@ export default {
                 title: "我的订单",
             },
             {
-                icon: "el-icon-lx-global",
+                icon: "el-icon-lx-locationfill",
                 index: "/myAddress",
                 title: "我的地址",
             },

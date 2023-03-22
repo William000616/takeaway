@@ -43,4 +43,9 @@ public class ShopService implements IShopService {
         return shop;
     }
 
+    @Override
+    public void add(Shop shop) {
+        shopMapper.add(shop);
+    }
+
 }

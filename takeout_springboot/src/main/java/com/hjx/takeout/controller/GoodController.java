@@ -20,6 +20,7 @@ public class GoodController {
         return Result.success(goodService.list(goodRequest));
     }
 
+
     @PutMapping("/update")
     public Result update(@RequestBody Good good){
         goodService.update(good);

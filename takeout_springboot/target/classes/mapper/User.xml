@@ -23,9 +23,9 @@
         where u_id = #{u_id}
     </update>
 
-    <!--添加user-->
+    <!--注册user-->
     <insert id="add">
-        insert into user(name,phone,username,password,r_id,stat,score) values (#{name},#{phone},#{username},#{password},1,0,#{score})
+        insert into user(name,phone,username,password,r_id,stat,score) values (#{name},#{phone},#{username},#{password},1,0,0)
     </insert>
 
     <!--登录-->

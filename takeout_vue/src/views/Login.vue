@@ -20,6 +20,9 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm()">登录</el-button>
                 </div>
+                <div class="login-btn">
+                    <el-button type="primary" @click="register()">注册</el-button>
+                </div>
                 <el-radio-group v-model="radio">
                     <el-radio :label="3">顾客</el-radio>
                     <el-radio :label="6">商家</el-radio>
@@ -59,6 +62,17 @@ export default {
         };
         const login = ref(null);
         const radio = ref(3)
+        const register = () => {
+            if (radio.value === 3) {
+                router.push("/register");
+                localStorage.setItem("ms_realName", 'res.data.name');
+                localStorage.setItem("ms_username", 'param.username');
+            } else if (radio.value === 6) {
+                router.push("/shopRegister");
+            } else {
+                ElMessage.error('不能注册管理员账号！');
+            }
+        }
         const submitForm = () => {
             login.value.validate((valid) => {
                 if (valid) {
@@ -127,6 +141,7 @@ export default {
             rules,
             login,
             submitForm,
+            register,
             radio,
         };
     },

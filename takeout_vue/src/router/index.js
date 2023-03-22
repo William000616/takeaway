@@ -286,13 +286,30 @@ const routes = [
         },
         component: () => import( /* webpackChunkName: "editor" */ '../views/Editor.vue')
       }]
-  }, {
+  },
+  {
     path: "/login",
     name: "Login",
     meta: {
       title: '登录'
     },
     component: () => import( /* webpackChunkName: "login" */ "../views/Login.vue")
+  },
+  {
+    path: "/register",
+    name: "register",
+    meta: {
+      title: '用户注册'
+    },
+    component: () => import( /* webpackChunkName: "login" */ "../views/Register.vue")
+  },
+  {
+    path: "/shopRegister",
+    name: "shopRegister",
+    meta: {
+      title: '商家注册'
+    },
+    component: () => import( /* webpackChunkName: "login" */ "../views/ShopRegister.vue"),
   },
 
 ];

@@ -39,4 +39,10 @@
     <select id="listById" resultType="com.hjx.takeout.entity.Shop">
         select * from shop where s_id = #{s_id}
     </select>
+
+    <!--申请店铺-->
+    <insert id="add">
+        insert into shop(shop_name,logo_src,license,delivery_cost,min_cost,phone,address_detail,delivery_time,total_sales,stat,s_m_id)
+        values (#{shop_name},#{logo_src},#{license},#{delivery_cost},#{min_cost},#{phone},#{address_detail},#{delivery_time},0,0,#{s_m_id})
+    </insert>
 </mapper>
