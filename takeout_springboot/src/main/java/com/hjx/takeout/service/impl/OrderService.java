@@ -10,6 +10,9 @@ import com.hjx.takeout.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,6 +32,29 @@ public class OrderService implements IOrderService {
     public Object listById(Integer o_id) {
         List<GoodOrder> goodOrders =orderMapper.listById(o_id);
         return new PageInfo<>(goodOrders);
+    }
+
+    @Override
+    public Object listAdd(OrderRequest orderRequest) {
+        PageHelper.startPage(orderRequest.getPageNum(), orderRequest.getPageSize());
+        List<Order> orders =orderMapper.listAdd(orderRequest);
+        return new PageInfo<>(orders);
+    }
+
+    @Override
+    public Object listNew(OrderRequest orderRequest) {
+        PageHelper.startPage(orderRequest.getPageNum(), orderRequest.getPageSize());
+        List<Order> orders =orderMapper.listNew(orderRequest);
+        return new PageInfo<>(orders);
+    }
+
+    @Override
+    public void shopPickOrder(Order order) {
+        Date date=new Date();
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String strDate = dateformat.format(date);
+        order.setOrder_time(strDate);
+        orderMapper.shopPickOrder(order);
     }
 
 //    @Override

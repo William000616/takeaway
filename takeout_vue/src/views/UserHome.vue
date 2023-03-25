@@ -20,7 +20,7 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import vHeader from "../components/UserHeader.vue";
+import vHeader from "../components/Header.vue";
 import vSidebar from "../components/UserSidebar.vue";
 import vTags from "../components/Tags.vue";
 export default {

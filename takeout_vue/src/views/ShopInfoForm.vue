@@ -15,7 +15,11 @@
                         <el-input v-model="form.shop_name"></el-input>
                     </el-form-item>
                     <el-form-item label="店铺Logo" prop="logo_src">
-                        <el-input v-model="form.logo_src"></el-input>
+                        <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload"
+                            :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+                            <img v-if="form.logo_src" :src="form.logo_src" class="avatar" />
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
                     </el-form-item>
                     <el-form-item label="联系电话" prop="phone">
                         <el-input v-model="form.phone"></el-input>
@@ -73,6 +77,11 @@ export default {
             logo_src: ""
 
         });
+        const handleAvatarSuccess = (res) => {
+            if (res.code === '200') {
+                form.value.logo_src = res.data
+            }
+        };
         const getData = () => {
             params.s_id = localStorage.getItem("s_id");
             GetShopById(params).then((res) => {
@@ -114,7 +123,63 @@ export default {
             form,
             onSubmit,
             onReset,
+            handleAvatarSuccess,
         };
     },
 };
 </script>
+<style>
+.avatar-uploader .el-upload {
+    border: 1px dashed var(--el-border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: var(--el-color-primary);
+}
+
+.el-icon.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    text-align: center;
+}
+
+.avatar-uploader .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+}
+
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+
+.avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+</style>

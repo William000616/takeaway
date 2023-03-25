@@ -10,22 +10,18 @@
         <div class="container">
             <div class="handle-box">
                 <span>订单号：</span>
-                <el-input v-model="params.good_name" size="small" placeholder="请输入账户名称" class="handle-input mr10">
-                </el-input>
-                <span>下单用户：</span>
-                <el-input v-model="params.good_name" size="small" placeholder="请输入账户名称" class="handle-input mr10">
+                <el-input v-model="params.order_Number" size="small" placeholder="请输入订单号" class="handle-input mr10">
                 </el-input>
                 <el-button @click="handleClean">重置</el-button>
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
             </div>
             <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
-                <el-table-column prop="good_name" label="订单号"></el-table-column>
-                <el-table-column prop="price" label="下单用户"></el-table-column>
-                <el-table-column prop="category_name" label="订单详情"></el-table-column>
-                <el-table-column prop="sales" label="送达地址"></el-table-column>
-                <el-table-column prop="desc" label="创建时间"></el-table-column>
+                <el-table-column prop="order_Number" label="订单号"></el-table-column>
+                <el-table-column prop="address" label="送达地址"></el-table-column>
+                <el-table-column prop="create_time" label="创建时间"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
+                        <el-button type="text" @click="handleDelete(scope.$index, scope.row)">订单详情</el-button>
                         <el-button type="text" @click="handleDelete(scope.$index, scope.row)">接单</el-button>
                     </template>
                 </el-table-column>
@@ -93,15 +89,17 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetGood, goodAdd, goodDelete, GetCategory, goodEdit } from "../api/index";
+import { GetOrderNew, pickOrder, goodDelete, GetCategory, goodEdit } from "../api/index";
 export default {
     name: "basetable",
     setup() {
         const options = ref([]);
         const params = reactive({
-            good_name: "",
+            order_Number: "",
+            s_id: "",
             pageNum: 1,
             pageSize: 10,
+            order_Stat: 1
         });
         const rules = {
             // username: [
@@ -130,7 +128,7 @@ export default {
         // 获取表格数据
         const getData = () => {
             params.s_id = localStorage.getItem("s_id");
-            GetGood(params).then((res) => {
+            GetOrderNew(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     list.map((e) => {
@@ -146,34 +144,15 @@ export default {
 
             });
         };
-        const getCategory = () => {
-            params.s_id = localStorage.getItem("s_id");
-            GetCategory(params).then((res) => {
-                if (res.code === '200') {
-                    let list = res.data;
-                    let newList = [];
-                    list.map((e) => {
-                        let obj = {
-                            label: e.category_name,
-                            value: e.c_id
-                        }
-                        newList.push(obj)
-                        options.value = newList;
-                    })
-                }
-
-            });
-        };
-        getCategory();
         getData();
         // 查询操作
         const handleClean = () => {
-            params.good_name = "";
+            params.order_Number = "";
             getData();
         };
         const handleSearch = () => {
             params.s_id = localStorage.getItem("s_id");
-            GetGood(params).then((res) => {
+            GetOrderNew(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
@@ -190,14 +169,13 @@ export default {
         // 删除操作
         const handleDelete = (index, row) => {
             // 二次确认删除
-            ElMessageBox.confirm("确定要下架吗？", "提示", {
+            ElMessageBox.confirm("确定要接单吗？", "提示", {
                 type: "warning",
             })
                 .then(() => {
-
-                    goodDelete(row).then((res) => {
+                    pickOrder(row).then((res) => {
                         if (res.code === '200') {
-                            ElMessage.success("下架成功");
+                            ElMessage.success("接单成功");
                             getData();
                         }
                     })

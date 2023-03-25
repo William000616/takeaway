@@ -14,7 +14,7 @@ public interface ShopManagerMapper {
 
     void updateById(ShopManager shopManager);
 
-    void add(ShopManager shopManager);
+    Integer add(ShopManager shopManager);
 
     void delete(Integer s_m_id);
 

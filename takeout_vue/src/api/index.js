@@ -16,6 +16,31 @@ export const ManagerLogin = query => {
     });
 };
 
+export const UserRegister = query => {
+    return request({
+        url: '/user/add',
+        method: 'post',
+        data: query
+    });
+};
+
+export const shopManagerRegister = query => {
+    return request({
+        url: '/manager/add',
+        method: 'post',
+        data: query
+    });
+};
+
+export const shopRegister = query => {
+    return request({
+        url: '/shop/add',
+        method: 'post',
+        data: query
+    });
+};
+
+
 export const GetUser = query => {
     return request({
         url: '/user/list',
@@ -177,6 +202,34 @@ export const deleteAddress = query => {
 export const updateAddress = query => {
     return request({
         url: '/address/update',
+        method: 'put',
+        data: query
+    });
+};
+export const GetOrder = query => {
+    return request({
+        url: '/order/list',
+        method: 'get',
+        params: query
+    });
+};
+export const GetOrderAdd = query => {
+    return request({
+        url: '/order/listAdd',
+        method: 'get',
+        params: query
+    });
+};
+export const GetOrderNew = query => {
+    return request({
+        url: '/order/listNew',
+        method: 'get',
+        params: query
+    });
+};
+export const pickOrder = query => {
+    return request({
+        url: '/order/shopPickOrder',
         method: 'put',
         data: query
     });

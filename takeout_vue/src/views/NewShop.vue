@@ -19,7 +19,7 @@
                 <el-table-column prop="shop_name" label="店铺名"></el-table-column>
                 <el-table-column label="店铺logo(查看大图)" align="center">
                     <template #default="scope">
-                        <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]">
+                        <el-image class="table-td-thumb" :src="scope.row.logo_src" :preview-src-list="[scope.row.logo_src]">
                         </el-image>
                     </template>
                 </el-table-column>

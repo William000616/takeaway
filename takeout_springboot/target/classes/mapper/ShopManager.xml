@@ -24,7 +24,7 @@
     </update>
 
     <!--注册-->
-    <insert id="add">
+    <insert id="add" useGeneratedKeys="true" keyProperty="s_m_id">
         insert into shop_manager(name,phone,username,password,r_id,stat,identity_number) values (#{name},#{phone},#{username},#{password},2,0,#{identity_number})
     </insert>
 

@@ -29,8 +29,7 @@ public class ShopManagerController {
 
     @PostMapping("/add")
     public Result add(@RequestBody ShopManager shopManager){
-        shopManagerService.add(shopManager);
-        return Result.success();
+        return Result.success(shopManagerService.add(shopManager));
     }
 
     @PostMapping("/login")

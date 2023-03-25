@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hjx.takeout.controller.dto.LoginDTO;
 import com.hjx.takeout.controller.dto.ManagerLoginDTO;
+import com.hjx.takeout.controller.dto.ShopRegisterDTO;
 import com.hjx.takeout.controller.request.LoginRequest;
 import com.hjx.takeout.controller.request.ShopManagerRequest;
 import com.hjx.takeout.controller.request.UserRequest;
@@ -38,8 +39,9 @@ public class ShopManagerService implements IShopManagerService {
     }
 
     @Override
-    public void add(ShopManager shopManager) {
+    public Integer add(ShopManager shopManager) {
         shopManagerMapper.add(shopManager);
+        return shopManager.getS_m_id();
     }
 
     @Override

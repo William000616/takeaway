@@ -5,15 +5,45 @@
 
     <!--根据用户id查询所有order-->
     <select id="list" resultType="com.hjx.takeout.entity.Order">
-        select * from order_takeout
+        select order_takeout.*,shop.logo_src,shop.shop_name from order_takeout,shop
         <where>
             <if test="order_Number!=null and order_Number != ''">
-                order_Number like concat('%',#{order_Number},'%')
+                order_takeout.order_Number like concat('%',#{order_Number},'%')
             </if>
             <if test="u_id!=null and u_id != ''">
-                and u_id like concat('%',#{u_id},'%')
+                and order_takeout.u_id like concat('%',#{u_id},'%')
             </if>
-            and order_Stat != 0
+            and shop.s_id = order_takeout.s_id
+        </where>
+    </select>
+
+    <!--根据用户sid查询所有order-->
+    <select id="listAdd" resultType="com.hjx.takeout.entity.Order">
+        select order_takeout.*,address.address from order_takeout,address
+        <where>
+            <if test="order_Number!=null and order_Number != ''">
+                order_takeout.order_Number like concat('%',#{order_Number},'%')
+            </if>
+            <if test="s_id!=null and s_id != ''">
+                and order_takeout.s_id like concat('%',#{s_id},'%')
+            </if>
+            and order_Stat != 1
+            and address.a_id = order_takeout.a_id
+        </where>
+    </select>
+
+    <!--根据用户sid查询所有order-->
+    <select id="listNew" resultType="com.hjx.takeout.entity.Order">
+        select order_takeout.*,address.address from order_takeout,address
+        <where>
+            <if test="order_Number!=null and order_Number != ''">
+                order_takeout.order_Number like concat('%',#{order_Number},'%')
+            </if>
+            <if test="s_id!=null and s_id != ''">
+                and order_takeout.s_id like concat('%',#{s_id},'%')
+            </if>
+            and order_Stat = 1
+            and address.a_id = order_takeout.a_id
         </where>
     </select>
 
@@ -22,11 +52,11 @@
         select order_good.*,good.good_name,good.price from order_good,good where order_good.o_id = #{o_id} and good.g_id=order_good.g_id
     </select>
 
-<!--    &lt;!&ndash;根据id修改good&ndash;&gt;-->
-<!--    <update id="updateById">-->
-<!--        update good set good_name = #{good_name},good_pic = #{good_pic},price = #{price},c_id = #{c_id}-->
-<!--        where g_id = #{g_id}-->
-<!--    </update>-->
+    <!--商家接单-->
+    <update id="shopPickOrder">
+        update order_takeout set order_Stat = 2,order_time = #{order_time}
+        where o_id = #{o_id}
+    </update>
 
 <!--    &lt;!&ndash;添加good&ndash;&gt;-->
 <!--    <insert id="add">-->

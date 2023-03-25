@@ -9,4 +9,5 @@ public class LoginDTO {
     private String name;
     private Integer r_id;
     private Integer stat;
+    private String picSrc;
 }

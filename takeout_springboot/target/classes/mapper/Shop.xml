@@ -31,7 +31,7 @@
 
     <!--根据id修改shop-->
     <update id="updateByID">
-        update shop set stat = #{stat},phone = #{phone},delivery_cost = #{delivery_cost},min_cost = #{min_cost},address_detail = #{address_detail},delivery_time = #{delivery_time},logo_src = #{logo_src},shop_name = #{shop_name}
+        update shop set stat = #{stat},shop_phone = #{shop_phone},delivery_cost = #{delivery_cost},min_cost = #{min_cost},address_detail = #{address_detail},delivery_time = #{delivery_time},logo_src = #{logo_src},shop_name = #{shop_name}
         where s_id = #{s_id}
     </update>
 
@@ -42,7 +42,7 @@
 
     <!--申请店铺-->
     <insert id="add">
-        insert into shop(shop_name,logo_src,license,delivery_cost,min_cost,phone,address_detail,delivery_time,total_sales,stat,s_m_id)
-        values (#{shop_name},#{logo_src},#{license},#{delivery_cost},#{min_cost},#{phone},#{address_detail},#{delivery_time},0,0,#{s_m_id})
+        insert into shop(shop_name,logo_src,license,delivery_cost,min_cost,shop_phone,address_detail,delivery_time,total_sales,stat,s_m_id)
+        values (#{shop_name},#{logo_src},#{license},#{delivery_cost},#{min_cost},#{shop_phone},#{address_detail},#{delivery_time},0,0,#{s_m_id})
     </insert>
 </mapper>

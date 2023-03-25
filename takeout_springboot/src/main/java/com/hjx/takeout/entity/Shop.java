@@ -13,7 +13,7 @@ public class Shop {
     private String delivery_cost;
     private String min_cost;
     private String total_sales;
-    private String phone;
+    private String shop_phone;
     private String address_detail;
     private String delivery_time;
     private String desc;

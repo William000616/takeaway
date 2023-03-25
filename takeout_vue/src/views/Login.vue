@@ -85,6 +85,7 @@ export default {
                                     localStorage.setItem("ms_realName", res.data.name);
                                     localStorage.setItem("u_id", res.data.u_id);
                                     localStorage.setItem("ms_username", 'param.username');
+                                    localStorage.setItem("head", res.data.picSrc);
                                 } else {
                                     ElMessage.error('非普通用户账号！');
                                 }
@@ -118,6 +119,7 @@ export default {
                                     ElMessage.success("登录成功");
                                     localStorage.setItem("ms_realName", '超级管理员');
                                     localStorage.setItem("ms_username", 'admin');
+                                    localStorage.setItem("head", res.data.picSrc);
                                 } else {
                                     ElMessage.error('非管理员账号！');
                                 }

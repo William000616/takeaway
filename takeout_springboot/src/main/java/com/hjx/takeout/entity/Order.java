@@ -16,4 +16,7 @@ public class Order {
     private String delivery_price;
     private String order_time;
     private String arrive_time;
+    private String logo_src;//外
+    private String shop_name;//外
+    private String address;//外
 }

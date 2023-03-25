@@ -12,38 +12,45 @@
                     <el-form-item label="用户名" prop="username">
                         <el-input v-model="form.username"></el-input>
                     </el-form-item>
-                    <el-form-item label="头像" prop="picSrc">
-                        <el-input v-model="form.picSrc"></el-input>
-                    </el-form-item>
                     <el-form-item label="密码" prop="password">
                         <el-input v-model="form.password"></el-input>
                     </el-form-item>
                     <el-form-item label="姓名" prop="name">
                         <el-input v-model="form.name"></el-input>
                     </el-form-item>
-                    <el-form-item label="手机号" prop="phone">
-                        <el-input v-model="form.phone"></el-input>
-                    </el-form-item>
-                    <el-form-item label="1" prop="username">
-                        <el-input v-model="form.username"></el-input>
-                    </el-form-item>
-                    <el-form-item label="头像" prop="picSrc">
-                        <el-input v-model="form.picSrc"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码" prop="password">
-                        <el-input v-model="form.password"></el-input>
-                    </el-form-item>
-                    <el-form-item label="姓名" prop="name">
-                        <el-input v-model="form.name"></el-input>
+                    <el-form-item label="身份证号" prop="identity_number">
+                        <el-input v-model="form.identity_number"></el-input>
                     </el-form-item>
                     <el-form-item label="手机号" prop="phone">
                         <el-input v-model="form.phone"></el-input>
                     </el-form-item>
-                    <el-form-item label="姓名" prop="name">
-                        <el-input v-model="form.name"></el-input>
+                    <el-form-item label="店铺名" prop="shop_name">
+                        <el-input v-model="form.shop_name"></el-input>
                     </el-form-item>
-                    <el-form-item label="手机号" prop="phone">
-                        <el-input v-model="form.phone"></el-input>
+                    <el-form-item label="店铺Logo" prop="logo_src">
+                        <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload"
+                            :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+                            <img v-if="form.logo_src" :src="form.logo_src" class="avatar" />
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                    </el-form-item>
+                    <el-form-item label="营业许可证" prop="license">
+                        <el-input v-model="form.license"></el-input>
+                    </el-form-item>
+                    <el-form-item label="配送费" prop="delivery_cost">
+                        <el-input v-model="form.delivery_cost"></el-input>
+                    </el-form-item>
+                    <el-form-item label="起送费" prop="min_cost">
+                        <el-input v-model="form.min_cost"></el-input>
+                    </el-form-item>
+                    <el-form-item label="配送时间" prop="delivery_time">
+                        <el-input v-model="form.delivery_time"></el-input>
+                    </el-form-item>
+                    <el-form-item label="联系电话" prop="shop_phone">
+                        <el-input v-model="form.shop_phone"></el-input>
+                    </el-form-item>
+                    <el-form-item label="详细地址" prop="address_detail">
+                        <el-input v-model="form.address_detail"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="onSubmit">提交修改</el-button>
@@ -56,8 +63,8 @@
 
 <script>
 import { onMounted, reactive, ref } from "vue";
-import { ElMessage } from "element-plus"; GetShopById
-import { GetShopById, UpdateShop } from "../api/index";
+import { ElMessage } from "element-plus";
+import { shopRegister, shopManagerRegister, } from "../api/index";
 import { useRouter } from "vue-router";
 export default {
     name: "baseform",
@@ -70,9 +77,46 @@ export default {
             s_id: ""
         });
         const rules = {
-            // name: [
-            //     { required: true, message: "请输入表单名称", trigger: "blur" },
-            // ],
+            name: [
+                { required: true, message: "请输入真实姓名", trigger: "blur" },
+            ],
+            phone: [
+                { required: true, message: "请输入电话号码", trigger: "blur" },
+            ],
+            password: [
+                { required: true, message: "请输入密码", trigger: "blur" },
+            ],
+            username: [
+                { required: true, message: "请输入用户名", trigger: "blur" },
+            ],
+            identity_number: [
+                { required: true, message: "请输入身份证号", trigger: "blur" },
+            ],
+            shop_name: [
+                { required: true, message: "请输入店铺名称", trigger: "blur" },
+            ],
+            logo_src: [
+                { required: true, message: "请上传店铺logo", trigger: "blur" },
+            ],
+            license: [
+                { required: true, message: "请输入营业许可证", trigger: "blur" },
+            ],
+            delivery_cost: [
+                { required: true, message: "请输入配送费", trigger: "blur" },
+            ],
+            min_cost: [
+                { required: true, message: "请输入起送费", trigger: "blur" },
+            ],
+            delivery_time: [
+                { required: true, message: "请输入配送时间", trigger: "blur" },
+            ],
+            shop_phone: [
+                { required: true, message: "请输入店铺联系电话", trigger: "blur" },
+            ],
+            address_detail: [
+                { required: true, message: "请输入详细地址", trigger: "blur" },
+            ],
+
         };
         const formRef = ref(null);
         const form = ref({
@@ -80,16 +124,47 @@ export default {
             phone: "",
             name: "",
             username: "",
-            picSrc: ""
+            identity_number: "",
+            shop_name: "",
+            logo_src: "",
+            license: "",
+            delivery_cost: "",
+            min_cost: "",
+            delivery_time: "",
+            shop_phone: "",
+            address_detail: "",
+            s_m_id: 0,
 
         });
+
+        const handleAvatarSuccess = (res) => {
+            if (res.code === '200') {
+                form.value.logo_src = res.data
+            }
+        };
 
         // 提交
         const onSubmit = () => {
             // 表单校验
             formRef.value.validate((valid) => {
+                console.log(form.value);
                 if (valid) {
-                    console.log(form.value);
+                    shopManagerRegister(form.value).then((res) => {
+                        if (res.code === '200') {
+                            form.value.s_m_id = res.data
+                            shopRegister(form.value).then((res) => {
+                                if (res.code === '200') {
+                                    router.push("/Login");
+                                    ElMessage.success('注册成功！');
+                                } else {
+                                    ElMessage.error('注册失败！');
+                                }
+                            })
+                        } else {
+                            ElMessage.error('注册失败！');
+                        }
+                    })
+
 
                 } else {
                     return false;
@@ -103,6 +178,7 @@ export default {
             form,
             back,
             onSubmit,
+            handleAvatarSuccess,
         };
     },
 };
@@ -199,5 +275,59 @@ export default {
 .container {
     overflow: scroll;
     height: 85vh;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed var(--el-border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: var(--el-color-primary);
+}
+
+.el-icon.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    text-align: center;
+}
+
+.avatar-uploader .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+}
+
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+
+.avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
 }
 </style>

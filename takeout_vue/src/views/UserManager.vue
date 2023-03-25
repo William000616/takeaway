@@ -22,7 +22,7 @@
                 <el-table-column prop="username" label="账户名"></el-table-column>
                 <el-table-column label="头像(查看大图)" align="center">
                     <template #default="scope">
-                        <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]">
+                        <el-image class="table-td-thumb" :src="scope.row.picSrc" :preview-src-list="[scope.row.picSrc]">
                         </el-image>
                     </template>
                 </el-table-column>

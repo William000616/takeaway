@@ -25,7 +25,7 @@
 
     <!--注册user-->
     <insert id="add">
-        insert into user(name,phone,username,password,r_id,stat,score) values (#{name},#{phone},#{username},#{password},1,0,0)
+        insert into user(name,phone,username,password,picSrc,r_id,stat,score) values (#{name},#{phone},#{username},#{password},#{picSrc},1,1,0)
     </insert>
 
     <!--登录-->

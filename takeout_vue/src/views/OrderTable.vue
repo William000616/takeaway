@@ -10,33 +10,30 @@
         <div class="container">
             <div class="handle-box">
                 <span>订单号：</span>
-                <el-input v-model="params.good_name" size="small" placeholder="请输入账户名称" class="handle-input mr10">
-                </el-input>
-                <span>下单用户：</span>
-                <el-input v-model="params.good_name" size="small" placeholder="请输入账户名称" class="handle-input mr10">
+                <el-input v-model="params.order_Number" size="small" placeholder="请输入订单号" class="handle-input mr10">
                 </el-input>
                 <el-button @click="handleClean">重置</el-button>
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
             </div>
             <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
-                <el-table-column prop="good_name" label="订单号"></el-table-column>
-                <el-table-column prop="price" label="下单用户"></el-table-column>
-                <el-table-column prop="category_name" label="订单详情"></el-table-column>
-                <el-table-column prop="sales" label="送达地址"></el-table-column>
-                <el-table-column prop="desc" label="创建时间"></el-table-column>
-                <el-table-column prop="desc" label="接单时间"></el-table-column>
-                <el-table-column prop="stat" label="订单状态">
+                <el-table-column prop="order_Number" label="订单号"></el-table-column>
+                <el-table-column prop="address" label="送达地址"></el-table-column>
+                <el-table-column prop="create_time" label="创建时间"></el-table-column>
+                <el-table-column prop="order_time" label="接单时间"></el-table-column>
+                <el-table-column prop="order_Stat" label="订单状态">
                     <template #default="scope">
-                        <el-tag @click="handleState(scope.$index, scope.row)" :type="
-                            scope.row.stat === 1
-                                ? 'success'
-                                : 'danger'
-                        ">{{ scope.row.stat === 1 ? '启用' : '停用' }}</el-tag>
-
+                        <el-tag :type="'success'">
+                            {{ scope.row.order_Stat === 2
+                                ? '已接单'
+                                : scope.row.order_Stat === 3
+                                    ? '配送中'
+                                    : '已完成' }}
+                        </el-tag>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
+                        <el-button type="text" @click="handleDelete(scope.$index, scope.row)">订单详情</el-button>
                         <el-button type="text" @click="handleDelete(scope.$index, scope.row)">修改状态</el-button>
                     </template>
                 </el-table-column>
@@ -104,13 +101,14 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetGood, goodAdd, goodDelete, GetCategory, goodEdit } from "../api/index";
+import { GetOrderAdd, goodAdd, goodDelete, GetCategory, goodEdit } from "../api/index";
 export default {
     name: "basetable",
     setup() {
         const options = ref([]);
         const params = reactive({
-            good_name: "",
+            order_Number: "",
+            s_id: "",
             pageNum: 1,
             pageSize: 10,
         });
@@ -141,7 +139,7 @@ export default {
         // 获取表格数据
         const getData = () => {
             params.s_id = localStorage.getItem("s_id");
-            GetGood(params).then((res) => {
+            GetOrderAdd(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     list.map((e) => {
@@ -157,34 +155,15 @@ export default {
 
             });
         };
-        const getCategory = () => {
-            params.s_id = localStorage.getItem("s_id");
-            GetCategory(params).then((res) => {
-                if (res.code === '200') {
-                    let list = res.data;
-                    let newList = [];
-                    list.map((e) => {
-                        let obj = {
-                            label: e.category_name,
-                            value: e.c_id
-                        }
-                        newList.push(obj)
-                        options.value = newList;
-                    })
-                }
-
-            });
-        };
-        getCategory();
         getData();
         // 查询操作
         const handleClean = () => {
-            params.good_name = "";
+            params.order_Number = "";
             getData();
         };
         const handleSearch = () => {
             params.s_id = localStorage.getItem("s_id");
-            GetGood(params).then((res) => {
+            GetOrderAdd(params).then((res) => {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;

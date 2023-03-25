@@ -19,7 +19,7 @@
                 </div> -->
                 <!-- 用户头像 -->
                 <div class="user-avator">
-                    <img src="../assets/img/img.jpg" />
+                    <img :src=head />
                 </div>
                 <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="click" @command="handleCommand">
@@ -29,7 +29,7 @@
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <!-- <el-dropdown-item command="user">个人中心</el-dropdown-item> -->
+                            <el-dropdown-item command="user">个人中心</el-dropdown-item>
                             <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
                         </el-dropdown-menu>
                     </template>
@@ -45,6 +45,7 @@ import { useRouter } from "vue-router";
 export default {
     setup() {
         const username = localStorage.getItem("ms_realName");
+        const head = localStorage.getItem("head");
         const message = 2;
 
         const store = useStore();
@@ -75,6 +76,7 @@ export default {
             username,
             message,
             collapse,
+            head,
             collapseChage,
             handleCommand,
         };

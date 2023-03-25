@@ -9,14 +9,12 @@
                         </div>
                     </template>
                     <div class="info">
-                        <div class="info-image" @click="showDialog">
-                            <img :src="avatarImg" />
-                            <span class="info-edit">
-                                <i class="el-icon-lx-camerafill"></i>
-                            </span>
-                        </div>
+                        <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload"
+                            :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+                            <img v-if="imgSrc" :src="imgSrc" class="avatar" />
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
                         <div class="info-name">{{ name }}</div>
-                        <div class="info-desc">不可能！我的代码怎么可能会有bug！</div>
                     </div>
                 </el-card>
             </el-col>
@@ -34,9 +32,6 @@
                         </el-form-item>
                         <el-form-item label="新密码：">
                             <el-input type="password" v-model="form.new"></el-input>
-                        </el-form-item>
-                        <el-form-item label="个人简介：">
-                            <el-input v-model="form.desc"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="onSubmit">保存</el-button>
@@ -62,25 +57,26 @@
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import VueCropper from "vue-cropperjs";
 import "cropperjs/dist/cropper.css";
-import avatar from "../assets/img/img.jpg";
 export default {
     name: "user",
     components: {
         VueCropper,
     },
     setup() {
+        onMounted(() => {
+            imgSrc.value = localStorage.getItem("head");
+        })
         const name = localStorage.getItem("ms_username");
         const form = reactive({
             old: "",
             new: "",
-            desc: "不可能！我的代码怎么可能会有bug！",
         });
-        const onSubmit = () => {};
+        const onSubmit = () => { };
 
-        const avatarImg = ref(avatar);
+        const avatarImg = ref("");
         const imgSrc = ref("");
         const cropImg = ref("");
         const dialogVisible = ref(false);
@@ -137,6 +133,7 @@ export default {
     text-align: center;
     padding: 35px 0;
 }
+
 .info-image {
     position: relative;
     margin: auto;
@@ -147,10 +144,12 @@ export default {
     border-radius: 50px;
     overflow: hidden;
 }
+
 .info-image img {
     width: 100%;
     height: 100%;
 }
+
 .info-edit {
     display: flex;
     justify-content: center;
@@ -164,22 +163,27 @@ export default {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+
 .info-edit i {
     color: #eee;
     font-size: 25px;
 }
+
 .info-image:hover .info-edit {
     opacity: 1;
 }
+
 .info-name {
     margin: 15px 0 10px;
     font-size: 24px;
     font-weight: 500;
     color: #262626;
 }
+
 .crop-demo-btn {
     position: relative;
 }
+
 .crop-input {
     position: absolute;
     width: 100px;
@@ -188,5 +192,64 @@ export default {
     top: 0;
     opacity: 0;
     cursor: pointer;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed var(--el-border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: var(--el-color-primary);
+}
+
+.el-icon.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    text-align: center;
+}
+
+.avatar-uploader .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+}
+
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+
+.avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+
+.el-upload--text {
+    width: 200px;
+    height: 200px;
 }
 </style>

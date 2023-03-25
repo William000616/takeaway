@@ -13,6 +13,12 @@ public interface OrderMapper {
     List<Order> list(OrderRequest orderRequest);
 
     List<GoodOrder> listById(Integer o_id);
+
+    List<Order> listAdd(OrderRequest orderRequest);
+
+    List<Order> listNew(OrderRequest orderRequest);
+
+    void shopPickOrder(Order order);
 //
 //    void updateById(Good good);
 //

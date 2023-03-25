@@ -20,14 +20,13 @@
                 <el-table-column prop="good_name" label="商品名"></el-table-column>
                 <el-table-column label="图片(查看大图)" align="center">
                     <template #default="scope">
-                        <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]">
+                        <el-image class="table-td-thumb" :src="scope.row.good_pic" :preview-src-list="[scope.row.good_pic]">
                         </el-image>
                     </template>
                 </el-table-column>
                 <el-table-column prop="price" label="价格"></el-table-column>
                 <el-table-column prop="category_name" label="类别"></el-table-column>
                 <el-table-column prop="sales" label="销量"></el-table-column>
-                <el-table-column prop="desc" label="描述"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
                         <el-button type="text" @click="handleEdit(scope.$index, scope.row)">编辑
@@ -49,7 +48,11 @@
                     <el-input v-model="form.good_name"></el-input>
                 </el-form-item>
                 <el-form-item label="图片" prop="password">
-                    <el-input v-model="form.password" />
+                    <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload" :show-file-list="false"
+                        :on-success="handleAvatarSuccessEdit" :before-upload="beforeAvatarUpload">
+                        <img v-if="form.good_pic" :src="form.good_pic" class="avatar" />
+                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
                 </el-form-item>
                 <el-form-item label="价格" prop="price">
                     <el-input v-model="form.price"></el-input>
@@ -75,7 +78,11 @@
                     <el-input v-model="New.good_name"></el-input>
                 </el-form-item>
                 <el-form-item label="图片" prop="password">
-                    <el-input v-model="New.password" />
+                    <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload" :show-file-list="false"
+                        :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+                        <img v-if="New.good_pic" :src="New.good_pic" class="avatar" />
+                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
                 </el-form-item>
                 <el-form-item label="价格" prop="price">
                     <el-input v-model="New.price"></el-input>
@@ -173,6 +180,27 @@ export default {
         getCategory();
         getData();
         // 查询操作
+        const handleAvatarSuccess = (res) => {
+            if (res.code === '200') {
+                New.good_pic = res.data
+            }
+        };
+        const handleAvatarSuccessEdit = (res) => {
+            if (res.code === '200') {
+                form.good_pic = res.data
+            }
+        };
+        const beforeAvatarUpload = (rawFile) => {
+            if (rawFile.type !== 'image/jpeg' && rawFile.type !== 'image/png') {//只能为图片类型
+                // imageUrl=rawFile
+                ElMessage.error('请选择图片类型的文件！')
+                return false
+            } else if (rawFile.size / 1024 / 1024 > 2) {
+                ElMessage.error('大小不能超过2MB!')//不能大于2MB
+                return false
+            }
+            return true;
+        }
         const handleClean = () => {
             params.good_name = "";
             getData();
@@ -183,7 +211,7 @@ export default {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
-                    pageTotal.value = res.data.total || 50;
+                    pageTotal.value = res.data.total || 0;
                 }
             });
         };
@@ -326,7 +354,10 @@ export default {
             handleCreate,
             handleState,
             handleClean,
-            saveCreate
+            saveCreate,
+            handleAvatarSuccess,
+            beforeAvatarUpload,
+            handleAvatarSuccessEdit,
         };
     },
 };
@@ -364,5 +395,59 @@ export default {
     margin: auto;
     width: 40px;
     height: 40px;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed var(--el-border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: var(--el-color-primary);
+}
+
+.el-icon.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    text-align: center;
+}
+
+.avatar-uploader .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+}
+
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+
+.avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
 }
 </style>
