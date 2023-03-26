@@ -9,7 +9,7 @@ public interface IAddressService {
 
     void add(Address address);
 
-    Address getById(Integer id);
+    List<Address>  getById(Integer a_id);
 
     void update(Address address);
 

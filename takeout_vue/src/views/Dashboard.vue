@@ -17,10 +17,10 @@
           <el-col :span="8">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-2">
-                <i class="el-icon-lx-hot grid-con-icon"></i>
+                <i class="el-icon-lx-text grid-con-icon"></i>
                 <div class="grid-cont-right">
                   <div class="grid-num">{{ num_g }}</div>
-                  <div>菜品数量</div>
+                  <div>店铺申请数量</div>
                 </div>
               </div>
             </el-card>
@@ -28,108 +28,15 @@
           <el-col :span="8">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-3">
-                <i class="el-icon-lx-text grid-con-icon"></i>
+                <i class="el-icon-lx-friend grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">{{ }}</div>
-                  <div>订单数量</div>
+                  <div class="grid-num">{{ num_u }}</div>
+                  <div>顾客数量</div>
                 </div>
               </div>
             </el-card>
           </el-col>
         </el-row>
-      </el-col>
-    </el-row>
-
-
-    <el-row :gutter="20">
-      <el-col :span="7">
-        <el-card class="box-card" style="height:400px">
-          <div class="card-header">
-            <span style="font-size:25px">设备状态</span>
-            <!-- <el-button class="button" text>Operation button</el-button> -->
-          </div>
-          <div class="con">
-            <div class="left">
-              <div class="demo-progress">
-                <el-progress type="circle" :percentage="100" width="150"><span class="s1">{{ sbtotal }}台</span>
-                </el-progress>
-              </div>
-            </div>
-            <div class="right">
-              <ul>
-                <li class="l1">
-                  <div class="d1">
-                    <span>离线</span>
-                    <span>{{ sb_l }}</span>
-                    <span>台</span>
-                  </div>
-                </li>
-                <li class="l2">
-                  <div class="d1">
-                    <span>播放</span>
-                    <span>{{ sb_z }}</span>
-                    <span>台</span>
-                  </div>
-                </li>
-                <li class="l3">
-                  <div class="d1">
-                    <span>空闲</span>
-                    <span>{{ sb_k }}</span>
-                    <span>台</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-
-      <el-col :span="7">
-        <el-card class="box-card" style="height:400px">
-          <div class="card-header">
-            <span style="font-size:25px">资源素材</span>
-            <!-- <el-button class="button" text>Operation button</el-button> -->
-          </div>
-          <div class="con">
-            <div class="demo-progress">
-              <div class="a">
-                <span style="font-size:20px">图片</span>
-                <el-progress :text-inside="true" :stroke-width="24" :percentage="30" status="success" />
-              </div>
-              <div class="b">
-                <span style="font-size:20px">视频</span>
-                <el-progress :text-inside="true" :stroke-width="22" :percentage="20" status="warning" />
-              </div>
-              <div class="c">
-                <span style="font-size:20px">音频</span>
-                <el-progress :text-inside="true" :stroke-width="20" :percentage="50" status="exception" />
-              </div>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :span="10">
-        <el-card class="box-card">
-          <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-            <el-tab-pane label="机构" name="first" :lazy="true">
-              <!-- <el-card > -->
-              <div>
-                <schart class="schart" :canvasId="canvasId1" :options="options2">
-                </schart>
-              </div>
-              <!-- </el-card> -->
-            </el-tab-pane>
-            <el-tab-pane label="分组" name="second" :lazy="true">
-              <!-- <el-card > -->
-              <div>
-                <schart class="schart" :canvasId="canvasId2" :options="options">
-                </schart>
-              </div>
-
-              <!-- </el-card> -->
-            </el-tab-pane>
-          </el-tabs>
-        </el-card>
       </el-col>
     </el-row>
 
@@ -139,7 +46,7 @@
 <script>
 import Schart from "vue-schart";
 import { onMounted, reactive, ref } from "vue";
-import { GetShop, GetGood, NoticeData } from "../api/index";
+import { GetShop, GetShopAdd, GetUser } from "../api/index";
 export default {
   name: "dashboard",
   components: { Schart },
@@ -148,11 +55,14 @@ export default {
       GetShop().then((res) => {
         num_m.value = res.data.total;
       })
-      GetGood().then((res) => {
+      GetShopAdd().then((res) => {
         num_g.value = res.data.total;
       })
+      GetUser().then((res) => {
+        num_u.value = res.data.total;
+      })
     })
-    let num_p = ref("321");
+    let num_u = ref("321");
     let num_g = ref("321");
     let num_m = ref("321");
     let sb_l = 0;
@@ -239,7 +149,7 @@ export default {
     };
 
     return {
-      num_p,
+      num_u,
       num_g,
       num_m,
       name,

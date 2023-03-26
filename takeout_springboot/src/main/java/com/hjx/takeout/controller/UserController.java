@@ -23,9 +23,20 @@ public class UserController {
         return Result.success(userService.list(userRequest));
     }
 
+    @GetMapping("/listAll")
+    public Result listAll(UserRequest userRequest){
+        return Result.success(userService.listAll(userRequest));
+    }
+
     @PutMapping("/update")
     public Result update(@RequestBody User user){
         userService.update(user);
+        return Result.success();
+    }
+
+    @PutMapping("/updatePicSrc")
+    public Result updatePicSrc(@RequestBody User user){
+        userService.updatePicSrc(user);
         return Result.success();
     }
 

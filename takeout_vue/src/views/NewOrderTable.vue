@@ -21,7 +21,7 @@
                 <el-table-column prop="create_time" label="创建时间"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
-                        <el-button type="text" @click="handleDelete(scope.$index, scope.row)">订单详情</el-button>
+                        <el-button type="text" @click="handleEdit(scope.$index, scope.row)">订单详情</el-button>
                         <el-button type="text" @click="handleDelete(scope.$index, scope.row)">接单</el-button>
                     </template>
                 </el-table-column>
@@ -33,29 +33,14 @@
         </div>
 
         <!-- 编辑弹出框 -->
-        <el-dialog title="编辑" v-model="editVisible" width="40%">
-            <el-form :model="form" :rules="rules" ref="Edit" label-width="70px">
-                <el-form-item label="商品名" prop="good_name">
-                    <el-input v-model="form.good_name"></el-input>
-                </el-form-item>
-                <el-form-item label="图片" prop="password">
-                    <el-input v-model="form.password" />
-                </el-form-item>
-                <el-form-item label="价格" prop="price">
-                    <el-input v-model="form.price"></el-input>
-                </el-form-item>
-                <el-form-item label="类别" prop="category">
-                    <el-select v-model="form.c_id" class="m-2" placeholder="类别" size="large">
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-                    </el-select>
-                </el-form-item>
-            </el-form>
-            <template #footer>
-                <span class="dialog-footer">
-                    <el-button @click="editVisible = false">取 消</el-button>
-                    <el-button type="primary" @click="saveEdit(form)">确 定</el-button>
-                </span>
-            </template>
+        <el-dialog title="订单详情" v-model="editVisible" width="40%">
+            <div>
+                <el-table :data="tableList">
+                    <el-table-column width="200" property="good_name" label="商品名称" align="center"></el-table-column>
+                    <el-table-column width="200" property="count" label="数量" align="center"> </el-table-column>
+                </el-table>
+                <div style="margin: 5px;color: #409EFF">总价：￥{{ form.total_price }}</div>
+            </div>
         </el-dialog>
 
         <!-- 新建弹出框 -->
@@ -89,7 +74,7 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetOrderNew, pickOrder, goodDelete, GetCategory, goodEdit } from "../api/index";
+import { GetOrderNew, pickOrder, getOrderInfo, GetCategory, goodEdit } from "../api/index";
 export default {
     name: "basetable",
     setup() {
@@ -124,6 +109,7 @@ export default {
             // ],
         };
         const tableData = ref([]);
+        const tableList = ref([]);
         const pageTotal = ref(0);
         // 获取表格数据
         const getData = () => {
@@ -139,7 +125,7 @@ export default {
                         })
                     })
                     tableData.value = list;
-                    pageTotal.value = res.data.total || 50;
+                    pageTotal.value = res.data.total || 0;
                 }
 
             });
@@ -156,7 +142,7 @@ export default {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
-                    pageTotal.value = res.data.total || 50;
+                    pageTotal.value = res.data.total || 0;
                 }
             });
         };
@@ -199,12 +185,8 @@ export default {
 
         });
         let form = reactive({
-            g_id: "",
-            good_name: "",
-            good_pic: "",
-            price: "",
-            c_id: "",
-            s_id: "",
+            o_id: "",
+            total_price: ""
 
         });
 
@@ -215,6 +197,11 @@ export default {
 
                 form[item] = row[item];
             });
+            getOrderInfo(form).then((res) => {
+                if (res.code === '200') {
+                    tableList.value = res.data.list
+                }
+            })
             editVisible.value = true;
         };
         const handleState = (index, row) => {
@@ -280,6 +267,7 @@ export default {
 
         return {
             tableData,
+            tableList,
             pageTotal,
             editVisible,
             createVisible,

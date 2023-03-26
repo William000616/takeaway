@@ -16,7 +16,12 @@
                 <el-button type="primary" @click="handleSearch">搜索</el-button>
             </div>
             <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
-                <el-table-column prop="logo_src" label="商家Logo"></el-table-column>
+                <el-table-column label="商家Logo" align="center">
+                    <template #default="scope">
+                        <el-image class="table-td-thumb" :src="scope.row.logo_src" :preview-src-list="[scope.row.logo_src]">
+                        </el-image>
+                    </template>
+                </el-table-column>
                 <el-table-column prop="shop_name" label="商家"></el-table-column>
                 <el-table-column prop="create_time" label="下单时间"></el-table-column>
                 <el-table-column prop="total_price" label="订单总价"></el-table-column>
@@ -47,29 +52,23 @@
         </div>
 
         <!-- 编辑弹出框 -->
-        <el-dialog title="编辑" v-model="editVisible" width="40%">
-            <el-form :model="form" :rules="rules" ref="Edit" label-width="70px">
-                <el-form-item label="商品名" prop="good_name">
-                    <el-input v-model="form.good_name"></el-input>
-                </el-form-item>
-                <el-form-item label="图片" prop="password">
-                    <el-input v-model="form.password" />
-                </el-form-item>
-                <el-form-item label="价格" prop="price">
-                    <el-input v-model="form.price"></el-input>
-                </el-form-item>
-                <el-form-item label="类别" prop="category">
-                    <el-select v-model="form.c_id" class="m-2" placeholder="类别" size="large">
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-                    </el-select>
-                </el-form-item>
-            </el-form>
-            <template #footer>
-                <span class="dialog-footer">
-                    <el-button @click="editVisible = false">取 消</el-button>
-                    <el-button type="primary" @click="saveEdit(form)">确 定</el-button>
-                </span>
-            </template>
+        <el-dialog title="订单详情" v-model="editVisible" width="40%">
+            <div>
+                <div style="margin: 5px;color: #8080c0">收货人：{{ addressInfo.name }}</div>
+                <div style="margin: 5px;color: #8080c0">联系方式：{{ addressInfo.tel }}</div>
+                <div style="margin: 5px;color: #8080c0">收货地址：{{ addressInfo.address }}</div>
+                <el-table :data="tableList">
+                    <el-table-column width="200" property="good_name" label="商品名称" align="center"></el-table-column>
+                    <el-table-column width="100" property="price" label="单价￥" align="center"> </el-table-column>
+                    <el-table-column width="100" property="count" label="数量" align="center"> </el-table-column>
+                </el-table>
+                <div style="margin: 5px;color: #409EFF">商品金额：￥{{ form.total_price - form.delivery_price }}</div>
+                <div style="margin: 5px;color: #409EFF">配送费：￥{{ form.delivery_price }}</div>
+                <div style="margin: 5px;color: #409EFF">总价：￥{{ form.total_price }}</div>
+                <div style="margin: 5px;color: #FF9E40">下单时间：{{ form.create_time }}</div>
+                <div style="margin: 5px;color: #FF9E40">接单时间：{{ form.order_time }}</div>
+                <div style="margin: 5px;color: #FF9E40">完成时间：{{ form.arrive_time }}</div>
+            </div>
         </el-dialog>
 
         <!-- 新建弹出框 -->
@@ -103,7 +102,7 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetOrder, goodAdd, goodDelete, GetCategory, goodEdit } from "../api/index";
+import { GetOrder, goodAdd, goodDelete, getOrderInfo, GetAddressById } from "../api/index";
 export default {
     name: "basetable",
     setup() {
@@ -137,6 +136,8 @@ export default {
             // ],
         };
         const tableData = ref([]);
+        const tableList = ref([]);
+        const addressInfo = ref({});
         const pageTotal = ref(0);
         // 获取表格数据
         const getData = () => {
@@ -213,13 +214,15 @@ export default {
 
         });
         let form = reactive({
-            g_id: "",
-            good_name: "",
-            good_pic: "",
-            price: "",
-            c_id: "",
-            s_id: "",
-
+            order_Stat: "",
+            o_id: "",
+            a_id: "",
+            arrive_time: "",
+            total_price: "",
+            arrive_time: "",
+            create_time: "",
+            order_time: "",
+            delivery_price: "",
         });
 
         let idx = -1;
@@ -229,6 +232,17 @@ export default {
 
                 form[item] = row[item];
             });
+            GetAddressById(form).then((res) => {
+                if (res.code === '200') {
+                    addressInfo.value = res.data[0]
+                }
+            })
+            getOrderInfo(form).then((res) => {
+                if (res.code === '200') {
+                    tableList.value = res.data.list
+
+                }
+            })
             editVisible.value = true;
         };
         const handleState = (index, row) => {
@@ -294,6 +308,7 @@ export default {
 
         return {
             tableData,
+            tableList,
             pageTotal,
             editVisible,
             createVisible,
@@ -304,6 +319,7 @@ export default {
             Create,
             Edit,
             options,
+            addressInfo,
             handleSearch,
             handlePageChange,
             handleDelete,

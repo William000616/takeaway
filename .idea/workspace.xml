@@ -5,94 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a06cc67-7d36-4c6d-95c2-e9f96f68fd1d" name="变更" comment="变更">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_5_0_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679734183662_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679738024296_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679738096014_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679738195669_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679740536501_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679740616849_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679740772433_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679740895043_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679741829320_教资.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679741844734_教资.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679741896164_蓝.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679742362738_证件照倩倩2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679742374649_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679742393320_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679742401400_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679742474402_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679742482934_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679742603159_白.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679742627643_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679746158821_教资.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679746314259_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679746356806_教资.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679747171689_教资.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748193543_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748198050_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748205441_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748290151_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748294946_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748313063_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748439844_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748681643_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679748743342_证件照.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679750100661_红.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/1679751188766_白-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/UploadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/dto/ShopRegisterDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/AddressController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/ShopManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/ShopManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/dto/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/dto/LoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/request/OrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/request/OrderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/entity/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/entity/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/request/UserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/request/UserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/AddressMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/AddressMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/ShopManagerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/ShopManagerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IAddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IAddressService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IShopManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IShopManagerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/AddressService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/ShopManagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/ShopManagerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Address.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Address.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Order.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Shop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Shop.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/ShopManager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/ShopManager.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/User.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/User.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/takeout.iml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/takeout.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/AddressController.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/AddressController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/ShopManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/ShopManagerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/dto/LoginDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/dto/LoginDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/request/OrderRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/request/OrderRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/entity/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/entity/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/entity/Shop.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/entity/Shop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/request/UserRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/controller/request/UserRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/mapper/AddressMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/mapper/AddressMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/mapper/OrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/mapper/OrderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/mapper/ShopManagerMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/mapper/ShopManagerMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/IAddressService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/IAddressService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/IOrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/IOrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/IShopManagerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/IShopManagerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/IUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/AddressService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/AddressService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/ShopManagerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/ShopManagerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/Address.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/Address.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/Order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/Order.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/Shop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/Shop.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/ShopManager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/ShopManager.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/User.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/User.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_vue/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/api/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_vue/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_vue/src/components/UserHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/components/UserHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/GoodTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/GoodTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/Dashboard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/MyOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/MyOrder.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/NewOrderTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/NewOrderTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/NewShop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/NewShop.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/OrderTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/OrderTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/ShopHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/ShopHome.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/ShopInfoForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/ShopInfoForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/ShopRegister.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/ShopRegister.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/ShopTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/ShopTable.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/UserHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/UserHome.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/UserManager.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/UserManager.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

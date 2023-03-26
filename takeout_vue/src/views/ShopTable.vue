@@ -29,7 +29,7 @@
                 <el-table-column prop="delivery_time" label="配送时间"></el-table-column>
                 <el-table-column prop="total_sales" label="总销量"></el-table-column>
                 <el-table-column prop="name" label="店长"></el-table-column>
-                <el-table-column prop="phone" label="联系方式"></el-table-column>
+                <el-table-column prop="shop_phone" label="联系方式"></el-table-column>
                 <el-table-column prop="address_detail" label="店铺地址"></el-table-column>
                 <el-table-column prop="desc" label="店铺描述"></el-table-column>
                 <el-table-column prop="stat" label="状态（点击修改状态）">
@@ -72,7 +72,7 @@
                     <el-input v-model="form.address_detail"></el-input>
                 </el-form-item>
                 <el-form-item label="联系方式">
-                    <el-input v-model="form.phone"></el-input>
+                    <el-input v-model="form.shop_phone"></el-input>
                 </el-form-item>
             </el-form>
             <template #footer>
@@ -132,7 +132,7 @@ export default {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
-                    pageTotal.value = res.data.total || 50;
+                    pageTotal.value = res.data.total || 0;
                 }
 
             });
@@ -148,7 +148,7 @@ export default {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
-                    pageTotal.value = res.data.total || 50;
+                    pageTotal.value = res.data.total || 0;
                 }
             });
         };
@@ -182,7 +182,7 @@ export default {
             name: "",
             score: "",
             name: "",
-            phone: "",
+            shop_phone: "",
 
         });
         let form = reactive({
@@ -192,7 +192,7 @@ export default {
             min_cost: "",
             stat: "",
             delivery_cost: "",
-            phone: "",
+            shop_phone: "",
 
         });
 

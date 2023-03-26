@@ -44,6 +44,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 export default {
     setup() {
+
         const username = localStorage.getItem("ms_realName");
         const head = localStorage.getItem("head");
         const message = 2;

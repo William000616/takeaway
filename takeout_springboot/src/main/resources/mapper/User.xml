@@ -13,13 +13,38 @@
             <if test="phone!=null and phone != ''">
                 and phone like concat('%',#{phone},'%')
             </if>
+            <if test="u_id!=null and u_id != ''">
+                and u_id = #{u_id}
+            </if>
             and r_id = 1
+        </where>
+    </select>
+
+    <!--uid查询所有user-->
+    <select id="listAll" resultType="com.hjx.takeout.entity.User">
+        select * from user
+        <where>
+            <if test="username!=null and username != ''">
+                username like concat('%',#{username},'%')
+            </if>
+            <if test="phone!=null and phone != ''">
+                and phone like concat('%',#{phone},'%')
+            </if>
+            <if test="u_id!=null and u_id != ''">
+                and u_id = #{u_id}
+            </if>
         </where>
     </select>
 
     <!--根据id修改user-->
     <update id="updateById">
         update user set name = #{name},phone = #{phone},password = #{password},score = #{score},stat = #{stat},username = #{username}
+        where u_id = #{u_id}
+    </update>
+
+    <!--根据id修改user头像-->
+    <update id="updatePicSrc">
+        update user set picSrc=#{picSrc}
         where u_id = #{u_id}
     </update>
 

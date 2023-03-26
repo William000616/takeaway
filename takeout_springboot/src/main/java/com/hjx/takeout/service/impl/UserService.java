@@ -53,4 +53,16 @@ public class UserService implements IUserService {
         BeanUtils.copyProperties(user,loginDTO);
         return loginDTO;
     }
+
+    @Override
+    public void updatePicSrc(User user) {
+        userMapper.updatePicSrc(user);
+    }
+
+    @Override
+    public Object listAll(UserRequest userRequest) {
+        PageHelper.startPage(userRequest.getPageNum(), userRequest.getPageSize());
+        List<User> users1 =userMapper.listAll(userRequest);
+        return new PageInfo<>(users1);
+    }
 }

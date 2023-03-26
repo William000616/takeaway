@@ -19,6 +19,8 @@ public interface OrderMapper {
     List<Order> listNew(OrderRequest orderRequest);
 
     void shopPickOrder(Order order);
+
+    void changeOrderState(Order order);
 //
 //    void updateById(Good good);
 //

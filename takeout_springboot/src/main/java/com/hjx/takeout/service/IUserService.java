@@ -18,4 +18,8 @@ public interface IUserService {
     void delete(Integer u_id);
 
     LoginDTO login(LoginRequest request);
+
+    void updatePicSrc(User user);
+
+    Object listAll(UserRequest userRequest);
 }

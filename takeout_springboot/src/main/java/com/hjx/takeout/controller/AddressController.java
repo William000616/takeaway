@@ -28,9 +28,9 @@ public class AddressController {
         return Result.success();
     }
 
-    @GetMapping("/{id}")
-    public Result getById(@PathVariable Integer id){
-        Address address=addressService.getById(id);
+    @GetMapping("/listById")
+    public Result getById(@RequestParam Integer a_id){
+        List<Address> address=addressService.getById(a_id);
         return Result.success(address);
     }
 

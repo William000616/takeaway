@@ -48,6 +48,13 @@ export const GetUser = query => {
         params: query
     });
 };
+export const GetAllUser = query => {
+    return request({
+        url: '/user/listAll',
+        method: 'get',
+        params: query
+    });
+};
 export const userAdd = query => {
     return request({
         url: '/user/add',
@@ -65,6 +72,14 @@ export const userDelete = query => {
 export const userEdit = query => {
     return request({
         url: '/user/update',
+        method: 'put',
+        data: query
+
+    });
+};
+export const userPicSrcEdit = query => {
+    return request({
+        url: '/user/updatePicSrc',
         method: 'put',
         data: query
 
@@ -185,6 +200,13 @@ export const GetAddress = query => {
         params: query
     });
 };
+export const GetAddressById = query => {
+    return request({
+        url: '/address/listById',
+        method: 'get',
+        params: query
+    });
+};
 export const addAddress = query => {
     return request({
         url: '/address/add',
@@ -232,6 +254,20 @@ export const pickOrder = query => {
         url: '/order/shopPickOrder',
         method: 'put',
         data: query
+    });
+};
+export const changeOrderState = query => {
+    return request({
+        url: '/order/changeOrderState',
+        method: 'put',
+        data: query
+    });
+};
+export const getOrderInfo = query => {
+    return request({
+        url: '/order/listById',
+        method: 'get',
+        params: query
     });
 };
 export const MachineData = query => {

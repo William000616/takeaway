@@ -5,16 +5,15 @@
                 <el-card shadow="hover">
                     <template #header>
                         <div class="clearfix">
-                            <span>基础信息</span>
+                            <span>头像(点击直接修改)</span>
                         </div>
                     </template>
                     <div class="info">
                         <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload"
                             :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-                            <img v-if="imgSrc" :src="imgSrc" class="avatar" />
-                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                            <img :src="params.picSrc" class="avatar" />
                         </el-upload>
-                        <div class="info-name">{{ name }}</div>
+                        <el-button type="primary" @click="onSubmitPic">修改头像</el-button>
                     </div>
                 </el-card>
             </el-col>
@@ -22,7 +21,7 @@
                 <el-card shadow="hover">
                     <template #header>
                         <div class="clearfix">
-                            <span>账户编辑</span>
+                            <span>修改密码</span>
                         </div>
                     </template>
                     <el-form label-width="90px">
@@ -59,22 +58,51 @@
 <script>
 import { onMounted, reactive, ref } from "vue";
 import VueCropper from "vue-cropperjs";
+import { ElMessage } from "element-plus";
 import "cropperjs/dist/cropper.css";
+import { userPicSrcEdit, GetUser, GetAllUser } from "../api/index";
 export default {
     name: "user",
     components: {
         VueCropper,
     },
     setup() {
-        onMounted(() => {
-            imgSrc.value = localStorage.getItem("head");
-        })
+        const params = reactive({
+            u_id: "",
+            picSrc: ""
+        });
+        const getData = () => {
+            params.u_id = localStorage.getItem("u_id");
+            GetAllUser(params).then((res) => {
+                if (res.code === '200') {
+                    params.picSrc = res.data.list[0].picSrc;
+                    localStorage.setItem("head", params.picSrc);
+                }
+
+            });
+        };
+        getData();
+        const handleAvatarSuccess = (res) => {
+            if (res.code === '200') {
+                params.picSrc = res.data
+            }
+        };
         const name = localStorage.getItem("ms_username");
         const form = reactive({
             old: "",
             new: "",
         });
-        const onSubmit = () => { };
+        const onSubmit = () => {
+
+        };
+        const onSubmitPic = () => {
+            userPicSrcEdit(params).then((res) => {
+                if (res.code === '200') {
+                    ElMessage.success("修改成功");
+                    getData();
+                }
+            })
+        };
 
         const avatarImg = ref("");
         const imgSrc = ref("");
@@ -111,9 +139,11 @@ export default {
         };
 
         return {
+            params,
             name,
             form,
             onSubmit,
+            onSubmitPic,
             cropper,
             avatarImg,
             imgSrc,
@@ -123,12 +153,14 @@ export default {
             setImage,
             cropImage,
             saveAvatar,
+            getData,
+            handleAvatarSuccess,
         };
     },
 };
 </script>
 
-<style scoped>
+<style>
 .info {
     text-align: center;
     padding: 35px 0;
@@ -201,6 +233,7 @@ export default {
     position: relative;
     overflow: hidden;
     transition: var(--el-transition-duration-fast);
+    width: 180px;
 }
 
 .avatar-uploader .el-upload:hover {
@@ -248,8 +281,8 @@ export default {
     display: block;
 }
 
-.el-upload--text {
+/* .el-upload--text {
     width: 200px;
     height: 200px;
-}
+} */
 </style>

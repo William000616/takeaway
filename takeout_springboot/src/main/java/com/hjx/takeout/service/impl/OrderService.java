@@ -57,6 +57,17 @@ public class OrderService implements IOrderService {
         orderMapper.shopPickOrder(order);
     }
 
+    @Override
+    public void changeOrderState(Order order) {
+        Date date=new Date();
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String strDate = dateformat.format(date);
+        if(order.getOrder_Stat()==4){
+            order.setArrive_time(strDate);
+        }
+        orderMapper.changeOrderState(order);
+    }
+
 //    @Override
 //    public void update(Good good) {
 //        goodMapper.updateById(good);

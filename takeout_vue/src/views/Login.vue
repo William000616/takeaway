@@ -80,12 +80,17 @@ export default {
                         UserLogin(param).then((res) => {
                             if (res.code === '200') {
                                 if (res.data.r_id === 1) {
-                                    router.push("/allShop");
-                                    ElMessage.success("登录成功");
-                                    localStorage.setItem("ms_realName", res.data.name);
-                                    localStorage.setItem("u_id", res.data.u_id);
-                                    localStorage.setItem("ms_username", 'param.username');
-                                    localStorage.setItem("head", res.data.picSrc);
+                                    if (res.data.stat === 1) {
+                                        router.push("/allShop");
+                                        ElMessage.success("登录成功");
+                                        localStorage.setItem("ms_realName", res.data.name);
+                                        localStorage.setItem("u_id", res.data.u_id);
+                                        localStorage.setItem("ms_username", res.data.username);
+                                        localStorage.setItem("head", res.data.picSrc);
+                                    } else {
+                                        ElMessage.error("该账号已被停用！");
+                                    }
+
                                 } else {
                                     ElMessage.error('非普通用户账号！');
                                 }
@@ -101,7 +106,7 @@ export default {
                                     ElMessage.success("登录成功");
                                     localStorage.setItem("ms_realName", res.data.name);
                                     localStorage.setItem("s_id", res.data.s_id);
-                                    localStorage.setItem("ms_username", 'param.username');
+                                    localStorage.setItem("ms_username", res.data.username);
                                 } else {
                                     ElMessage.error("该账号已被停用！");
                                 }
@@ -117,6 +122,7 @@ export default {
                                 if (res.data.r_id === 3) {
                                     router.push("/dashboard");
                                     ElMessage.success("登录成功");
+                                    localStorage.setItem("u_id", res.data.u_id);
                                     localStorage.setItem("ms_realName", '超级管理员');
                                     localStorage.setItem("ms_username", 'admin');
                                     localStorage.setItem("head", res.data.picSrc);

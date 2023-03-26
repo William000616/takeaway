@@ -27,7 +27,7 @@
                 <el-table-column prop="min_cost" label="起送费"></el-table-column>
                 <el-table-column prop="delivery_cost" label="配送费"></el-table-column>
                 <el-table-column prop="name" label="店长"></el-table-column>
-                <el-table-column prop="phone" label="联系方式"></el-table-column>
+                <el-table-column prop="shop_phone" label="联系方式"></el-table-column>
                 <el-table-column prop="address_detail" label="店铺地址"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
@@ -58,8 +58,8 @@
                 <el-form-item label="身份证号">
                     <el-input v-model="form.score"></el-input>
                 </el-form-item>
-                <el-form-item label="手机号">
-                    <el-input v-model="form.phone"></el-input>
+                <el-form-item label="联系方式">
+                    <el-input v-model="form.shop_phone"></el-input>
                 </el-form-item>
             </el-form>
             <template #footer>
@@ -85,8 +85,8 @@
                 <el-form-item label="身份证号">
                     <el-input v-model="New.score"></el-input>
                 </el-form-item>
-                <el-form-item label="手机号">
-                    <el-input v-model="New.phone"></el-input>
+                <el-form-item label="联系方式">
+                    <el-input v-model="New.shop_phone"></el-input>
                 </el-form-item>
             </el-form>
             <template #footer>
@@ -170,7 +170,7 @@ export default {
             name: "",
             score: "",
             name: "",
-            phone: "",
+            shop_phone: "",
 
         });
         let form = reactive({
@@ -180,7 +180,7 @@ export default {
             score: "",
             stat: "",
             name: "",
-            phone: "",
+            shop_phone: "",
 
         });
 

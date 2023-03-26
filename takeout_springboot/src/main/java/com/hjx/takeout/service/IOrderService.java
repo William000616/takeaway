@@ -15,6 +15,8 @@ public interface IOrderService {
 
     void shopPickOrder(Order order);
 
+    void changeOrderState(Order order);
+
 //    void update(Good good);
 //
 //    void add(Good good);

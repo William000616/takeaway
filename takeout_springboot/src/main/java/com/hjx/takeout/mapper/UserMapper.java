@@ -19,4 +19,8 @@ public interface UserMapper {
     void delete(Integer u_id);
 
     User login(LoginRequest request);
+
+    void updatePicSrc(User user);
+
+    List<User> listAll(UserRequest userRequest);
 }

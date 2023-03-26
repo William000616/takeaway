@@ -25,8 +25,8 @@ public class AddressService implements IAddressService {
     }
 
     @Override
-    public Address getById(Integer id) {
-        return addressMapper.getById(id);
+    public List<Address>  getById(Integer a_id) {
+        return addressMapper.getById(a_id);
     }
 
     @Override

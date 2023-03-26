@@ -11,7 +11,7 @@
                 order_takeout.order_Number like concat('%',#{order_Number},'%')
             </if>
             <if test="u_id!=null and u_id != ''">
-                and order_takeout.u_id like concat('%',#{u_id},'%')
+                and order_takeout.u_id = #{u_id}
             </if>
             and shop.s_id = order_takeout.s_id
         </where>
@@ -25,14 +25,14 @@
                 order_takeout.order_Number like concat('%',#{order_Number},'%')
             </if>
             <if test="s_id!=null and s_id != ''">
-                and order_takeout.s_id like concat('%',#{s_id},'%')
+                and order_takeout.s_id = #{s_id}
             </if>
             and order_Stat != 1
             and address.a_id = order_takeout.a_id
         </where>
     </select>
 
-    <!--根据用户sid查询所有order-->
+    <!--根据用户sid查询所有新order-->
     <select id="listNew" resultType="com.hjx.takeout.entity.Order">
         select order_takeout.*,address.address from order_takeout,address
         <where>
@@ -40,7 +40,7 @@
                 order_takeout.order_Number like concat('%',#{order_Number},'%')
             </if>
             <if test="s_id!=null and s_id != ''">
-                and order_takeout.s_id like concat('%',#{s_id},'%')
+                and order_takeout.s_id = #{s_id}
             </if>
             and order_Stat = 1
             and address.a_id = order_takeout.a_id
@@ -55,6 +55,12 @@
     <!--商家接单-->
     <update id="shopPickOrder">
         update order_takeout set order_Stat = 2,order_time = #{order_time}
+        where o_id = #{o_id}
+    </update>
+
+    <!--商家修改订单状态-->
+    <update id="changeOrderState">
+        update order_takeout set order_Stat = #{order_Stat},arrive_time = #{arrive_time}
         where o_id = #{o_id}
     </update>
 

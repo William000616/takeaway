@@ -20,6 +20,7 @@
                 <el-table-column prop="address" label="送达地址"></el-table-column>
                 <el-table-column prop="create_time" label="创建时间"></el-table-column>
                 <el-table-column prop="order_time" label="接单时间"></el-table-column>
+                <el-table-column prop="arrive_time" label="完成时间"></el-table-column>
                 <el-table-column prop="order_Stat" label="订单状态">
                     <template #default="scope">
                         <el-tag :type="'success'">
@@ -34,7 +35,8 @@
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
                         <el-button type="text" @click="handleDelete(scope.$index, scope.row)">订单详情</el-button>
-                        <el-button type="text" @click="handleDelete(scope.$index, scope.row)">修改状态</el-button>
+                        <el-button type="text" v-if="scope.row.order_Stat !== 4"
+                            @click="handleEdit(scope.$index, scope.row)">修改状态</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -45,19 +47,10 @@
         </div>
 
         <!-- 编辑弹出框 -->
-        <el-dialog title="编辑" v-model="editVisible" width="40%">
+        <el-dialog title="修改订单状态" v-model="editVisible" width="40%">
             <el-form :model="form" :rules="rules" ref="Edit" label-width="70px">
-                <el-form-item label="商品名" prop="good_name">
-                    <el-input v-model="form.good_name"></el-input>
-                </el-form-item>
-                <el-form-item label="图片" prop="password">
-                    <el-input v-model="form.password" />
-                </el-form-item>
-                <el-form-item label="价格" prop="price">
-                    <el-input v-model="form.price"></el-input>
-                </el-form-item>
                 <el-form-item label="类别" prop="category">
-                    <el-select v-model="form.c_id" class="m-2" placeholder="类别" size="large">
+                    <el-select v-model="form.order_Stat" class="m-2" placeholder="类别" size="large">
                         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
                     </el-select>
                 </el-form-item>
@@ -71,29 +64,14 @@
         </el-dialog>
 
         <!-- 新建弹出框 -->
-        <el-dialog title="新建账户" v-model="createVisible" width="30%">
-            <el-form :model="New" :rules="rules" ref="Create" label-width="70px">
-                <el-form-item label="商品名" prop="good_name">
-                    <el-input v-model="New.good_name"></el-input>
-                </el-form-item>
-                <el-form-item label="图片" prop="password">
-                    <el-input v-model="New.password" />
-                </el-form-item>
-                <el-form-item label="价格" prop="price">
-                    <el-input v-model="New.price"></el-input>
-                </el-form-item>
-                <el-form-item label="类别" prop="category">
-                    <el-select v-model="New.c_id" class="m-2" placeholder="类别" size="large">
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-                    </el-select>
-                </el-form-item>
-            </el-form>
-            <template #footer>
-                <span class="dialog-footer">
-                    <el-button @click="createVisible = false">取 消</el-button>
-                    <el-button type="primary" @click="saveCreate(New)">确 定</el-button>
-                </span>
-            </template>
+        <el-dialog title="订单详情" v-model="createVisible" width="30%">
+            <div>
+                <el-table :data="tableList">
+                    <el-table-column width="200" property="good_name" label="商品名称" align="center"></el-table-column>
+                    <el-table-column width="200" property="count" label="数量" align="center"> </el-table-column>
+                </el-table>
+                <div style="margin: 5px;color: #409EFF">总价：￥{{ New.total_price }}</div>
+            </div>
         </el-dialog>
     </div>
 </template>
@@ -101,11 +79,24 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { GetOrderAdd, goodAdd, goodDelete, GetCategory, goodEdit } from "../api/index";
+import { GetOrderAdd, goodAdd, getOrderInfo, changeOrderState, goodEdit } from "../api/index";
 export default {
     name: "basetable",
     setup() {
-        const options = ref([]);
+        const options = ref([
+            {
+                label: "已接单",
+                value: 2
+            },
+            {
+                label: "配送中",
+                value: 3
+            },
+            {
+                label: "已完成",
+                value: 4
+            }
+        ]);
         const params = reactive({
             order_Number: "",
             s_id: "",
@@ -135,6 +126,7 @@ export default {
             // ],
         };
         const tableData = ref([]);
+        const tableList = ref([]);
         const pageTotal = ref(0);
         // 获取表格数据
         const getData = () => {
@@ -180,20 +172,19 @@ export default {
         // 删除操作
         const handleDelete = (index, row) => {
             // 二次确认删除
-            ElMessageBox.confirm("确定要下架吗？", "提示", {
-                type: "warning",
+            idx = index;
+            Object.keys(New).forEach((item) => {
+
+                New[item] = row[item];
+            });
+            console.log(New)
+            getOrderInfo(New).then((res) => {
+                if (res.code === '200') {
+                    tableList.value = res.data.list
+                    console.log(tableList)
+                }
             })
-                .then(() => {
-
-                    goodDelete(row).then((res) => {
-                        if (res.code === '200') {
-                            ElMessage.success("下架成功");
-                            getData();
-                        }
-                    })
-
-                })
-                .catch(() => { });
+            createVisible.value = true;
         };
 
         // 表格编辑时弹窗和保存
@@ -203,20 +194,14 @@ export default {
         const Create = ref(null);
         const Edit = ref(null);
         let New = reactive({
-            good_name: "",
-            good_pic: "",
-            price: "",
-            c_id: "",
-            s_id: "",
+            o_id: "",
+            total_price: ""
 
         });
         let form = reactive({
-            g_id: "",
-            good_name: "",
-            good_pic: "",
-            price: "",
-            c_id: "",
-            s_id: "",
+            order_Stat: "",
+            o_id: "",
+            arrive_time: ""
 
         });
 
@@ -227,6 +212,7 @@ export default {
 
                 form[item] = row[item];
             });
+            console.log(form)
             editVisible.value = true;
         };
         const handleState = (index, row) => {
@@ -276,7 +262,7 @@ export default {
         const saveEdit = (query) => {
             // Edit.value.validate((valid) => {
             //     if (valid) {
-            goodEdit(query).then((res) => {
+            changeOrderState(query).then((res) => {
                 if (res.code === "200") {
                     editVisible.value = false;
                     ElMessage.success(`修改成功`);
@@ -292,6 +278,7 @@ export default {
 
         return {
             tableData,
+            tableList,
             pageTotal,
             editVisible,
             createVisible,

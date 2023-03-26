@@ -40,6 +40,12 @@ public class OrderController {
         orderService.shopPickOrder(order);
         return Result.success();
     }
+
+    @PutMapping("/changeOrderState")
+    public Result changeOrderState(@RequestBody Order order){
+        orderService.changeOrderState(order);
+        return Result.success();
+    }
 //
 //    @PostMapping("/add")
 //    public Result add(@RequestBody Good good){
