@@ -8,10 +8,26 @@ export const UserLogin = query => {
     });
 };
 
+export const updatePassword = query => {
+    return request({
+        url: '/user/updatePassword',
+        method: 'put',
+        data: query
+    });
+};
+
 export const ManagerLogin = query => {
     return request({
         url: '/manager/login',
         method: 'post',
+        data: query
+    });
+};
+
+export const updateManagerPassword = query => {
+    return request({
+        url: '/manager/updatePassword',
+        method: 'put',
         data: query
     });
 };

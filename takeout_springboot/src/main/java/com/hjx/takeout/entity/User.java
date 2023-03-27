@@ -13,4 +13,5 @@ public class User {
     private Integer score;
     private Integer stat;
     private String picSrc;
+    private String newPassword;
 }

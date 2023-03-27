@@ -13,4 +13,5 @@ public class ShopManager {
     private String identity_number;
     private Integer stat;
     private Integer s_id;//外
+    private String newPassword;
 }

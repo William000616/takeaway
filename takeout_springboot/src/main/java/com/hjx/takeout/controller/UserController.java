@@ -40,6 +40,12 @@ public class UserController {
         return Result.success();
     }
 
+    @PutMapping("/updatePassword")
+    public Result updatePassword(@RequestBody User user){
+        userService.updatePassword(user);
+        return Result.success();
+    }
+
     @PostMapping("/add")
     public Result add(@RequestBody User user){
         userService.add(user);

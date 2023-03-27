@@ -65,7 +65,6 @@ export default {
         const register = () => {
             if (radio.value === 3) {
                 router.push("/register");
-                localStorage.setItem("ms_realName", 'res.data.name');
                 localStorage.setItem("ms_username", 'param.username');
             } else if (radio.value === 6) {
                 router.push("/shopRegister");
@@ -83,7 +82,7 @@ export default {
                                     if (res.data.stat === 1) {
                                         router.push("/allShop");
                                         ElMessage.success("登录成功");
-                                        localStorage.setItem("ms_realName", res.data.name);
+                                        localStorage.setItem("r_id", res.data.r_id);
                                         localStorage.setItem("u_id", res.data.u_id);
                                         localStorage.setItem("ms_username", res.data.username);
                                         localStorage.setItem("head", res.data.picSrc);
@@ -104,9 +103,10 @@ export default {
                                 if (res.data.stat === 1) {
                                     router.push("/shopInfoForm");
                                     ElMessage.success("登录成功");
-                                    localStorage.setItem("ms_realName", res.data.name);
+                                    localStorage.setItem("r_id", res.data.r_id);
                                     localStorage.setItem("s_id", res.data.s_id);
                                     localStorage.setItem("ms_username", res.data.username);
+                                    localStorage.setItem("head", "res.data.picSrc");
                                 } else {
                                     ElMessage.error("该账号已被停用！");
                                 }
@@ -123,7 +123,7 @@ export default {
                                     router.push("/dashboard");
                                     ElMessage.success("登录成功");
                                     localStorage.setItem("u_id", res.data.u_id);
-                                    localStorage.setItem("ms_realName", '超级管理员');
+                                    localStorage.setItem("r_id", res.data.r_id);
                                     localStorage.setItem("ms_username", 'admin');
                                     localStorage.setItem("head", res.data.picSrc);
                                 } else {

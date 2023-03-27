@@ -206,14 +206,7 @@ export default {
             getData();
         };
         const handleSearch = () => {
-            params.s_id = localStorage.getItem("s_id");
-            GetGood(params).then((res) => {
-                if (res.code === '200') {
-                    var list = res.data.list
-                    tableData.value = list;
-                    pageTotal.value = res.data.total || 0;
-                }
-            });
+            getData();
         };
         // 分页导航
         const handlePageChange = (val) => {
@@ -449,5 +442,11 @@ export default {
     width: 178px;
     height: 178px;
     display: block;
+}
+
+.el-upload--text {
+    width: 178px;
+    height: 180px;
+
 }
 </style>

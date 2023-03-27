@@ -33,6 +33,12 @@
         delete from shop_manager where s_m_id = #{s_m_id}
     </delete>
 
+    <!--修改密码-->
+    <update id="updatePassword">
+        update shop_manager set password=#{newPassword}
+        where username = #{username}
+    </update>
+
     <!--登录-->
     <select id="login" resultType="com.hjx.takeout.entity.ShopManager">
         select shop_manager.*,shop.s_id from shop_manager,shop where shop_manager.username = #{username} and shop_manager.password = #{password} and shop.s_m_id = shop_manager.s_m_id

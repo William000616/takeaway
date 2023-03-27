@@ -29,7 +29,7 @@
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <!-- <el-dropdown-item command="user">个人中心</el-dropdown-item> -->
+                            <el-dropdown-item command="user">个人中心</el-dropdown-item>
                             <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
                         </el-dropdown-menu>
                     </template>
@@ -44,7 +44,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 export default {
     setup() {
-        const username = localStorage.getItem("ms_realName");
+        const username = localStorage.getItem("ms_username");
         const head = localStorage.getItem("head");
         const message = 2;
 
@@ -68,7 +68,7 @@ export default {
                 localStorage.removeItem("ms_username");
                 router.push("/login");
             } else if (command == "user") {
-                router.push("/user");
+                router.push("/manager");
             }
         };
 

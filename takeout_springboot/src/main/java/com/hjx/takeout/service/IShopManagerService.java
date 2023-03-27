@@ -17,4 +17,6 @@ public interface IShopManagerService {
     void delete(Integer s_m_id);
 
     ManagerLoginDTO login(LoginRequest request);
+
+    void updatePassword(ShopManager shopManager);
 }

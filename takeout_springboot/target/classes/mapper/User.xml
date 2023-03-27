@@ -48,6 +48,12 @@
         where u_id = #{u_id}
     </update>
 
+    <!--修改user密码-->
+    <update id="updatePassword">
+        update user set password=#{newPassword}
+        where username = #{username}
+    </update>
+
     <!--注册user-->
     <insert id="add">
         insert into user(name,phone,username,password,picSrc,r_id,stat,score) values (#{name},#{phone},#{username},#{password},#{picSrc},1,1,0)

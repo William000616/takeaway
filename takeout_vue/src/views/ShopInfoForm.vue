@@ -21,8 +21,8 @@
                             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                         </el-upload>
                     </el-form-item>
-                    <el-form-item label="联系电话" prop="phone">
-                        <el-input v-model="form.phone"></el-input>
+                    <el-form-item label="联系电话" prop="shop_phone">
+                        <el-input v-model="form.shop_phone"></el-input>
                     </el-form-item>
                     <el-form-item label="营业许可证" prop="license">
                         <el-input v-model="form.license" disabled></el-input>
@@ -71,7 +71,7 @@ export default {
             min_cost: "",
             stat: "",
             delivery_cost: "",
-            phone: "",
+            shop_phone: "",
             shop_name: "",
             license: "",
             logo_src: ""

@@ -76,7 +76,7 @@ export default {
         fontSize: "0",
         fontPosition: "",
         body: "",
-        author:localStorage.getItem("ms_realName")
+        author: localStorage.getItem("ms_username")
       }
     }
   },
@@ -85,7 +85,7 @@ export default {
     this.no = this.$route.params.no
   },
   methods: {
-    
+
     poscg() {
       // console.log('sdsadasdasdad')
       // console.log(document.getElementById("mar").style.marginTop)
@@ -124,7 +124,7 @@ export default {
       this.noticeAdd.fontPosition = this.content.a
       this.noticeAdd.fontSize = this.content.size
       this.noticeAdd.body = this.msg
-      this.noticeAdd.fontColor = '#' + this.content.r.toString(16) +  this.content.g.toString(16) +  this.content.b.toString(16) 
+      this.noticeAdd.fontColor = '#' + this.content.r.toString(16) + this.content.g.toString(16) + this.content.b.toString(16)
       console.log(this.msg)
       if (this.noticeAdd.fontPosition === '文字位置' || this.noticeAdd.fontSize === '' || this.noticeAdd.body === '' || this.noticeAdd.body === undefined) {
         ElMessage.error('公告信息不完整')

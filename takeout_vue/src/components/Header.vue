@@ -39,17 +39,21 @@
     </div>
 </template>
 <script>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 export default {
     setup() {
-
-        const username = localStorage.getItem("ms_realName");
-        const head = localStorage.getItem("head");
-        const message = 2;
-
         const store = useStore();
+        const username = localStorage.getItem("ms_username");
+        const head = ref("");
+        onMounted(() => {
+            head.value = localStorage.getItem("head");
+        })
+        watch(store.state, () => {
+            head.value = localStorage.getItem("head");
+        })
+
         const collapse = computed(() => store.state.collapse);
         // 侧边栏折叠
         const collapseChage = () => {
@@ -69,13 +73,19 @@ export default {
                 localStorage.removeItem("ms_username");
                 router.push("/login");
             } else if (command == "user") {
-                router.push("/user");
+                const r_id = localStorage.getItem("r_id");
+                console.log(r_id)
+                if (r_id === '1') {
+                    router.push("/user");
+                } else {
+                    router.push("/admin");
+                }
+
             }
         };
 
         return {
             username,
-            message,
             collapse,
             head,
             collapseChage,

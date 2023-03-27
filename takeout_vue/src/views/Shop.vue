@@ -19,7 +19,7 @@
                 <el-table-column prop="shop_name" label="店铺名"></el-table-column>
                 <el-table-column label="店铺logo" align="center">
                     <template #default="scope">
-                        <el-image class="table-td-thumb" :src="scope.row.thumb" :preview-src-list="[scope.row.thumb]">
+                        <el-image class="table-td-thumb" :src="scope.row.logo_src" :preview-src-list="[scope.row.logo_src]">
                         </el-image>
                     </template>
                 </el-table-column>
@@ -110,10 +110,12 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
+import { useRouter } from "vue-router";
 import { GetShop, userAdd, UpdateShop, userDelete } from "../api/index";
 export default {
     name: "basetable",
     setup() {
+        const router = useRouter();
         const params = reactive({
             shop_name: "",
             pageNum: 1,
@@ -193,12 +195,13 @@ export default {
 
         let idx = -1;
         const handleEdit = (index, row) => {
-            idx = index;
-            Object.keys(form).forEach((item) => {
+            // idx = index;
+            // Object.keys(form).forEach((item) => {
 
-                form[item] = row[item];
-            });
-            editVisible.value = true;
+            //     form[item] = row[item];
+            // });
+            // editVisible.value = true;
+            router.push("/shopGood")
         };
         const handleState = (index, row) => {
             // console.log(row)

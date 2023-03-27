@@ -19,4 +19,6 @@ public interface ShopManagerMapper {
     void delete(Integer s_m_id);
 
     ShopManager login(LoginRequest request);
+
+    void updatePassword(ShopManager shopManager);
 }

@@ -22,4 +22,6 @@ public interface IUserService {
     void updatePicSrc(User user);
 
     Object listAll(UserRequest userRequest);
+
+    void updatePassword(User user);
 }

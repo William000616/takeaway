@@ -27,6 +27,12 @@ public class ShopManagerController {
         return Result.success();
     }
 
+    @PutMapping("/updatePassword")
+    public Result updatePassword(@RequestBody ShopManager shopManager){
+        shopManagerService.updatePassword(shopManager);
+        return Result.success();
+    }
+
     @PostMapping("/add")
     public Result add(@RequestBody ShopManager shopManager){
         return Result.success(shopManagerService.add(shopManager));

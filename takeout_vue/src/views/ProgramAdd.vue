@@ -1,12 +1,11 @@
 <template>
-
   <div v-if="state.resolution == '1920x1080(横)'" class="huabu" style="display: flex;justify-content: space-around">
     <div class="left">
-     
+
       <div class="d1">
         <img class="img1" :src="state.imgUrl" alt="" style="height:100%;width:100%">
       </div>
-      
+
     </div>
     <div class="right">
       <div>素材：</div>
@@ -17,7 +16,7 @@
   </div>
   <div v-else class="huabu2" style="display: flex;justify-content: space-around">
     <div class="left">
-      <el-button type="primary" @click="handleCreate" >新建节目</el-button>
+      <el-button type="primary" @click="handleCreate">新建节目</el-button>
       <div class="d2">
         <img class="img1" :src="state.imgUrl" alt="" style="height:100%;width:100%">
       </div>
@@ -30,7 +29,7 @@
 
     </div>
   </div>
-   <el-button type="primary" @click="handleCreate" style="margin:10px 50%">新建节目</el-button>
+  <el-button type="primary" @click="handleCreate" style="margin:10px 50%">新建节目</el-button>
 </template>
 
 <script>
@@ -48,14 +47,14 @@ export default {
       programMaterial: "",
       programState: "未使用",
       programSize: "",
-      author:localStorage.getItem("ms_realName")
+      author: localStorage.getItem("ms_username")
     });
     const state = reactive({
       programName: "",
       resolution: "",
       duration: "",
       imgUrl: "",
-      imgSize:"",
+      imgSize: "",
       imgList: [
         //   {pic:"https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg"},
         //  {pic:"https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg"},
@@ -73,7 +72,7 @@ export default {
         for (let i = 0; i < list.records.length; i++) {
           state.imgList[i].url = '/api/file/' + state.imgList[i].url
         }
-          console.log(state.imgList)
+        console.log(state.imgList)
         state.imgUrl = state.imgList[0].url
       });
     };
@@ -87,21 +86,21 @@ export default {
     // console.log(state.programName)
     // console.log(state.resolution)
     console.log(query.author)
-    const handleCreate=()=>{
-      query.duration=state.duration
-      query.programMaterial=state.imgUrl.slice(10)
-      query.programName=state.programName
-      query.resolution=state.resolution
-      query.programSize=state.imgSize
+    const handleCreate = () => {
+      query.duration = state.duration
+      query.programMaterial = state.imgUrl.slice(10)
+      query.programName = state.programName
+      query.resolution = state.resolution
+      query.programSize = state.imgSize
       // console.log(query.imgUrl)
-      MaterialCreate(query).then((res)=>{
+      MaterialCreate(query).then((res) => {
         console.log(res.msg)
         ElMessage.success('节目创建成功')
       })
     }
     const showimg = (index) => {
       state.imgUrl = state.imgList[index].url
-      state.imgSize=state.imgList[index].size
+      state.imgSize = state.imgList[index].size
       // console.log(state.imgSize)
     }
     return {

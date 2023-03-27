@@ -59,4 +59,9 @@ public class ShopManagerService implements IShopManagerService {
         BeanUtils.copyProperties(shopManager,managerLoginDTO);
         return managerLoginDTO;
     }
+
+    @Override
+    public void updatePassword(ShopManager shopManager) {
+        shopManagerMapper.updatePassword(shopManager);
+    }
 }

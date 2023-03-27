@@ -40,6 +40,22 @@ const routes = [
         },
         component: () => import( /* webpackChunkName: "table" */ "../views/MyAddress.vue")
       },
+      {
+        path: '/user',
+        name: 'user',
+        meta: {
+          title: '个人中心'
+        },
+        component: () => import( /* webpackChunkName: "user" */ '../views/User.vue')
+      },
+      {
+        path: '/shopGood',
+        name: 'shopGood',
+        meta: {
+          title: '商品列表'
+        },
+        component: () => import( /* webpackChunkName: "user" */ '../views/ShopGood.vue')
+      },
     ]
   },
   {
@@ -86,6 +102,14 @@ const routes = [
           title: '新的订单'
         },
         component: () => import( /* webpackChunkName: "table" */ "../views/NewOrderTable.vue")
+      },
+      {
+        path: '/manager',
+        name: 'manager',
+        meta: {
+          title: '商家个人中心'
+        },
+        component: () => import( /* webpackChunkName: "user" */ '../views/Manager.vue')
       },
     ]
   },
@@ -271,14 +295,16 @@ const routes = [
           title: '没有权限'
         },
         component: () => import( /* webpackChunkName: "403" */ '../views/403.vue')
-      }, {
-        path: '/user',
-        name: 'user',
+      },
+      {
+        path: '/admin',
+        name: 'admin',
         meta: {
-          title: '个人中心'
+          title: '管理员中心'
         },
-        component: () => import( /* webpackChunkName: "user" */ '../views/User.vue')
-      }, {
+        component: () => import( /* webpackChunkName: "user" */ '../views/Admin.vue')
+      },
+      {
         path: '/editor',
         name: 'editor',
         meta: {

@@ -65,4 +65,9 @@ public class UserService implements IUserService {
         List<User> users1 =userMapper.listAll(userRequest);
         return new PageInfo<>(users1);
     }
+
+    @Override
+    public void updatePassword(User user) {
+        userMapper.updatePassword(user);
+    }
 }

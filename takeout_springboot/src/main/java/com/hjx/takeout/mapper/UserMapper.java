@@ -23,4 +23,6 @@ public interface UserMapper {
     void updatePicSrc(User user);
 
     List<User> listAll(UserRequest userRequest);
+
+    void updatePassword(User user);
 }
