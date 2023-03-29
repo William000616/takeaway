@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "下单",
+  "navigationBarBackgroundColor": "#ffd300",
+  "usingComponents": {
+    "business": "/pages/shop/components/business",
+    "tabs": "/pages/shop/components/tabs",
+    "ordering": "/pages/shop/components/ordering",
+    "message": "/pages/shop/components/message",
+    "information": "/pages/shop/components/information"
+  }
+}
