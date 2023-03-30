@@ -41,5 +41,11 @@ public class GoodService implements IGoodService {
         goodMapper.delete(g_id);
     }
 
+    @Override
+    public Object listGood(Integer s_id) {
+        List<Good> good =goodMapper.listGood(s_id);
+        return good;
+    }
+
 
 }

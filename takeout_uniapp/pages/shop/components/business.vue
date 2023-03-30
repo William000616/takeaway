@@ -3,12 +3,12 @@
 		<view class="business-view">
 			<view class="business-take">
 				<view class="business-img">
-					<image :src="busidata.logo" mode="aspectFill"></image>
+					<image :src="shopInfo[0].logo_src" mode="aspectFill"></image>
 				</view>
 				<view class="business-right">
-					<text class="business-title">KFC</text>
+					<text class="business-title">{{shopInfo[0].shop_name}}</text>
 					<view class="business-time">
-						<text>配送约20分钟</text>
+						<text>配送约{{shopInfo[0].delivery_time}}分钟</text>
 					</view>
 				</view>
 			</view>
@@ -19,7 +19,10 @@
 <script>
 	export default{
 		props:{
-			busidata:Object
+			shopInfo:Object
+		},
+		data(){
+			
 		}
 	}
 </script>

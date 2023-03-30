@@ -9606,13 +9606,7 @@ function normalizeComponent (
 /* 36 */,
 /* 37 */,
 /* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */
+/* 39 */
 /*!************************************************************!*\
   !*** D:/PROJECT/github/takeaway/takeout_uniapp/api/api.js ***!
   \************************************************************/
@@ -9625,7 +9619,7 @@ function normalizeComponent (
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.listing = void 0;
+exports.publicing = exports.listing = void 0;
 var listing = function listing(urling) {
   return new Promise(function (resolve, reject) {
     uni.request({
@@ -9639,10 +9633,24 @@ var listing = function listing(urling) {
   });
 };
 exports.listing = listing;
+var publicing = function publicing(urling, data) {
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: urling,
+      method: 'POST',
+      data: data
+    }).then(function (res) {
+      resolve(res);
+    }).catch(function (err) {
+      reject(err);
+    });
+  });
+};
+exports.publicing = publicing;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 46 */
+/* 40 */
 /*!****************************************************************!*\
   !*** D:/PROJECT/github/takeaway/takeout_uniapp/api/request.js ***!
   \****************************************************************/
@@ -9655,10 +9663,12 @@ exports.listing = listing;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GetShop = void 0;
+exports.GetShop = exports.GetGood = void 0;
 var url = 'http://localhost:3000';
 var GetShop = "".concat(url, "/shop/list");
 exports.GetShop = GetShop;
+var GetGood = "".concat(url, "/good/list");
+exports.GetGood = GetGood;
 
 /***/ })
 ]]);

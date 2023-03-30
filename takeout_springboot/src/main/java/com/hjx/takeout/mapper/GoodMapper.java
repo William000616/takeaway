@@ -17,4 +17,5 @@ public interface GoodMapper {
 
     void delete(Integer g_id);
 
+    List<Good> listGood(Integer s_id);
 }

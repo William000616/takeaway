@@ -1,10 +1,9 @@
 <template>
 	<view>
-		<Business></Business>
+		<Business :shopInfo="shopInfo"></Business>
 		<Tabs></Tabs>
-		<Ordering></Ordering>
-		<Message></Message>
-		<Information></Information>
+		<Ordering :class="[hideing === 0 ? 'actineclass' : 'errorclass']" :goodList="goodList" :shopInfo="shopInfo"></Ordering>
+		<Message :class="[hideing === 1 ? 'actineclass' : 'errorclass']"></Message>
 	</view>
 </template>
 
@@ -13,17 +12,57 @@
 	import Tabs from './components/tabs.vue'
 	import Ordering from './components/ordering.vue'
 	import Message from './components/message.vue'
-	import Information from './components/information.vue'
+	
+	import {listing} from '../../api/api.js'
+	import {GetGood} from '../../api/request.js'
 	export default{
 		components:{
 			Business,
 			Tabs,
 			Ordering,
 			Message,
-			Information
+		},
+		data(){
+			return{
+				hideing:0,
+				goodList:[],
+				shopInfo:{}
+			}
+		},
+		methods:{
+			fatherMethod(index){
+				this.hideing=index
+			},
+			takeGood(){
+				listing('http://localhost:3000/good/listGood?s_id=1')
+				.then((res)=>{
+					let Res=res[1].data
+					if(Res.code==='200'){
+						this.goodList=Res.data
+						console.log(this.goodList)
+					}
+				}),
+				listing('http://localhost:3000/shop/listById?s_id=1')
+				.then((res)=>{
+					let Res=res[1].data
+					if(Res.code==='200'){
+						this.shopInfo=Res.data
+						console.log(this.shopInfo)
+					}
+				})
+			}
+		},
+		onLoad(){
+			this.takeGood()
 		}
 	}
 </script>
 
-<style>
+<style scoped>
+	.actineclass{
+		display: block;
+	}
+	.errorclass{
+		display: none;
+	}
 </style>

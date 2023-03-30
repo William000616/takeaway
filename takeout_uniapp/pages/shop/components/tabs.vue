@@ -11,13 +11,13 @@
 		data(){
 			return{
 				num:0,
-				order:['点菜','评价','商家'],
+				order:['点菜','评价'],
 			}
 		},
 		methods:{
 			menubtn(index,name){
 				this.num=index
-				// this.$parent.fatherMethod(index)
+				this.$parent.fatherMethod(index)
 			}
 		}
 	}

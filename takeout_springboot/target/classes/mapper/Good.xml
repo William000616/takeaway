@@ -19,6 +19,11 @@
         </where>
     </select>
 
+    <!--根据用户id查询所有good-->
+    <select id="listGood" resultType="com.hjx.takeout.entity.Good">
+        select * from good where s_id = #{s_id}
+    </select>
+
     <!--根据id修改good-->
     <update id="updateById">
         update good set good_name = #{good_name},good_pic = #{good_pic},price = #{price},c_id = #{c_id}

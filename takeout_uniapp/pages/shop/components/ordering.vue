@@ -1,25 +1,25 @@
 <template>
 	<view class="ordering-fls">
 		<view class="ordering-left">
-			<block v-for="(item,index) in orderclass" :key="index">
-				<text :class="{activeord:index == numing}" @click="ordermeClic(index,item)">{{item}}</text>
+			<block v-for="(item,index) in category" :key="index">
+				<text :class="{activeord:index == numing}" @click="ordermeClic(index,item.a_id)">{{item.category_name}}</text>
 			</block>
 		</view>
 		<view class="ordering-right">			
 			<text class="ordering-right-title">{{ordertitle}}</text>
 			<view>
-				<!-- <block v-for="(item,index) in classifarr" :key="index"> -->
+				<block v-for="(item,index) in goodList" :key="index">
 					<view class="content-view">
 						<view class="content-img">
-							<image src="https://i0.hdslb.com/bfs/vc/5885cacaffb53a78be1e66bee0a1ee4d253709d4.png@1c.webp" mode="aspectFill"></image>
+							<image :src="item.good_pic" mode="aspectFill"></image>
 						</view>
 						<view class="content-title">
-							<text class="conteng-take">123</text>
+							<text class="conteng-take">{{item.good_name}}</text>
 							<view class="conteng-starting">
-								<text>销量0</text>
+								<text>销量{{item.sales}}</text>
 							</view>
 							<view class="conteng-price">
-								<view class="conteng-shi">￥1</view>
+								<view class="conteng-shi">￥{{item.price}}</view>
 								<view class="ordering-price">
 									<image @click="reDue(index,item._id,item.objdis.Discount,item.amount,item.obidis.image,item.objdis.input)" src="../../../static/image/减.png" mode="widthFix"></image>
 									<text class="amounting">1</text>
@@ -28,7 +28,7 @@
 							</view>
 						</view>
 					</view>
-				<!-- </block> -->
+				</block>
 			</view>
 		</view>
 		<view class="Shopping">
@@ -36,11 +36,11 @@
 				<view class="Shopping-left">
 					<view class="Cost-mony">
 						<text class="Total-price">￥123</text>
-						<text class="Delivery">另需配送费123元</text>
+						<text class="Delivery">另需配送费{{shopInfo[0].delivery_cost}}元</text>
 					</view>
 				</view>
 				<view class="Shopping-right" :class="{shoppactive:isActive}" @click="flat && settLement">
-					<text v-if="!isActive">1元起送</text>
+					<text v-if="!isActive">{{shopInfo[0].min_cost}}元起送</text>
 					<text v-if="isActive">1223</text>
 				</view>
 			</view>
@@ -49,18 +49,50 @@
 </template>
 
 <script>
+	import {listing} from '../../../api/api.js'
+	import {GetGood} from '../../../api/request.js'
 	export default{
+		props:{
+			goodList:Array,
+			shopInfo:Object			
+		},
 		data(){
 			return{
 				orderclass:['盖浇饭','小吃'],
+				category:[],
 				numing:0,
-				isActive:false
+				isActive:false,
 			}
 		},
 		methods:{
 			ordermeClic(index){
-				this.numing=index
+				this.numing=index;
+				console.log(this.numing)
+				listing('http://localhost:3000/good/listGood?s_id=2')
+				.then((res)=>{
+					let Res=res[1].data
+					if(Res.code==='200'){
+						this.goodList=Res.data
+						console.log(this.goodList)
+					}
+				})
+			},
+			getCa(){
+				listing('http://localhost:3000/category/list?s_id=1')
+				.then((res)=>{
+					let Res=res[1].data
+					if(Res.code==='200'){
+						this.category=Res.data
+						console.log(this.category)
+					}
+				})
 			}
+		},
+		mounted() {
+			this.getCa()
+		},
+		watch(){
+			ordermeClic()
 		}
 	}
 </script>

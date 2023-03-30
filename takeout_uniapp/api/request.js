@@ -2,4 +2,6 @@ let url='http://localhost:3000'
 
 let GetShop=`${url}/shop/list`
 
-export {GetShop}
+let GetGood=`${url}/good/list`
+
+export {GetShop,GetGood}

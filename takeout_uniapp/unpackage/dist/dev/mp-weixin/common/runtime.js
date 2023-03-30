@@ -109,7 +109,7 @@
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"pages/shop/components/business":"pages/shop/components/business","pages/shop/components/information":"pages/shop/components/information","pages/shop/components/message":"pages/shop/components/message","pages/shop/components/ordering":"pages/shop/components/ordering","pages/shop/components/tabs":"pages/shop/components/tabs","pages/index/components/takeout":"pages/index/components/takeout"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"pages/shop/components/business":"pages/shop/components/business","pages/shop/components/message":"pages/shop/components/message","pages/shop/components/ordering":"pages/shop/components/ordering","pages/shop/components/tabs":"pages/shop/components/tabs","pages/index/components/takeout":"pages/index/components/takeout"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

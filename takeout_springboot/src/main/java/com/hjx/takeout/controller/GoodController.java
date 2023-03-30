@@ -20,6 +20,11 @@ public class GoodController {
         return Result.success(goodService.list(goodRequest));
     }
 
+    @GetMapping("/listGood")
+    public Result listGood(@RequestParam Integer s_id){
+        return Result.success(goodService.listGood(s_id));
+    }
+
 
     @PutMapping("/update")
     public Result update(@RequestBody Good good){

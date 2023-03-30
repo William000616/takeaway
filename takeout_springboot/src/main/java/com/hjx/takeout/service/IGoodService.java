@@ -13,4 +13,5 @@ public interface IGoodService {
 
     void delete(Integer g_id);
 
+    Object listGood(Integer s_id);
 }
