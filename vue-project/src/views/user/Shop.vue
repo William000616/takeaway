@@ -377,7 +377,7 @@
 import Toast from "vant/lib/toast";
 import { Dialog } from 'vant';
 import { areaList } from '@vant/area-data';
-import { GetCategory, GetGood, GetAddress } from "../../api/api.js";
+import { GetCategory, GetGood, GetAddress, CreateOrder } from "../../api/api.js";
 export default {
     name: "Shop",
 
@@ -645,29 +645,34 @@ export default {
 
                     const data = { ...this.orderInfo, a_id: this.orderInfo.addressMessage.a_id }
                     console.log(data)
-                    this.axios.post("http://localhost:8084/createOrder", this.orderInfo)
-                        .then(resp => {
-                            if (resp.data !== null) {
-                                console.log(resp.data.orderNumber);
-                                this.$router.push({
-                                    name: "paySuccess",
-                                    params: {
-                                        oid: resp.data.oid,
-                                        orderNumber: resp.data.orderNumber,
-                                        good_total_price: resp.data.good_total_price,
-                                        delivery_price: resp.data.delivery_price,
-                                        total_price: resp.data.total_price,
-                                        goods: this.selectedGoods,
-                                        addressMessage: this.addressMessage,
-                                        shop_name: this.shopMessage.shop_name,
-                                        orderStat: resp.data.orderStat,
-                                        createTime: resp.data.createTime
-                                    }
-                                });
-                            } else {
-                                Toast("由于网络或其他原因，创建订单失败！！！")
-                            }
-                        })
+                    CreateOrder(data).then((res) => {
+                        if (res.code === '200') {
+                            console.log(1)
+                        }
+                    })
+                    // this.axios.post("http://localhost:8084/createOrder", this.orderInfo)
+                    //     .then(resp => {
+                    //         if (resp.data !== null) {
+                    //             console.log(resp.data.orderNumber);
+                    //             this.$router.push({
+                    //                 name: "paySuccess",
+                    //                 params: {
+                    //                     oid: resp.data.oid,
+                    //                     orderNumber: resp.data.orderNumber,
+                    //                     good_total_price: resp.data.good_total_price,
+                    //                     delivery_price: resp.data.delivery_price,
+                    //                     total_price: resp.data.total_price,
+                    //                     goods: this.selectedGoods,
+                    //                     addressMessage: this.addressMessage,
+                    //                     shop_name: this.shopMessage.shop_name,
+                    //                     orderStat: resp.data.orderStat,
+                    //                     createTime: resp.data.createTime
+                    //                 }
+                    //             });
+                    //         } else {
+                    //             Toast("由于网络或其他原因，创建订单失败！！！")
+                    //         }
+                    //     })
                 }, 2000);
             });
 

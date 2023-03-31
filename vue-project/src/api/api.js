@@ -55,3 +55,11 @@ export const updatePassword = query => {
         data: query
     });
 };
+
+export const CreateOrder = query => {
+    return request({
+        url: '/order/createOrder',
+        method: 'post',
+        data: query
+    });
+};

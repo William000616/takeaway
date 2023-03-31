@@ -73,10 +73,11 @@ public class OrderService implements IOrderService {
     public void createOrder(Order order) {
         Date date=new Date();
         DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//        String orderNumber = "DM" +dateUtil +"000" + order.getU_id();
+        DateFormat dateNumFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String orderNumber = "DM" +dateNumFormat.format(date) +"000" + order.getU_id();
         String strDate = dateformat.format(date);
         order.setCreate_time(strDate);
-        order.setOrder_Number(strDate.toString());
+        order.setOrder_Number(orderNumber);
         orderMapper.createOrder(order);
     }
 
