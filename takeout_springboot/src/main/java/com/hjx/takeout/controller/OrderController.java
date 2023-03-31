@@ -46,12 +46,12 @@ public class OrderController {
         orderService.changeOrderState(order);
         return Result.success();
     }
-//
-//    @PostMapping("/add")
-//    public Result add(@RequestBody Good good){
-//        goodService.add(good);
-//        return Result.success();
-//    }
+
+    @PostMapping("/createOrder")
+    public Result createOrder(@RequestBody Order order){
+        orderService.createOrder(order);
+        return Result.success();
+    }
 //
 //    @DeleteMapping("/delete")
 //    public Result delete(@RequestParam Integer g_id){

@@ -21,6 +21,8 @@ public interface OrderMapper {
     void shopPickOrder(Order order);
 
     void changeOrderState(Order order);
+
+    void createOrder(Order order);
 //
 //    void updateById(Good good);
 //

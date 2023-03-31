@@ -110,26 +110,26 @@
                     </div>
                 </div>
                 <div style="border-right: 1px solid #51575f;left:55px;width: 80px;height: 30px;display: inline-block;position: absolute;margin: 10px 5px;color: #70757b"
-                    v-if="totalPrice === 0">
-                    ￥{{ goodTotalPrice }}元
+                    v-if="total_price === 0">
+                    ￥{{ good_total_price }}元
                 </div>
                 <div style="border-right: 1px solid #51575f;left:55px;width: 80px;height: 30px;display: inline-block;position: absolute;margin: 10px 5px;color: #fdfdfd"
-                    v-if="totalPrice > 0">
-                    ￥{{ goodTotalPrice }}元
+                    v-if="total_price > 0">
+                    ￥{{ good_total_price }}元
                 </div>
                 <div
                     style="left:150px;color: #70757b;font-size: 12px;display:inline-block;position: absolute;margin:12px 0 0 5px;height: 44px">
-                    另需配送费￥{{ deliveryPrice }}
+                    另需配送费￥{{ delivery_price }}
                 </div>
                 <div style="float: right;width: 80px;">
                     <van-button round size="large"
                         style="background-color: #70757b;border-color: #70757b;font-size: 12px;margin-top: 5px;height: 40px"
-                        v-if="this.goodTotalPrice === 0">￥{{ minPrice }}元起送</van-button>
+                        v-if="this.good_total_price === 0">￥{{ minPrice }}元起送</van-button>
                     <van-button round size="large"
                         style="color: white;background-color: #70757b;border-color: #70757b;font-size: 12px;margin-top: 5px;height: 40px"
-                        v-if="this.goodTotalPrice < this.minPrice">差￥{{ minPrice - goodTotalPrice }}元起送</van-button>
+                        v-if="this.good_total_price < this.minPrice">差￥{{ minPrice - good_total_price }}元起送</van-button>
                     <van-button round type="info" size="large" style="font-size: 12px;margin-top: 5px;height: 40px"
-                        v-if="this.goodTotalPrice >= this.minPrice" @click="toPay">去结算</van-button>
+                        v-if="this.good_total_price >= this.minPrice" @click="toPay">去结算</van-button>
                 </div>
             </div>
 
@@ -195,8 +195,8 @@
         <div style="width: 100%;background-color:white;z-index: 99999;float:left" v-if="showPay">
             <van-nav-bar title="确认订单" left-text="返回" left-arrow @click-left="isShowPay" />
             <van-notice-bar left-icon="volume-o" text="节约粮食，从我做起，从现在做起。请适量点餐，避免浪费" />
-            <div style="width: 300px;;margin: 10px;border-radius: 10px;border: solid 1px">
-                <div style="width: 300px;margin-bottom: 5px;">
+            <div style="margin: 10px;border-radius: 10px;border: solid 1px">
+                <div style="margin-bottom: 5px;" @click="chooseAddress">
                     <span v-if="addressMessage === null">
                         <h3
                             style="display:inline-block;margin-bottom:0;margin-top: 5px;margin-left: 5px;margin-right: 10px">
@@ -204,33 +204,35 @@
                     </span>
                     <span v-if="addressMessage !== null">
                         <div style="font-size: 13px;width: 150px;display: inline-block;">
+                            <span>
+                                {{ addressMessage.name }}
+                            </span>
+                            {{ addressMessage.tel }}
+                            <span>
+                            </span>
                             <div>
                                 {{ addressMessage.address }}
                             </div>
                             <div>
-                                <span>
-                                    {{ addressMessage.name }}
-                                </span>
-                                {{ addressMessage.tel }}
-                                <span>
-                                </span>
+
                             </div>
                         </div>
 
                     </span>
-                    <span style="margin-left: 120px;"><van-icon name="arrow" @click="chooseAddress" /></span>
+                    <span style="margin-left: 120px;"><van-icon name="arrow" /></span>
                 </div>
-                <div style="width: 300px;height: 40px;margin: 0;">
+                <br>
+                <!-- <div style="height: 40px;margin: 0;">
                     <span>
                         <h4
                             style="display:inline-block;margin-bottom:0;margin-top: 5px;margin-left: 5px;margin-right: 50px">
                             预计送达时间</h4>
                     </span>
-                    <span style="margin-left: 50px;"><van-icon name="clock-o" />12:50 <van-icon name="arrow"
+                    <span style="margin-left: 50px;"><van-icon name="clock-o" />尽快送达<van-icon name="arrow"
                             @click="chooseTime" /></span>
 
-                </div>
-                <div style="width: 300px;height: 40px;margin: 0;">
+                </div> -->
+                <div style="height: 40px;margin: 0;">
                     <span>
                         <h4
                             style="display:inline-block;margin-bottom:0;margin-top: 5px;margin-left: 5px;margin-right: 50px">
@@ -242,9 +244,9 @@
 
             </div>
 
-            <div style="width: 300px;margin: 10px;border-radius: 10px;border: solid 1px">
+            <div style="margin: 10px;border-radius: 10px;border: solid 1px">
                 <template>
-                    <ul>
+                    <ul style="margin: 10px;">
                         <li v-for="(good, index) in selectedGoods" :key="index">
                             <div style="border-radius: 10px;background-color: white">
                                 <div style="display:inline-block;float: left">
@@ -270,7 +272,7 @@
                         <h4
                             style="width: 50px;margin-left: 10px;display: inline-block;margin-right: 180px;margin-top: 5px;margin-bottom: 5px">
                             配送费</h4>
-                        <span>￥{{ deliveryPrice }}</span>
+                        <span>￥{{ delivery_price }}</span>
                     </div>
 
                 </template>
@@ -280,7 +282,7 @@
 
             <!--总价格+结算按钮-->
             <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #409EFF; z-index: 100">
-                <van-submit-bar :price="(goodTotalPrice * 100 + deliveryPrice * 100)" button-text="提交订单" @submit="submit"
+                <van-submit-bar :price="(good_total_price * 100 + delivery_price * 100)" button-text="提交订单" @submit="submit"
                     button-type="info" />
             </div>
         </div>
@@ -375,38 +377,19 @@
 import Toast from "vant/lib/toast";
 import { Dialog } from 'vant';
 import { areaList } from '@vant/area-data';
-
+import { GetCategory, GetGood, GetAddress } from "../../api/api.js";
 export default {
     name: "Shop",
 
     created() {
-        console.log("进入店铺" + this.$route.params.shop.s_id);
-        this.axios.get("http://localhost:3000/good/listGood", {
-            params: {
-                s_id: this.$route.params.shop.s_id
-            }
-        }).then(resp => {
-            this.axios.get("http://localhost:3000/category/list", {
-                params: {
-                    s_id: this.$route.params.shop.s_id
-                }
-            }).then((res) => {
-                let goodList = resp.data.data;
-                let categoryList = res.data.data;
-                // let Good = [];
-                // let Goods = [];
-                // categoryList.map((item) => {
-                //     goodList.map((e) => {
-                //         if (e.c_id === item.c_id) {
-                //             item.count = 0;
-                //             Goods.push(item)
-                //         }
-                //     })
-                //     Good.push({ categoryName: item.category_name, goods: Goods })
-
-                // })
-                // console.log(Good)
-                // this.goodList = Good;
+        const params = {
+            s_id: this.$route.params.shop.s_id
+        }
+        GetGood(params).then(resp => {
+            GetCategory(params).then((res) => {
+                let goodList = resp.data;
+                let categoryList = res.data;
+                console.log(goodList, categoryList)
                 goodList.map((item) => {
                     item.count = 0
                 })
@@ -444,20 +427,20 @@ export default {
             }
         }).then(resp => {
             this.shopMessage = resp.data.data[0];
-            this.minPrice = resp.data.min_cost;
-            this.deliveryPrice = resp.data.delivery_cost;
+            this.minPrice = resp.data.data[0].min_cost;
+            this.delivery_price = resp.data.data[0].delivery_cost;
         })
     },
     computed: {
         /*计算商品总价格*/
-        goodTotalPrice() {
-            let goodTotalPrice = 0;
+        good_total_price() {
+            let good_total_price = 0;
             this.goodList.forEach(function (item) {
                 item.goods.forEach(function (good) {
-                    goodTotalPrice += good.count * good.price;
+                    good_total_price += good.count * good.price;
                 })
             });
-            return goodTotalPrice;
+            return good_total_price;
         },
 
         /*存放在购物车里的商品*/
@@ -479,21 +462,21 @@ export default {
     data() {
         return {
             /*存储订单信息*/
-            /*uid:this.uid,
-                sid:this.shopId,
-                totalPrice:this.totalPrice,
+            /*u_id:this.u_id,
+                s_id:this.shopId,
+                total_price:this.total_price,
                 goods:this.selectedGoods,
                 addressMessage:this.addressMessage,
-                deliveryPrice:this.deliveryPrice,*/
+                delivery_price:this.delivery_price,*/
             orderInfo: {
-                uid: '',
-                sid: '',
-                goodTotalPrice: '',
-                deliveryPrice: '',
-                totalPrice: '',
+                u_id: '',
+                s_id: '',
+                good_total_price: '',
+                delivery_price: '',
+                total_price: '',
                 goods: '',
                 addressMessage: '',
-                shopName: ''
+                shop_name: ''
             },
 
             /*显示店铺主页面*/
@@ -512,8 +495,8 @@ export default {
 
             /*用来保存新增的address信息*/
             addressInfo: {
-                /*(aId=0, areaCode=null, name=null, tel=null, addressDetail=null, province=null, city=null, county=null, uid=1)*/
-                uid: this.$store.getters.getUser.id,
+                /*(aId=0, areaCode=null, name=null, tel=null, addressDetail=null, province=null, city=null, county=null, u_id=1)*/
+                u_id: localStorage.getItem("u_id"),
                 areaCode: "",
                 name: "",
                 tel: "",
@@ -530,19 +513,19 @@ export default {
             minPrice: 0,
 
             /*当前总价：商品总价+配送费*/
-            totalPrice: 0,
+            total_price: 0,
 
             /*配送费*/
-            deliveryPrice: 0,
+            delivery_price: 0,
 
             shoppingCart: true,
             count: 0,
             hider: false,
             activeKey: "a",
             activeName: 'good',
-            shopId: this.$route.params.shop.sid,
+            shopId: this.$route.params.shop.s_id,
             //当前登录用户id
-            uid: this.$store.getters.getUser.id,
+            u_id: localStorage.getItem("u_id"),
             isShowSelectedGoods: false,
             chosenAddressId: 0,
             createTime: '',
@@ -578,8 +561,8 @@ export default {
                             goodPic: 'pic/dinner.png',
                             price: '1',
                             sales: '100',
-                            cid: '',
-                            sid: '',
+                            c_id: '',
+                            s_id: '',
                             count: 0
                         }
                     ]
@@ -635,14 +618,13 @@ export default {
                 return;
             }
             const that = this;
-            const orderInfo = this.orderInfo;
-            this.orderInfo.uid = that.uid;
-            this.orderInfo.sid = that.shopId;
-            this.orderInfo.goodTotalPrice = that.goodTotalPrice;
-            this.orderInfo.deliveryPrice = that.deliveryPrice;
-            this.orderInfo.totalPrice = (that.deliveryPrice * 1.0 + that.goodTotalPrice * 1.0);
+            this.orderInfo.u_id = that.u_id;
+            this.orderInfo.s_id = that.shopId;
+            this.orderInfo.good_total_price = that.good_total_price;
+            this.orderInfo.delivery_price = that.delivery_price;
+            this.orderInfo.total_price = (that.delivery_price * 1.0 + that.good_total_price * 1.0);
             this.orderInfo.addressMessage = that.addressMessage;
-            this.orderInfo.shopName = that.shopMessage.shopName;
+            this.orderInfo.shop_name = that.shopMessage.shop_name;
             this.orderInfo.goods = that.selectedGoods;
             console.log(this.orderInfo);
 
@@ -660,6 +642,9 @@ export default {
                 });
                 setTimeout(() => {
                     /*将订单信息发给后端*/
+
+                    const data = { ...this.orderInfo, a_id: this.orderInfo.addressMessage.a_id }
+                    console.log(data)
                     this.axios.post("http://localhost:8084/createOrder", this.orderInfo)
                         .then(resp => {
                             if (resp.data !== null) {
@@ -669,12 +654,12 @@ export default {
                                     params: {
                                         oid: resp.data.oid,
                                         orderNumber: resp.data.orderNumber,
-                                        goodTotalPrice: resp.data.goodTotalPrice,
-                                        deliveryPrice: resp.data.deliveryPrice,
-                                        totalPrice: resp.data.totalPrice,
+                                        good_total_price: resp.data.good_total_price,
+                                        delivery_price: resp.data.delivery_price,
+                                        total_price: resp.data.total_price,
                                         goods: this.selectedGoods,
                                         addressMessage: this.addressMessage,
-                                        shopName: this.shopMessage.shopName,
+                                        shop_name: this.shopMessage.shop_name,
                                         orderStat: resp.data.orderStat,
                                         createTime: resp.data.createTime
                                     }
@@ -750,17 +735,26 @@ export default {
         /*点击选择收货地址，获取所有收货地址*/
         chooseAddress() {
             //Toast("选择收货地址");
-            const that = this;
-            this.axios.get("http://localhost:8084/listAddress", {
-                params: {
-                    uid: this.uid
-                }
-            }).then(resp => {
-                console.log(resp.data);
-                this.addressList = resp.data;
+            const params = {
+                u_id: localStorage.getItem("u_id")
+            }
+            GetAddress(params).then(resp => {
+                console.log(resp);
+                this.addressList = resp.data
                 this.showPay = false;
                 this.showAddress = true;
-            });
+            })
+            // const that = this;
+            // this.axios.get("http://localhost:8084/listAddress", {
+            //     params: {
+            //         u_id: this.u_id
+            //     }
+            // }).then(resp => {
+            //     console.log(resp.data);
+            //     this.addressList = resp.data;
+            //     this.showPay = false;
+            //     this.showAddress = true;
+            // });
 
         },
 
@@ -782,7 +776,7 @@ export default {
 
         /*显示购物车详情*/
         showSelectedGoods() {
-            this.isShowSelectedGoods = true;
+            this.isShowSelectedGoods = !this.isShowSelectedGoods;
         },
 
         /*在购物车详情页面进行商品的修改*/
@@ -872,12 +866,12 @@ export default {
         },
         /*购物车结算状态*/
         payDesc() {
-            if (this.totalPrice === 0) {
+            if (this.total_price === 0) {
                 return `￥${this.minPrice}元起送`;
-            } else if (this.totalPrice < this.minPrice) {
-                let differPrice = this.minPrice - this.totalPrice;
+            } else if (this.total_price < this.minPrice) {
+                let differPrice = this.minPrice - this.total_price;
                 return `还差${differPrice}元起送`;
-            } else if (this.totalPrice >= this.minPrice) {
+            } else if (this.total_price >= this.minPrice) {
                 return '去结算';
             }
         },

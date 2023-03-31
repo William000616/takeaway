@@ -21,6 +21,7 @@ public class OrderService implements IOrderService {
     @Autowired
     OrderMapper orderMapper;
 
+
     @Override
     public Object list(OrderRequest orderRequest) {
         PageHelper.startPage(orderRequest.getPageNum(), orderRequest.getPageSize());
@@ -66,6 +67,17 @@ public class OrderService implements IOrderService {
             order.setArrive_time(strDate);
         }
         orderMapper.changeOrderState(order);
+    }
+
+    @Override
+    public void createOrder(Order order) {
+        Date date=new Date();
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//        String orderNumber = "DM" +dateUtil +"000" + order.getU_id();
+        String strDate = dateformat.format(date);
+        order.setCreate_time(strDate);
+        order.setOrder_Number(strDate.toString());
+        orderMapper.createOrder(order);
     }
 
 //    @Override

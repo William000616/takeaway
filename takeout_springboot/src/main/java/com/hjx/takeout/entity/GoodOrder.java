@@ -10,4 +10,5 @@ public class GoodOrder {
     private Integer count;
     private String good_name;
     private String price;
+    private String good_pic;//外
 }

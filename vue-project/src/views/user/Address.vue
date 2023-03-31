@@ -4,31 +4,29 @@
         <div v-if="list.length === 0">
             <van-empty description="您还没有添加地址噢，点击新增地址添加吧~~" />
         </div>
-        <van-address-list v-model="chosenAddressId" :list="list" :disabled-list="disabledList" disabled-text="以下地址超出配送范围"
-            default-tag-text="默认" @add="onAdd" @edit="onEdit" />
+        <van-address-list v-model="chosenAddressId" :list="list" :disabled-list="disabledList" default-tag-text="默认"
+            @add="onAdd" @edit="onEdit" />
     </div>
 </template>
 
 <script>
 /*引入Toast*/
 import Toast from 'vant/lib/toast';
-
+import { GetAddress } from "../../api/api.js";
 export default {
     name: "Address",
     created() {
-        console.log(this.$store.getters.getUser.id);
-        this.axios.get("http://localhost:8084/listAddress", {
-            params: {
-                uid: this.$store.getters.getUser.id
-            }
-        }).then(resp => {
-            console.log(resp.data);
+        const params = {
+            u_id: localStorage.getItem("u_id")
+        }
+        GetAddress(params).then(resp => {
+            console.log(resp);
             this.list = resp.data
         })
     },
     data() {
         return {
-            chosenAddressId: 0,
+            chosenAddressId: '1',
             list: [
                 /*{
                     id: '1',
@@ -46,12 +44,12 @@ export default {
                 },*/
             ],
             disabledList: [
-                {
-                    id: '3',
-                    name: '王五',
-                    tel: '1320000000',
-                    address: '浙江省杭州市滨江区江南大道 15 号',
-                },
+                // {
+                //     id: '3',
+                //     name: '王五',
+                //     tel: '1320000000',
+                //     address: '浙江省杭州市滨江区江南大道 15 号',
+                // },
             ],
         };
     },

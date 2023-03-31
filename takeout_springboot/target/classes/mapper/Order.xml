@@ -49,7 +49,7 @@
 
     <!--根据orderId查询所有good-->
     <select id="listById" resultType="com.hjx.takeout.entity.GoodOrder">
-        select order_good.*,good.good_name,good.price from order_good,good where order_good.o_id = #{o_id} and good.g_id=order_good.g_id
+        select order_good.*,good.good_name,good.price,good.good_pic from order_good,good where order_good.o_id = #{o_id} and good.g_id=order_good.g_id
     </select>
 
     <!--商家接单-->
@@ -64,6 +64,11 @@
         where o_id = #{o_id}
     </update>
 
+    <!--存储order信息-->
+    <insert id="createOrder">
+        insert into `order_takeout` (order_Number, good_total_price,delivery_price,total_price, u_id, s_id, a_id, create_time)
+        VALUES (#{order_Number},#{good_total_price},#{delivery_price},#{total_price},#{u_id},#{s_id},#{a_id},#{create_time})
+    </insert>
 <!--    &lt;!&ndash;添加good&ndash;&gt;-->
 <!--    <insert id="add">-->
 <!--        insert into good(good_name,good_pic,price,c_id,sales,s_id) values (#{good_name},#{good_pic},#{price},#{c_id},0,#{s_id})-->
