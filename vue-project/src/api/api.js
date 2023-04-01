@@ -8,6 +8,14 @@ export const UserLogin = query => {
     });
 };
 
+export const UserRegister = query => {
+    return request({
+        url: '/user/add',
+        method: 'post',
+        data: query
+    });
+};
+
 export const GetAddress = query => {
     return request({
         url: '/address/list',
