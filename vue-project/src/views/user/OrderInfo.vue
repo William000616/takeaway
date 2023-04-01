@@ -3,13 +3,12 @@
         <van-nav-bar title="订单详情" left-text="返回" left-arrow @click-left="onClickLeft" />
         <van-cell-group class="goods-cell-group">
 
-            <!-- <van-cell>
-                <van-col span="16"><van-icon name="location-o" style="margin-right: 30px;" />收货人：{{
-                    orderInfo.addressMessage.name }}</van-col>
-                <van-col>{{ orderInfo.addressMessage.tel }}</van-col>
-                <van-col span="21" style="padding-left: 43px;font-size: 13px;width:280px">收货地址：{{
-                    orderInfo.addressMessage.address }}</van-col>
-            </van-cell> -->
+            <van-cell>
+                <van-col span="16">收货人：{{ addressMessage.name }}</van-col>
+                <van-col span="16">联系方式：{{ addressMessage.tel }}</van-col>
+                <van-col span="21" style=";width:280px">收货地址：{{
+                    addressMessage.address }}</van-col>
+            </van-cell>
 
         </van-cell-group>
 
@@ -84,12 +83,11 @@
 </template>
 
 <script>
-import { getOrderInfo } from "../../api/api.js";
+import { getOrderInfo, GetAddressById } from "../../api/api.js";
 export default {
     name: "OrderInfo",
     created() {
         this.orderDetail = this.$route.params.orderInfo;
-
 
         getOrderInfo(this.orderDetail).then(resp => {
 
@@ -98,6 +96,14 @@ export default {
             console.log(this.orderDetail);
         })
 
+        GetAddressById(this.orderDetail).then(resp => {
+            if (resp.code === '200') {
+
+                this.addressMessage = resp.data[0]
+                console.log(this.addressMessage);
+            }
+
+        })
         // this.goods = this.$route.params.goods;
         this.totalPrice = this.$route.params.orderInfo.good_total_price;
         this.orderNumber = this.orderDetail.order_Number;
@@ -105,7 +111,8 @@ export default {
         this.orderStat = this.orderDetail.order_Stat;
         // this.deliveryPrice = this.$route.params.deliveryPrice;
         this.orderInfo = this.orderDetail;
-        console.log(this.orderDetail.goods)
+
+        console.log(this.orderDetail)
     },
     data() {
         return {
@@ -131,12 +138,9 @@ export default {
             } else if (stat === 2) {
                 return '商家已接单,正在烹饪';
             } else if (stat === 3) {
-                /*this.axios.get("http://localhost:8084/findTakerById",this.orderInfo.dMId).then(resp=>{
-                    this.deliveryMan = resp.data;
-                });*/
                 return '订单配送中,等待送达';
             } else if (stat === 4) {
-                return '已送达';
+                return '订单已送达';
             }
         },
         onClickLeft() {

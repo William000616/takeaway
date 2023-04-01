@@ -2,6 +2,8 @@ package com.hjx.takeout.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Order {
     private Integer o_id;
@@ -19,5 +21,6 @@ public class Order {
     private String logo_src;//外
     private String shop_name;//外
     private String address;//外
+    private List<GoodOrder> goods;
 
 }

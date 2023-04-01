@@ -39,6 +39,7 @@
 
 <script>
 import Swipe from "../../views/user/Swipe.vue";
+import { GetAllShop } from "../../api/api.js";
 export default {
   components: {
     Swipe
@@ -66,11 +67,11 @@ export default {
 
   created() {
     /*初始化数据，获取首页的店铺*/
-    this.axios.get("http://localhost:3000/shop/list")
-      .then(res => {
-        console.log(res.data);
-        this.shops = res.data.data.list;
-      })
+    // this.axios.get("http://localhost:3000/shop/list")
+    GetAllShop().then(res => {
+      console.log(res.data);
+      this.shops = res.data.list;
+    })
   },
 
   data() {

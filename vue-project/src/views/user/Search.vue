@@ -72,7 +72,7 @@
 
 <script>
 import axios from "axios";
-
+import { GetAllShop } from "../../api/api.js";
 export default {
     name: "Search",
     data() {
@@ -106,11 +106,11 @@ export default {
 
         search() {
             console.log(this.value);
-            this.axios.get("http://localhost:3000/shop/list", {
-                params: {
-                    shop_name: this.value
-                }
-            }).then(resp => {
+            // this.axios.get("http://localhost:3000/shop/list", {
+            const params = {
+                shop_name: this.value
+            }
+            GetAllShop(params).then(resp => {
                 console.log(resp.data);
                 this.shops = resp.data.data.list;
             })

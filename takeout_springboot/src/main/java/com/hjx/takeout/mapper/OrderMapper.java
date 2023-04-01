@@ -22,7 +22,16 @@ public interface OrderMapper {
 
     void changeOrderState(Order order);
 
-    void createOrder(Order order);
+    Integer createOrder(Order order);
+
+    /*根据订单号查询订单*/
+    Order findOrderByOrderNumber(String order_Number);
+
+    Integer addOrderGood(GoodOrder orderGood);
+
+    void addTotalSales(Integer o_id);
+
+    void addGoodSales(Integer count,Integer g_id);
 //
 //    void updateById(Good good);
 //

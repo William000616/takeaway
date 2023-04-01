@@ -20,8 +20,15 @@ export default {
             u_id: localStorage.getItem("u_id")
         }
         GetAddress(params).then(resp => {
-            console.log(resp);
             this.list = resp.data
+            if (this.list.length > 0) {
+                this.list.map((item) => {
+                    item.id = item.a_id
+
+                })
+                this.chosenAddressId = this.list[0].id
+            }
+
         })
     },
     data() {

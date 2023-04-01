@@ -49,9 +49,10 @@ public class OrderController {
 
     @PostMapping("/createOrder")
     public Result createOrder(@RequestBody Order order){
-        orderService.createOrder(order);
-        return Result.success();
+        Order order1= orderService.createOrder(order);
+        return Result.success(order1);
     }
+
 //
 //    @DeleteMapping("/delete")
 //    public Result delete(@RequestParam Integer g_id){

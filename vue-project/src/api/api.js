@@ -16,6 +16,30 @@ export const GetAddress = query => {
     });
 };
 
+export const GetAddressById = query => {
+    return request({
+        url: '/address/listById',
+        method: 'get',
+        params: query
+    });
+};
+
+export const UpdateAddressById = query => {
+    return request({
+        url: '/address/update',
+        method: 'put',
+        data: query
+    });
+};
+
+export const CreateAddress = query => {
+    return request({
+        url: '/address/add',
+        method: 'post',
+        data: query
+    });
+};
+
 export const GetOrder = query => {
     return request({
         url: '/order/list',
@@ -61,5 +85,21 @@ export const CreateOrder = query => {
         url: '/order/createOrder',
         method: 'post',
         data: query
+    });
+};
+
+export const GetAllShop = query => {
+    return request({
+        url: '/shop/list',
+        method: 'get',
+        params: query
+    });
+};
+
+export const GetShopById = query => {
+    return request({
+        url: '/shop/listById',
+        method: 'get',
+        params: query
     });
 };

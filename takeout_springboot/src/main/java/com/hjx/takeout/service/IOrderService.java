@@ -17,7 +17,8 @@ public interface IOrderService {
 
     void changeOrderState(Order order);
 
-    void createOrder(Order order);
+    Order createOrder(Order order);
+
 
 //    void update(Good good);
 //

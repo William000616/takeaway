@@ -1,8 +1,10 @@
 package com.hjx.takeout.service.impl;
 
+import cn.hutool.json.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hjx.takeout.controller.request.OrderRequest;
+import com.hjx.takeout.entity.Good;
 import com.hjx.takeout.entity.GoodOrder;
 import com.hjx.takeout.entity.Order;
 import com.hjx.takeout.mapper.OrderMapper;
@@ -70,7 +72,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public void createOrder(Order order) {
+    public Order createOrder(Order order) {
         Date date=new Date();
         DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         DateFormat dateNumFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
@@ -78,8 +80,28 @@ public class OrderService implements IOrderService {
         String strDate = dateformat.format(date);
         order.setCreate_time(strDate);
         order.setOrder_Number(orderNumber);
-        orderMapper.createOrder(order);
+        Integer flag= orderMapper.createOrder(order);
+        if(flag>0){
+            //2、存储订单商品表
+            //2.1 根据存储的订单号找到刚存储的order
+            Order order1 = orderMapper.findOrderByOrderNumber(orderNumber);
+            //2.2 遍历存储OrderGood表
+            int count = 0;
+            for (GoodOrder good : order.getGoods()) {
+                GoodOrder orderGood = new GoodOrder(order1.getO_id(), good.getG_id(), good.getCount());
+                int row = orderMapper.addOrderGood(orderGood);
+                orderMapper.addGoodSales(good.getCount(),good.getG_id());
+                count+=row;
+            }
+            orderMapper.addTotalSales(order1.getO_id());
+            System.out.println("成功存储"+count+"条订单商品信息");
+            System.out.println(order1);
+            return order1;
+        }
+        return null;
+
     }
+
 
 //    @Override
 //    public void update(Good good) {

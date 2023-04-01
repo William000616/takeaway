@@ -1,12 +1,21 @@
 <template>
     <div>
+        <h1 style="display: flex; justify-content: center;margin-top: 20%;">饱了么外卖</h1>
+        <h3 style="display: flex; justify-content: center;margin-top: 20%;">用户登录</h3>
         <van-form @submit="onSubmit">
-            <van-field v-model="username" name="username" label="用户名" placeholder="用户名"
-                :rules="[{ required: true, message: '请填写用户名' }]" />
-            <van-field v-model="password" type="password" name="password" label="密码" placeholder="密码"
-                :rules="[{ required: true, message: '请填写密码' }]" />
+            <div style="margin: 16px;">
+                <van-field v-model="username" name="username" label="用户名" placeholder="用户名"
+                    :rules="[{ required: true, message: '请填写用户名' }]" />
+            </div>
+            <div style="margin: 16px;">
+                <van-field v-model="password" type="password" name="password" label="密码" placeholder="密码"
+                    :rules="[{ required: true, message: '请填写密码' }]" />
+            </div>
             <div style="margin: 16px;">
                 <van-button round block type="info" native-type="submit">提交</van-button>
+            </div>
+            <div style="margin: 16px;">
+                <van-button round block type="info" @click="register()">用户注册</van-button>
             </div>
         </van-form>
     </div>
@@ -48,6 +57,9 @@ export default {
                 }
             })
         },
+        register() {
+            this.$router.push('/register')
+        }
     },
 };
 </script>

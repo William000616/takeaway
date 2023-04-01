@@ -69,7 +69,28 @@
         insert into `order_takeout` (order_Number, good_total_price,delivery_price,total_price, u_id, s_id, a_id, create_time)
         VALUES (#{order_Number},#{good_total_price},#{delivery_price},#{total_price},#{u_id},#{s_id},#{a_id},#{create_time})
     </insert>
-<!--    &lt;!&ndash;添加good&ndash;&gt;-->
+
+    <!--根据订单号查询订单-->
+    <select id="findOrderByOrderNumber" resultType="com.hjx.takeout.entity.Order">
+        select * from `order_takeout` where order_Number = #{order_Number}
+    </select>
+
+    <!--存储orderGood信息-->
+    <insert id="addOrderGood" parameterType="com.hjx.takeout.entity.GoodOrder">
+        insert into order_good (o_id, g_id, count) VALUES (#{o_id},#{g_id},#{count})
+    </insert>
+
+    <!--增加店铺销量-->
+    <update id="addTotalSales">
+        update shop set total_sales = total_sales+1 where s_id = (select s_id from `order_takeout` where o_id = #{o_id})
+    </update>
+
+    <!--增加商品销量-->
+    <update id="addGoodSales">
+        update good set sales = sales+#{count} where g_id = #{g_id}
+    </update>
+
+    <!--    &lt;!&ndash;添加good&ndash;&gt;-->
 <!--    <insert id="add">-->
 <!--        insert into good(good_name,good_pic,price,c_id,sales,s_id) values (#{good_name},#{good_pic},#{price},#{c_id},0,#{s_id})-->
 <!--    </insert>-->

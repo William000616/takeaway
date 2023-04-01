@@ -24,7 +24,7 @@
                     <el-button type="primary" @click="register()">注册</el-button>
                 </div>
                 <el-radio-group v-model="radio">
-                    <el-radio :label="3">顾客</el-radio>
+                    <!-- <el-radio :label="3">顾客</el-radio> -->
                     <el-radio :label="6">商家</el-radio>
                     <el-radio :label="9">管理员</el-radio>
                 </el-radio-group>
@@ -61,13 +61,15 @@ export default {
             ],
         };
         const login = ref(null);
-        const radio = ref(3)
+        const radio = ref(6)
         const register = () => {
-            if (radio.value === 3) {
-                router.push("/register");
-                localStorage.setItem("ms_username", 'param.username');
-            } else if (radio.value === 6) {
+            // if (radio.value === 3) {
+            //     router.push("/register");
+            //     localStorage.setItem("ms_username", 'param.username');
+            // } else
+            if (radio.value === 6) {
                 router.push("/shopRegister");
+                localStorage.setItem("ms_username", 'param.username');
             } else {
                 ElMessage.error('不能注册管理员账号！');
             }
@@ -75,29 +77,30 @@ export default {
         const submitForm = () => {
             login.value.validate((valid) => {
                 if (valid) {
-                    if (radio.value === 3) {
-                        UserLogin(param).then((res) => {
-                            if (res.code === '200') {
-                                if (res.data.r_id === 1) {
-                                    if (res.data.stat === 1) {
-                                        router.push("/allShop");
-                                        ElMessage.success("登录成功");
-                                        localStorage.setItem("r_id", res.data.r_id);
-                                        localStorage.setItem("u_id", res.data.u_id);
-                                        localStorage.setItem("ms_username", res.data.username);
-                                        localStorage.setItem("head", res.data.picSrc);
-                                    } else {
-                                        ElMessage.error("该账号已被停用！");
-                                    }
+                    // if (radio.value === 3) {
+                    //     UserLogin(param).then((res) => {
+                    //         if (res.code === '200') {
+                    //             if (res.data.r_id === 1) {
+                    //                 if (res.data.stat === 1) {
+                    //                     router.push("/allShop");
+                    //                     ElMessage.success("登录成功");
+                    //                     localStorage.setItem("r_id", res.data.r_id);
+                    //                     localStorage.setItem("u_id", res.data.u_id);
+                    //                     localStorage.setItem("ms_username", res.data.username);
+                    //                     localStorage.setItem("head", res.data.picSrc);
+                    //                 } else {
+                    //                     ElMessage.error("该账号已被停用！");
+                    //                 }
 
-                                } else {
-                                    ElMessage.error('非普通用户账号！');
-                                }
-                            } else {
-                                ElMessage.error(res.msg);
-                            }
-                        })
-                    } else if (radio.value === 6) {
+                    //             } else {
+                    //                 ElMessage.error('非普通用户账号！');
+                    //             }
+                    //         } else {
+                    //             ElMessage.error(res.msg);
+                    //         }
+                    //     })
+                    // } else
+                    if (radio.value === 6) {
                         ManagerLogin(param).then((res) => {
                             if (res.code === '200') {
                                 if (res.data.stat === 1) {
@@ -108,7 +111,7 @@ export default {
                                     localStorage.setItem("ms_username", res.data.username);
                                     localStorage.setItem("head", "res.data.picSrc");
                                 } else {
-                                    ElMessage.error("该账号已被停用！");
+                                    ElMessage.error("该账号未被启用，请联系管理员！");
                                 }
 
                             } else {

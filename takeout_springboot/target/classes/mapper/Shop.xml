@@ -45,4 +45,7 @@
         insert into shop(shop_name,logo_src,license,delivery_cost,min_cost,shop_phone,address_detail,delivery_time,total_sales,stat,s_m_id)
         values (#{shop_name},#{logo_src},#{license},#{delivery_cost},#{min_cost},#{shop_phone},#{address_detail},#{delivery_time},0,0,#{s_m_id})
     </insert>
+
+
+
 </mapper>

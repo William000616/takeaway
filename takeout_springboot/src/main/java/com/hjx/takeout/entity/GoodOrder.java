@@ -11,4 +11,10 @@ public class GoodOrder {
     private String good_name;
     private String price;
     private String good_pic;//外
+
+    public GoodOrder(Integer o_id, Integer g_id, Integer count) {
+        this.o_id=o_id;
+        this.g_id=g_id;
+        this.count=count;
+    }
 }

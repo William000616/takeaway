@@ -9,7 +9,6 @@
             <div style="margin-top: 50px">
                 <van-tag color="#ffe1e1" size="large" text-color="#ad0000">vvvip</van-tag>
                 <span style="color: #409EFF;" v-model="user.username"> {{ user.username }}</span>
-                <h4 style="color: #409EFF;" v-model="user.score">积分： {{ user.score }} </h4>
             </div>
             <div style=" margin-top: 20px">
                 <van-button round type="info" style="width: 200px" @click="updateMessage">修改个人信息</van-button>

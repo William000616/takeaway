@@ -298,7 +298,7 @@
         <!--添加收货地址页面-->
         <div v-if="showAddAddress">
             <slot><van-nav-bar title="新的地址" left-text="返回" left-arrow @click-left="backChooseAddress" /></slot>
-            <van-address-edit :area-list="areaList" show-set-default :area-columns-placeholder="['请选择', '请选择', '请选择']"
+            <van-address-edit :show-area="false" show-set-default :area-columns-placeholder="['请选择', '请选择', '请选择']"
                 @save="onSave" />
             <!--遮挡板-->
             <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100"
@@ -377,7 +377,7 @@
 import Toast from "vant/lib/toast";
 import { Dialog } from 'vant';
 import { areaList } from '@vant/area-data';
-import { GetCategory, GetGood, GetAddress, CreateOrder } from "../../api/api.js";
+import { GetCategory, GetGood, GetAddress, CreateOrder, GetShopById } from "../../api/api.js";
 export default {
     name: "Shop",
 
@@ -421,14 +421,13 @@ export default {
             })
 
         });
-        this.axios.get("http://localhost:3000/shop/listById", {
-            params: {
-                s_id: this.$route.params.shop.s_id
-            }
-        }).then(resp => {
-            this.shopMessage = resp.data.data[0];
-            this.minPrice = resp.data.data[0].min_cost;
-            this.delivery_price = resp.data.data[0].delivery_cost;
+        const param = {
+            s_id: this.$route.params.shop.s_id
+        }
+        GetShopById(param).then(resp => {
+            this.shopMessage = resp.data[0];
+            this.minPrice = resp.data[0].min_cost;
+            this.delivery_price = resp.data[0].delivery_cost;
         })
     },
     computed: {
@@ -528,7 +527,7 @@ export default {
             u_id: localStorage.getItem("u_id"),
             isShowSelectedGoods: false,
             chosenAddressId: 0,
-            createTime: '',
+            create_time: '',
             /*店铺信息*/
             shopMessage: '',
 
@@ -648,31 +647,25 @@ export default {
                     CreateOrder(data).then((res) => {
                         if (res.code === '200') {
                             console.log(1)
+                            this.$router.push({
+                                name: "paySuccess",
+                                params: {
+                                    o_id: res.data.o_id,
+                                    order_Number: res.data.order_Number,
+                                    good_total_price: res.data.good_total_price,
+                                    delivery_price: res.data.delivery_price,
+                                    total_price: res.data.total_price,
+                                    // goods: this.selectedGoods,
+                                    a_id: res.data.a_id,
+                                    // shop_name: this.shopMessage.shop_name,
+                                    order_Stat: res.data.order_Stat,
+                                    create_time: res.data.create_time
+                                }
+                            });
+                        } else {
+                            Toast("由于网络或其他原因，创建订单失败！！！")
                         }
                     })
-                    // this.axios.post("http://localhost:8084/createOrder", this.orderInfo)
-                    //     .then(resp => {
-                    //         if (resp.data !== null) {
-                    //             console.log(resp.data.orderNumber);
-                    //             this.$router.push({
-                    //                 name: "paySuccess",
-                    //                 params: {
-                    //                     oid: resp.data.oid,
-                    //                     orderNumber: resp.data.orderNumber,
-                    //                     good_total_price: resp.data.good_total_price,
-                    //                     delivery_price: resp.data.delivery_price,
-                    //                     total_price: resp.data.total_price,
-                    //                     goods: this.selectedGoods,
-                    //                     addressMessage: this.addressMessage,
-                    //                     shop_name: this.shopMessage.shop_name,
-                    //                     orderStat: resp.data.orderStat,
-                    //                     createTime: resp.data.createTime
-                    //                 }
-                    //             });
-                    //         } else {
-                    //             Toast("由于网络或其他原因，创建订单失败！！！")
-                    //         }
-                    //     })
                 }, 2000);
             });
 
@@ -685,6 +678,7 @@ export default {
             console.log(this.addressMessage);
             this.showAddress = false;
             this.showPay = true;
+            this.chosenAddressId = item.a_id
         },
 
         /*新增收货地址*/
@@ -720,8 +714,9 @@ export default {
 
         /*添加收货地址页面*/
         onAdd() {
-            this.showAddAddress = true;
-            this.showAddress = false;
+            // this.showAddAddress = true;
+            // this.showAddress = false;
+            Toast("请到个人中心添加地址！");
         },
 
         /*返回选择收货地址*/
@@ -748,6 +743,13 @@ export default {
                 this.addressList = resp.data
                 this.showPay = false;
                 this.showAddress = true;
+                if (this.addressList.length > 0) {
+                    this.addressList.map((item) => {
+                        item.id = item.a_id
+                    })
+                    // this.chosenAddressId = this.addressList[0].id
+                }
+
             })
             // const that = this;
             // this.axios.get("http://localhost:8084/listAddress", {

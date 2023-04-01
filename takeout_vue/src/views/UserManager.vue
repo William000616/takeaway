@@ -28,7 +28,7 @@
                 </el-table-column>
                 <el-table-column prop="name" label="真实姓名"></el-table-column>
                 <el-table-column prop="phone" label="手机号"></el-table-column>
-                <el-table-column prop="score" label="积分"></el-table-column>
+                <!-- <el-table-column prop="score" label="积分"></el-table-column> -->
                 <el-table-column prop="stat" label="状态">
                     <template #default="scope">
                         <el-tag @click="handleState(scope.$index, scope.row)" :type="

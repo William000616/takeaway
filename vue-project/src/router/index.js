@@ -33,6 +33,11 @@ const routes = [
     component: () => import('../views/Login.vue')
   },
   {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/Register.vue')
+  },
+  {
     path: '/user/index',
     component: () => import('../views/user/Index.vue'),
     children: [ //二级路由

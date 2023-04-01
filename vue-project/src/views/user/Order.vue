@@ -41,7 +41,7 @@
                 </div>
             </template>
             <template #num>
-                <span style="font-size: 15px;color: crimson">￥{{ order.good_total_price }}</span>
+                <span style="font-size: 15px;color: crimson">￥{{ order.total_price }}</span>
             </template>
             <template #thumb>
                 <img :src="order.logo_src" style="width: 90px;height: 80px" alt="" />

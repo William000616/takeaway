@@ -31,7 +31,7 @@
                 <el-table-column prop="name" label="店长"></el-table-column>
                 <el-table-column prop="shop_phone" label="联系方式"></el-table-column>
                 <el-table-column prop="address_detail" label="店铺地址"></el-table-column>
-                <el-table-column prop="desc" label="店铺描述"></el-table-column>
+                <!-- <el-table-column prop="desc" label="店铺描述"></el-table-column> -->
                 <el-table-column prop="stat" label="状态（点击修改状态）">
                     <template #default="scope">
                         <el-tag @click="handleState(scope.$index, scope.row)" :type="
