@@ -1,364 +1,298 @@
-import {
-  createRouter,
-  createWebHashHistory
-} from "vue-router";
-import Home from "../views/Home.vue";
-import ShopHome from "../views/ShopHome.vue";
-import UserHome from "../views/UserHome.vue";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+// import UserLogin from '../views/UserLogin.vue'
+
+Vue.use(VueRouter);
+
+/*//解决编程式路由往同一地址跳转时会报错的情况
+const originalPush = VueRouter.prototype.push;
+const originalReplace = VueRouter.prototype.replace;
+//push
+VueRouter.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject)
+    return originalPush.call(this, location, onResolve, onReject);
+  return originalPush.call(this, location).catch(err => err);
+};
+//replace
+VueRouter.prototype.replace = function push(location, onResolve, onReject) {
+  if (onResolve || onReject)
+    return originalReplace.call(this, location, onResolve, onReject);
+  return originalReplace.call(this, location).catch(err => err);
+};*/
+
+
 
 const routes = [
   {
     path: '/',
-    redirect: '/Login'
+    component: () => import('../views/Login.vue')
   },
   {
-    path: "/",
-    name: "UserHome",
-    component: UserHome,
-    children: [
-      {
-        path: "/allShop",
-        name: "allShop",
-        meta: {
-          title: '店铺信息'
-        },
-        component: () => import( /* webpackChunkName: "form" */ "../views/Shop.vue")
-      },
-      {
-        path: "/myOrder",
-        name: "myOrder",
-        meta: {
-          title: '我的订单'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/MyOrder.vue")
-      },
-      {
-        path: "/myAddress",
-        name: "myAddress",
-        meta: {
-          title: '我的地址'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/MyAddress.vue")
-      },
-      {
-        path: '/user',
-        name: 'user',
-        meta: {
-          title: '个人中心'
-        },
-        component: () => import( /* webpackChunkName: "user" */ '../views/User.vue')
-      },
-      {
-        path: '/shopGood',
-        name: 'shopGood',
-        meta: {
-          title: '商品列表'
-        },
-        component: () => import( /* webpackChunkName: "user" */ '../views/ShopGood.vue')
-      },
-    ]
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue')
   },
   {
-    path: "/",
-    name: "ShopHome",
-    component: ShopHome,
-    children: [
-      {
-        path: "/shopInfoForm",
-        name: "shopInfoForm",
-        meta: {
-          title: '店铺信息'
-        },
-        component: () => import( /* webpackChunkName: "form" */ "../views/ShopInfoForm.vue")
-      },
-      {
-        path: "/good",
-        name: "good",
-        meta: {
-          title: '菜品列表'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/GoodTable.vue")
-      },
-      {
-        path: "/category",
-        name: "category",
-        meta: {
-          title: '类别列表'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/CategoryTable.vue")
-      },
-      {
-        path: "/order",
-        name: "order",
-        meta: {
-          title: '订单列表'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/OrderTable.vue")
-      },
-      {
-        path: "/newOrder",
-        name: "newOrder",
-        meta: {
-          title: '新的订单'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/NewOrderTable.vue")
-      },
-      {
-        path: '/manager',
-        name: 'manager',
-        meta: {
-          title: '商家个人中心'
-        },
-        component: () => import( /* webpackChunkName: "user" */ '../views/Manager.vue')
-      },
-    ]
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/Register.vue')
   },
   {
-    path: "/",
-    name: "Home",
-    component: Home,
-    children: [
+    path: '/user/index',
+    component: () => import('../views/user/Index.vue'),
+    children: [ //二级路由
       {
-        path: "/dashboard",
-        name: "dashboard",
-        meta: {
-          title: '首页概览'
-        },
-        component: () => import( /* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
+        path: '/home_user',
+        component: () => import('../views/user/Home.vue')
       },
       {
-        path: "/table",
-        name: "basetable",
-        meta: {
-          title: '表格'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/BaseTable.vue")
+        path: '/my_user',
+        component: () => import('../views/user/My.vue')
       },
       {
-        path: "/shop",
-        name: "shop",
-        meta: {
-          title: '商家列表'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/ShopTable.vue")
+        path: '/order',
+        component: () => import('../views/user/Order.vue')
       },
       {
-        path: "/newShop",
-        name: "newShop",
+        path: '/search',
+        name: 'search',
+        component: () => import('../views/user/Search.vue'),
         meta: {
-          title: '店铺申请'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/NewShop.vue")
+          keepAlive: true
+        }
+      },
+      {
+        path: '/toMessage',
+        name: 'message',
+        component: () => import('../views/user/Message.vue')
+      },
+      {
+        path: '/address',
+        name: 'address',
+        component: () => import('../views/user/Address.vue')
+      },
+      {
+        path: '/addressEdit',
+        name: 'addressEdit',
+        component: () => import('../views/user/AddressEdit.vue')
+      },
+      {
+        path: '/addressAdd',
+        name: 'addressAdd',
+        component: () => import('../views/user/AddressAdd.vue')
+      },
+      {
+        path: '/shop',
+        name: 'shop',
+        component: () => import('../views/user/Shop.vue')
+      },
+      {
+        path: '/pay',
+        name: 'pay',
+        component: () => import('../views/user/Pay.vue')
+      },
+      {
+        path: '/paySuccess',
+        name: 'paySuccess',
+        component: () => import('../views/user/PaySuccess.vue')
+      },
+      {
+        path: '/orderInfo_user',
+        name: 'orderInfo_user',
+        component: () => import('../views/user/OrderInfo.vue')
       },
 
-      // {
-      //   path: "/programadd",
-      //   name: "programadd",
-      //   meta: {
-      //     title: '新建节目'
-      //   },
-      //   component: () => import( /* webpackChunkName: "login" */ "../views/ProgramAdd.vue")
-      // }, {
-      //   path: "/tableN",
-      //   name: "basetableN",
-      //   meta: {
-      //     title: '发布公告'
-      //   },
-      //   component: () => import( /* webpackChunkName: "table" */ "../views/NoticeList.vue")
-      // }, {
-      //   path: "/noticeadd",
-      //   name: "noticeadd",
-      //   meta: {
-      //     title: '新建公告'
-      //   },
-      //   component: () => import( /* webpackChunkName: "login" */ "../views/NoticeAdd.vue")
-      // }, {
-      //   path: "/tablePlan",
-      //   name: "basetablePlan",
-      //   meta: {
-      //     title: '计划列表'
-      //   },
-      //   component: () => import( /* webpackChunkName: "table" */ "../views/PlanList.vue")
-      // }, {
-      //   path: "/tablePlanM",
-      //   name: "basetablePlanM",
-      //   meta: {
-      //     title: '计划审核'
-      //   },
-      //   component: () => import( /* webpackChunkName: "table" */ "../views/PlanListManager.vue")
-      // },
-      // {
-      //   path: "/planadd",
-      //   name: "planadd",
-      //   meta: {
-      //     title: '新建计划'
-      //   },
-      //   component: () => import( /* webpackChunkName: "login" */ "../views/PlanAdd.vue")
-      // },
-      // {
-      //   path: "/tableMachine",
-      //   name: "basetableMachine",
-      //   meta: {
-      //     title: '设备列表'
-      //   },
-      //   component: () => import( /* webpackChunkName: "table" */ "../views/MachineList.vue")
-      // },
+    ]
+  }
+  // {
+  //   path: '/toUserLogin',
+  //   name: 'UserLogin',
+  //   component: UserLogin
+  // },
+  // {
+  //   path: '/toRiderLogin',
+  //   name: 'riderLogin',
+  //   component: () => import('../views/RiderLogin.vue')
+  // },
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // },
+  // {
+  //   path: '/register',
+  //   component: () => import('../views/Register.vue')
+  // },
+  // {
+  //   path: '/registerType',
+  //   component: () => import('../views/RegisterType.vue')
+  // },
+  // {
+  //   path: '/toUserRegister',
+  //   component: () => import('../views/UserRegister.vue')
+  // },
+  // {
+  //   path: '/toRiderRegister',
+  //   component: () => import('../views/RiderRegister.vue')
+  // },
+  // {
+  //   path: '/toShopManagerRegister',
+  //   component: () => import('../views/ShopManagerRegister.vue'),
+  //   children: [
+  //     {
+  //       path: '/shopManagerRegister',
+  //       component: () => import('../views/SMRegister.vue')
+  //     },
+  //     {
+  //       path: '/shopRegister',
+  //       component: () => import('../views/SRegister.vue')
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/toManagerLogin',
+  //   component: () => import('../views/ManagerLogin.vue')
+  // },
 
-      {
-        path: "/users",
-        name: "users",
-        meta: {
-          title: '顾客管理'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/UserManager.vue")
-      },
-      {
-        path: "/shopManager",
-        name: "shopManager",
-        meta: {
-          title: '店铺账号管理'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/ShopManager.vue")
-      },
-      {
-        path: "/charts",
-        name: "basecharts",
-        meta: {
-          title: '图表'
-        },
-        component: () => import( /* webpackChunkName: "charts" */ "../views/BaseCharts.vue")
-      },
-      // {
-      //   path: "/form",
-      //   name: "baseform",
-      //   meta: {
-      //     title: '表单'
-      //   },
-      //   component: () => import( /* webpackChunkName: "form" */ "../views/BaseForm.vue")
-      // },
-      {
-        path: "/tabs",
-        name: "tabs",
-        meta: {
-          title: 'tab标签'
-        },
-        component: () => import( /* webpackChunkName: "tabs" */ "../views/Tabs.vue")
-      }, {
-        path: "/donate",
-        name: "donate",
-        meta: {
-          title: '鼓励作者'
-        },
-        component: () => import( /* webpackChunkName: "donate" */ "../views/Donate.vue")
-      }, {
-        path: "/permission",
-        name: "permission",
-        meta: {
-          title: '权限管理',
-          permission: true
-        },
-        component: () => import( /* webpackChunkName: "permission" */ "../views/Permission.vue")
-      }, {
-        path: "/i18n",
-        name: "i18n",
-        meta: {
-          title: '国际化语言'
-        },
-        component: () => import( /* webpackChunkName: "i18n" */ "../views/I18n.vue")
-      }, {
-        path: "/upload",
-        name: "upload",
-        meta: {
-          title: '上传插件'
-        },
-        component: () => import( /* webpackChunkName: "upload" */ "../views/Upload.vue")
-      }, {
-        path: "/icon",
-        name: "icon",
-        meta: {
-          title: '自定义图标'
-        },
-        component: () => import( /* webpackChunkName: "icon" */ "../views/Icon.vue")
-      },
-      // {
-      //   path: '/404',
-      //   name: '404',
-      //   meta: {
-      //     title: '找不到页面'
-      //   },
-      //   component: () => import( /* webpackChunkName: "404" */ '../views/404.vue')
-      // },
-      {
-        path: '/403',
-        name: '403',
-        meta: {
-          title: '没有权限'
-        },
-        component: () => import( /* webpackChunkName: "403" */ '../views/403.vue')
-      },
-      {
-        path: '/admin',
-        name: 'admin',
-        meta: {
-          title: '管理员中心'
-        },
-        component: () => import( /* webpackChunkName: "user" */ '../views/Admin.vue')
-      },
-      {
-        path: '/editor',
-        name: 'editor',
-        meta: {
-          title: '富文本编辑器'
-        },
-        component: () => import( /* webpackChunkName: "editor" */ '../views/Editor.vue')
-      }]
-  },
-  {
-    path: "/login",
-    name: "Login",
-    meta: {
-      title: '登录'
-    },
-    component: () => import( /* webpackChunkName: "login" */ "../views/Login.vue")
-  },
-  {
-    path: "/register",
-    name: "register",
-    meta: {
-      title: '用户注册'
-    },
-    component: () => import( /* webpackChunkName: "login" */ "../views/Register.vue")
-  },
-  {
-    path: "/shopRegister",
-    name: "shopRegister",
-    meta: {
-      title: '商家注册'
-    },
-    component: () => import( /* webpackChunkName: "login" */ "../views/ShopRegister.vue"),
-  },
+  // {
+  //   path: '/rider/index',
+  //   component: () => import('../views/rider/Index.vue'),
+  //   children: [ //二级路由
+  //     {
+  //       path: '/toOrderHome',
+  //       name: 'toOrderHome',
+  //       component: () => import('../views/rider/Home.vue')
+  //     },
+  //     {
+  //       path: '/my',
+  //       name: 'my',
+  //       component: () => import('../views/rider/My.vue')
+  //     },
+  //     {
+  //       path: '/myOrder',
+  //       name: 'myOrder',
+  //       component: () => import('../views/rider/MyOrder.vue')
+  //     },
+  //     {
+  //       path: '/orderInfo',
+  //       name: 'orderInfo',
+  //       component: () => import('../views/rider/OrderInfo.vue')
+  //     },
+  //     {
+  //       path: '/orderDetail',
+  //       name: 'orderDetail',
+  //       component: () => import('../views/rider/OrderDetail.vue')
+  //     },
+  //     {
+  //       path: '/blank_rider',
+  //       name: 'blank_rider',
+  //       component: () => import("../views/rider/Blank.vue")
+  //     }
+
+  //   ]
+  // },
+
+  // {
+  //   path: '/manager/index',
+  //   component: () => import('../views/manager/Index.vue'),
+  //   children: [ //二级路由
+  //     {
+  //       path: '/home',
+  //       component: () => import('../views/manager/Home.vue')
+  //     },
+  //     {
+  //       path: '/shopMessage',
+  //       name: 'shopMessage',
+  //       component: () => import('../views/manager/ShopMessage.vue')
+  //     },
+  //     {
+  //       path: '/dataMessage',
+  //       component: () => import('../views/manager/DataMessage.vue')
+  //     },
+  //     {
+  //       path: '/goodsManage',
+  //       name: 'goodsManage',
+  //       component: () => import('../views/manager/GoodsManage.vue')
+  //     },
+  //     {
+  //       path: '/categoryManage',
+  //       name: 'categoryManage',
+  //       component: () => import('../views/manager/CategoryManage.vue')
+  //     },
+  //     {
+  //       path: '/newOrder',
+  //       name: 'newOrder',
+  //       component: () => import('../views/manager/NewOrder.vue')
+  //     },
+  //     {
+  //       path: '/oldOrder',
+  //       name: 'oldOrder',
+  //       component: () => import('../views/manager/OldOrder.vue')
+  //     },
+
+  //     {
+  //       path: '/allShops',
+  //       name: 'allShops',
+  //       component: () => import('../views/manager/AllShops.vue')
+  //     },
+  //     {
+  //       path: '/shopApplyFor',
+  //       name: 'shopApplyFor',
+  //       component: () => import('../views/manager/ShopApplyFor.vue')
+  //     },
+  //     {
+  //       path: '/userManager',
+  //       name: 'userManager',
+  //       component: () => import('../views/manager/UserManager.vue')
+  //     },
+  //     {
+  //       path: '/riderManager',
+  //       name: 'riderManager',
+  //       component: () => import('../views/manager/RiderManager.vue')
+  //     },
+  //     {
+  //       path: '/shopManagerManager',
+  //       name: 'shopManagerManager',
+  //       component: () => import('../views/manager/ShopManagerManager.vue')
+  //     },
+  //     {
+  //       path: '/blank',
+  //       name: 'blank',
+  //       component: () => import('../views/manager/Blank.vue')
+  //     }
+
+  //   ]
+  // },
+
 
 ];
 
-const router = createRouter({
-  history: createWebHashHistory(),
+
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  // document.title = `${to.meta.title} | 饱了吗外卖后台管理系统`;
-  document.title = `饱了吗外卖后台管理系统`;
-  const role = localStorage.getItem('ms_username');
-  if (!role && to.path !== '/login') {
-    next('/login');
-  } else if (to.meta.permission) {
-    // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
-    role === 'admin' ?
-      next() :
-      next('/403');
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   // document.title = `${to.meta.title} | 饱了吗外卖后台管理系统`;
+//   document.title = `饱了吗外卖`;
+//   console.log(to.path)
+//   const role = localStorage.getItem('ms_username');
+//   if (to.path !== '/login') {
+//     next('/login');
+//   } else if (to.meta.permission) {
+//     // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
+//     role === 'admin' ?
+//       next() :
+//       next('/403');
+//   } else {
+//     next();
+//   }
+// });
 
-export default router;
+export default router

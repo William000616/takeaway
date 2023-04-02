@@ -1,65 +1,61 @@
-import { createStore } from 'vuex'
+// import Vue from 'vue'
+// import Vuex from 'vuex'
 
-export default createStore({
-    state: {
-        tagsList: [],
-        collapse: false,
-        head: "",
-    },
-    mutations: {
-        delTagsItem(state, data) {
-            state
-                .tagsList
-                .splice(data.index, 1);
-        },
-        setTagsItem(state, data) {
-            state
-                .tagsList
-                .push(data)
-        },
-        clearTags(state) {
-            state.tagsList = []
-        },
-        closeTagsOther(state, data) {
-            state.tagsList = data;
-        },
-        closeCurrentTag(state, data) {
-            for (let i = 0, len = state.tagsList.length; i < len; i++) {
-                const item = state.tagsList[i];
-                if (item.path === data.$route.fullPath) {
-                    if (i < len - 1) {
-                        data
-                            .$router
-                            .push(state.tagsList[i + 1].path);
-                    } else if (i > 0) {
-                        data
-                            .$router
-                            .push(state.tagsList[i - 1].path);
-                    } else {
-                        data
-                            .$router
-                            .push("/");
-                    }
-                    state
-                        .tagsList
-                        .splice(i, 1);
-                    break;
-                }
-            }
-        },
-        // 侧边栏折叠
-        handleCollapse(state, data) {
-            state.collapse = data;
-        },
-        changeHead(state, head) {
-            state.head = head;
-        }
-    },
-    actions: {},
-    modules: {},
-    getters: {
-        getHead(state) {
-            return state.head;
-        }
-    }
-})
+// Vue.use(Vuex);
+
+// export default new Vuex.Store({
+//     state: {
+//         userInfo: JSON.parse(localStorage.getItem("userInfo")),
+//         riderInfo: localStorage.getItem("riderInfo"),
+//         shopManagerInfo: localStorage.getItem("shopManagerInfo"),
+//         managerInfo: localStorage.getItem("managerInfo"),
+//         sid: localStorage.getItem("sid")
+//     },
+//     mutations: {
+//         SET_USERINFO: (state, userInfo) => {
+//             state.userInfo = userInfo;
+//             localStorage.setItem("userInfo", JSON.stringify(userInfo));
+//         },
+//         SET_RIDERINFO: (state, riderInfo) => {
+//             state.riderInfo = riderInfo;
+//             localStorage.setItem("riderInfo", JSON.stringify(riderInfo));
+//         },
+//         SET_SHOPMANAGERINFO: (state, shopManagerInfo) => {
+//             state.shopManagerInfo = shopManagerInfo;
+//             localStorage.setItem("shopManagerInfo", JSON.stringify(shopManagerInfo));
+//         },
+//         SET_MANAGERINFO: (state, managerInfo) => {
+//             state.managerInfo = managerInfo;
+//             localStorage.setItem("managerInfo", JSON.stringify(managerInfo));
+//         },
+//         SET_SID: (state, sid) => {
+//             state.sid = sid;
+//             localStorage.setItem("sid", JSON.stringify(sid));
+//         }
+//     },
+//     getters: {
+//         getUser: state => {
+//             return state.userInfo
+//         },
+
+//         getRider: state => {
+//             return state.riderInfo
+//         },
+
+//         getShopManager: state => {
+//             return state.shopManagerInfo
+//         },
+
+//         getManager: state => {
+//             return state.managerInfo
+//         },
+
+//         getSid: state => {
+//             return state.sid
+//         }
+//     },
+//     actions: {
+//     },
+//     modules: {
+//     }
+// })

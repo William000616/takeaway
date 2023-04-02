@@ -74,7 +74,7 @@ public class OrderService implements IOrderService {
     @Override
     public Order createOrder(Order order) {
         Date date=new Date();
-        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         DateFormat dateNumFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         String orderNumber = "DM" +dateNumFormat.format(date) +"000" + order.getU_id();
         String strDate = dateformat.format(date);

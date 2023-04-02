@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/takeaway.iml" filepath="$PROJECT_DIR$/.idea/takeaway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/takeout_springboot/takeout.iml" filepath="$PROJECT_DIR$/takeout_springboot/takeout.iml" />
     </modules>
   </component>
 </project>

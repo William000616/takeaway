@@ -15,6 +15,7 @@
             </if>
             and shop.s_id = order_takeout.s_id
         </where>
+        ORDER BY create_time DESC
     </select>
 
     <!--根据用户sid查询所有order-->
