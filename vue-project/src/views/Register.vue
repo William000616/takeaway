@@ -6,8 +6,10 @@
 
             <div style="margin: 16px;">
                 <div style="display: flex; justify-content: center;margin-top: 5%;">
-                    <van-uploader :after-read="afterRead" />
-                    <!-- <van-image round width="150" height="150" src="https://img01.yzcdn.cn/vant/cat.jpeg" /> -->
+                    <van-uploader :after-read="afterRead">
+                        <van-image round width="150" height="150" :src="picSrc" />
+                    </van-uploader>
+
                     <!-- <van-image v-if="user.picSrc !== null" round width="150" height="150" :src="user.picSrc" /> -->
                 </div>
             </div>
@@ -35,7 +37,7 @@
 <script>
 
 import Toast from "vant/lib/toast";
-import { UserRegister } from "../api/api.js";
+import { UserRegister, Upload } from "../api/api.js";
 export default {
     data() {
         return {
@@ -48,19 +50,30 @@ export default {
     },
     methods: {
         onSubmit(values) {
-            console.log(values)
-            UserRegister(values).then((res) => {
+            const data = { ...values, picSrc: this.picSrc }
+            UserRegister(data).then((res) => {
                 if (res.code === '200') {
                     this.$router.push('/login')
                     Toast("注册成功！");
                 } else {
-                    Toast("注册失败！")
+                    Toast("用户已存在！")
                 }
             })
         },
         afterRead(file) {
             // 此时可以自行将文件上传至服务器
-            console.log(file);
+            let formData = new FormData();
+            formData.append('file', file.file);
+            console.log(formData);
+            Upload(formData).then(res => {
+                console.log(res)
+                if (res.code === '200') {
+                    this.picSrc = res.data
+                }
+
+            })
+
+
         },
     },
 };

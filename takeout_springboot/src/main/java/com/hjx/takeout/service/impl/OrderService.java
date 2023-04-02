@@ -54,7 +54,7 @@ public class OrderService implements IOrderService {
     @Override
     public void shopPickOrder(Order order) {
         Date date=new Date();
-        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String strDate = dateformat.format(date);
         order.setOrder_time(strDate);
         orderMapper.shopPickOrder(order);
@@ -63,7 +63,7 @@ public class OrderService implements IOrderService {
     @Override
     public void changeOrderState(Order order) {
         Date date=new Date();
-        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String strDate = dateformat.format(date);
         if(order.getOrder_Stat()==4){
             order.setArrive_time(strDate);

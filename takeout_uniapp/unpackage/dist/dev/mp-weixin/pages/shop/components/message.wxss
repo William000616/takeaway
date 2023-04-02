@@ -12,7 +12,8 @@
 	justify-content: space-between;
 	height: 50rpx;
 	align-items: center;
-	margin-bottom: 15rpx;
+	/* margin-bottom: 15upx;*/
+	margin: 0 20px;
 }
 .message-time.data-v-3ca0c044{
 	font-size: 25rpx;
@@ -43,9 +44,7 @@
 	overflow: hidden;
 }
 .message-dist.data-v-3ca0c044{
-	margin-top: 30rpx;
 	color: #cccccc;
 	text-align: center;
-	padding-top: 40rpx;
 }
 

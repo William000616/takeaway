@@ -2,9 +2,9 @@
     <div>
         <div style="height: 150px;margin-top: 70px">
             <div style="">
-                <van-image v-if="user.picSrc === null" round width="150" height="150"
-                    src="https://img01.yzcdn.cn/vant/cat.jpeg" />
-                <van-image v-if="user.picSrc !== null" round width="150" height="150" :src="user.picSrc" />
+                <van-uploader :after-read="afterRead">
+                    <van-image round width="150" height="150" :src="user.picSrc" />
+                </van-uploader>
             </div>
             <div style="margin-top: 50px">
                 <van-tag color="#ffe1e1" size="large" text-color="#ad0000">vvvip</van-tag>
@@ -27,7 +27,7 @@
 
 <script>
 import Toast from "vant/lib/toast";
-
+import { Upload } from "../../api/api.js";
 export default {
     name: "My",
     created() {
@@ -61,7 +61,23 @@ export default {
                 }
             });
         },
+        afterRead(file) {
+            // 此时可以自行将文件上传至服务器
+            let formData = new FormData();
+            formData.append('file', file.file);
+            console.log(formData);
+            Upload(formData).then(res => {
+                console.log(res)
+                if (res.code === '200') {
+                    this.user.picSrc = res.data
+                    localStorage.setItem("head", res.data);
+                    Toast("头像修改成功！");
+                }
 
+            })
+
+
+        },
         getAddress() {
             this.$router.push('/address');
         },

@@ -140,7 +140,9 @@ export default {
             } else if (stat === 3) {
                 return '订单配送中,等待送达';
             } else if (stat === 4) {
-                return '订单已送达';
+                return '订单已送达,未评价';
+            } else if (stat === 5) {
+                return '订单已完成';
             }
         },
         onClickLeft() {

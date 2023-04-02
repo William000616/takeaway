@@ -34,7 +34,9 @@
                                     ? '已接单'
                                     : scope.row.order_Stat === 3
                                         ? '配送中'
-                                        : '已完成' }}
+                                        : scope.row.order_Stat === 4
+                                            ? '待评价'
+                                            : '已完成' }}
                         </el-tag>
 
                     </template>

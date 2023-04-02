@@ -16,6 +16,14 @@ export const UserRegister = query => {
     });
 };
 
+export const Upload = query => {
+    return request({
+        url: '/file/upload',
+        method: 'post',
+        data: query
+    });
+};
+
 export const GetAddress = query => {
     return request({
         url: '/address/list',
@@ -109,5 +117,37 @@ export const GetShopById = query => {
         url: '/shop/listById',
         method: 'get',
         params: query
+    });
+};
+
+export const GetComment = query => {
+    return request({
+        url: '/comment/list',
+        method: 'get',
+        params: query
+    });
+};
+
+export const AddComment = query => {
+    return request({
+        url: '/comment/add',
+        method: 'post',
+        data: query
+    });
+};
+
+export const GetCommentById = query => {
+    return request({
+        url: '/comment/listById',
+        method: 'get',
+        params: query
+    });
+};
+
+export const changeOrderState = query => {
+    return request({
+        url: '/order/changeOrderState',
+        method: 'put',
+        data: query
     });
 };

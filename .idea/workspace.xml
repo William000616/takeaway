@@ -4,7 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a06cc67-7d36-4c6d-95c2-e9f96f68fd1d" name="变更" comment="变更" />
+    <list default="true" id="0a06cc67-7d36-4c6d-95c2-e9f96f68fd1d" name="变更" comment="变更">
+      <change afterPath="$PROJECT_DIR$/files/1680411488950_kfcLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/1680411566894_小狗_20210905195633.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/1680412349962_kfcLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/1680412397567_kfcLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/1680412416614_小黄鸭_20210905112153.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/1680412780883_kfcLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/1680412844824_hls_20210818164509.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/controller/CommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/entity/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/mapper/CommentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/ICommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/CommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Comment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/java/com/hjx/takeout/service/impl/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/src/main/resources/mapper/Order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/com/hjx/takeout/service/impl/OrderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/Order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_springboot/target/classes/mapper/Order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_uniapp/pages/shop/components/message.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_uniapp/pages/shop/components/message.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/.sourcemap/mp-weixin/pages/shop/components/message.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/.sourcemap/mp-weixin/pages/shop/components/message.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/mp-weixin/pages/shop/components/business.js" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/mp-weixin/pages/shop/components/business.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/mp-weixin/pages/shop/components/message.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/mp-weixin/pages/shop/components/message.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/mp-weixin/pages/shop/components/tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/mp-weixin/pages/shop/components/tabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/mp-weixin/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_uniapp/unpackage/dist/dev/mp-weixin/project.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/MyOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/MyOrder.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takeout_vue/src/views/OrderTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/takeout_vue/src/views/OrderTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/views/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/src/views/user/My.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/views/user/My.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/src/views/user/Order.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/views/user/Order.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/src/views/user/OrderInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/views/user/OrderInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-project/src/views/user/Shop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/views/user/Shop.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,10 +89,10 @@
       <recent name="D:\PROJECT\github\takeaway\takeout_springboot\src\main\resources\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.hjx.takeout.mapper" />
+      <recent name="com.hjx.takeout.controller" />
       <recent name="com.hjx.takeout.service.impl" />
       <recent name="com.hjx.takeout.service" />
-      <recent name="com.hjx.takeout.controller" />
+      <recent name="com.hjx.takeout.mapper" />
       <recent name="com.hjx.takeout.controller.request" />
     </key>
   </component>

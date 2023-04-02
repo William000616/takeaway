@@ -58,9 +58,12 @@
         where o_id = #{o_id}
     </update>
 
-    <!--商家修改订单状态-->
+    <!--修改订单状态-->
     <update id="changeOrderState">
-        update order_takeout set order_Stat = #{order_Stat},arrive_time = #{arrive_time}
+        update order_takeout set order_Stat = #{order_Stat}
+        <if test="arrive_time!=null and arrive_time != ''">
+             ,arrive_time = #{arrive_time}
+        </if>
         where o_id = #{o_id}
     </update>
 

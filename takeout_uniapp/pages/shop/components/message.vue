@@ -38,7 +38,8 @@
 		justify-content: space-between;
 		height: 50upx;
 		align-items: center;
-		margin-bottom: 15upx;
+		/* margin-bottom: 15upx;*/
+		margin: 0 20px;
 	}
 	.message-time{
 		font-size: 25upx;
@@ -71,9 +72,7 @@
 		overflow: hidden;
 	}
 	.message-dist{
-		margin-top: 30upx;
 		color: #cccccc;
 		text-align: center;
-		padding-top: 40upx;
 	}
 </style>

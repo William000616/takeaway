@@ -83,14 +83,28 @@
                     </van-tab>
 
                     <van-tab title="评价" name="comment">
-                        <h1>123</h1>
-
+                        <template v-for="(item, index) in commentList ">
+                            <div class="message-dist">
+                                <div class="users-message">
+                                    <div class="cont-name">
+                                        <image src=""></image>
+                                        <p>{{ item.username }}</p>
+                                    </div>
+                                    <div class="message-time">
+                                        <p>{{ item.cm_date }}</p>
+                                    </div>
+                                </div>
+                                <div class="cont-name-text">
+                                    <p>{{ item.message }}</p>
+                                </div>
+                            </div>
+                        </template>
                     </van-tab>
 
-                    <van-tab title="商家" name="sell">
+                    <!-- <van-tab title="商家" name="sell">
 
 
-                    </van-tab>
+                    </van-tab> -->
 
                 </van-tabs>
                 <!--填充-->
@@ -309,20 +323,6 @@
             :search-result="searchResult"-->
         </div>
 
-
-        <!--付款页面-->
-        <!-- <div v-if="showPayMoney">
-            <slot><van-nav-bar
-                    title="付款页面"
-                    left-text="返回"
-                    left-arrow
-                    @click-left="backPay"
-            /></slot>
-            &lt;!&ndash;遮挡板&ndash;&gt;
-            <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100" v-if="showPayMoney">
-
-            </div>
-        </div>-->
     </div>
 </template>
 <style scoped>
@@ -371,13 +371,64 @@
     background: #00b43c;
     color: #fff
 }
+
+.users-message {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.message-time {
+    font-size: 20px;
+    color: #A8A8A8;
+}
+
+.cont-name image {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    margin-right: 9px;
+
+}
+
+.cont-name p {
+    font-size: 20px;
+    color: #A8A8A8;
+}
+
+.cont-name {
+    display: flex;
+    align-items: center;
+    height: 50px;
+
+}
+
+.cont-name-text p {
+    font-size: 20px;
+    color: #333333;
+    line-height: 1.5;
+    /* display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; */
+    display: flex;
+    margin: 0 6%;
+    text-align: left;
+    overflow: hidden;
+}
+
+.message-dist {
+    color: #cccccc;
+    text-align: center;
+}
 </style>
 <script>
 
 import Toast from "vant/lib/toast";
 import { Dialog } from 'vant';
 import { areaList } from '@vant/area-data';
-import { GetCategory, GetGood, GetAddress, CreateOrder, GetShopById } from "../../api/api.js";
+import { GetCategory, GetGood, GetAddress, CreateOrder, GetShopById, GetComment } from "../../api/api.js";
 export default {
     name: "Shop",
 
@@ -421,6 +472,12 @@ export default {
             })
 
         });
+        GetComment(params).then(res => {
+            console.log(res);
+            if (res.code === '200') {
+                this.commentList = res.data
+            }
+        })
         const param = {
             s_id: this.$route.params.shop.s_id
         }
@@ -475,7 +532,8 @@ export default {
                 total_price: '',
                 goods: '',
                 addressMessage: '',
-                shop_name: ''
+                shop_name: '',
+
             },
 
             /*显示店铺主页面*/
@@ -530,6 +588,23 @@ export default {
             create_time: '',
             /*店铺信息*/
             shopMessage: '',
+            commentList: [
+                {
+                    username: '张三',
+                    message: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
+                    cm_date: '130105',
+                },
+                {
+                    username: '张三',
+                    message: '13000000000',
+                    cm_date: '130105',
+                },
+                {
+                    username: '张三',
+                    message: '13000000000',
+                    cm_date: '130105',
+                },
+            ],
 
             addressList: [
                 {

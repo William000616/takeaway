@@ -28,14 +28,16 @@
                                 ? '已接单'
                                 : scope.row.order_Stat === 3
                                     ? '配送中'
-                                    : '已完成' }}
+                                    : scope.row.order_Stat === 4
+                                        ? '待评价'
+                                        : '已完成' }}
                         </el-tag>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
                         <el-button type="text" @click="handleDelete(scope.$index, scope.row)">订单详情</el-button>
-                        <el-button type="text" v-if="scope.row.order_Stat !== 4"
+                        <el-button type="text" v-if="scope.row.order_Stat !== 4 && scope.row.order_Stat !== 5"
                             @click="handleEdit(scope.$index, scope.row)">修改状态</el-button>
                     </template>
                 </el-table-column>
@@ -93,9 +95,13 @@ export default {
                 value: 3
             },
             {
-                label: "已完成",
+                label: "已送达",
                 value: 4
-            }
+            },
+            {
+                label: "已完成",
+                value: 5
+            },
         ]);
         const params = reactive({
             order_Number: "",
@@ -263,13 +269,18 @@ export default {
             // Edit.value.validate((valid) => {
             //     if (valid) {
             changeOrderState(query).then((res) => {
-                if (res.code === "200") {
-                    editVisible.value = false;
-                    ElMessage.success(`修改成功`);
-                    getData();
+                if (query.order_Stat === 5) {
+                    ElMessage.error(`请确保订单先送达！`);
                 } else {
-                    ElMessage.error(`修改失败`);
+                    if (res.code === "200") {
+                        editVisible.value = false;
+                        ElMessage.success(`修改成功`);
+                        getData();
+                    } else {
+                        ElMessage.error(`修改失败`);
+                    }
                 }
+
 
             });
             //     }

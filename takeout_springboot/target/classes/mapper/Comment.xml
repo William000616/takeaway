@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hjx.takeout.mapper.CommentMapper">
+
+
+    <select id="list" resultType="com.hjx.takeout.entity.Comment">
+        select comment.*,user.username from comment,user  where comment.s_id = #{s_id} and user.u_id=comment.u_id
+    </select>
+
+
+    <insert id="add">
+        insert into comment(u_id,s_id,o_id,cm_date,message) values (#{u_id},#{s_id},#{o_id},#{cm_date},#{message})
+    </insert>
+
+
+    <select id="listById" resultType="com.hjx.takeout.entity.Comment">
+        select * from comment  where o_id = #{o_id} 
+    </select>
+
+
+<!--    &lt;!&ndash;根据uid删除user&ndash;&gt;-->
+<!--    <delete id="delete">-->
+<!--        delete from category where c_id = #{c_id}-->
+<!--    </delete>-->
+</mapper>
