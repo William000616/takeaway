@@ -53,7 +53,7 @@
         </el-dialog>
 
         <!-- 新建弹出框 -->
-        <el-dialog title="新建账户" v-model="createVisible" width="30%">
+        <el-dialog title="新增菜品类别" v-model="createVisible" width="30%">
             <el-form label-width="70px">
                 <el-form-item label="类别名" prop="category_name">
                     <el-input v-model="New.category_name"></el-input>
@@ -110,7 +110,7 @@ export default {
                 if (res.code === '200') {
                     var list = res.data
                     tableData.value = list;
-                    pageTotal.value = list.length || 50;
+                    pageTotal.value = list.length || 0;
                 }
 
             });

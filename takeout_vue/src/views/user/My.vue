@@ -5,10 +5,11 @@
                 <van-uploader :after-read="afterRead">
                     <van-image round width="150" height="150" :src="user.picSrc" />
                 </van-uploader>
+                <p>点击修改头像</p>
             </div>
-            <div style="margin-top: 50px">
+            <div style="margin-top: 30px">
                 <van-tag color="#ffe1e1" size="large" text-color="#ad0000">vvvip</van-tag>
-                <span style="color: #409EFF;" v-model="user.username"> {{ user.username }}</span>
+                <span style="color: #409EFF; font-size: 40px;" v-model="user.username"> {{ user.username }}</span>
             </div>
             <div style=" margin-top: 20px">
                 <van-button round type="info" style="width: 200px" @click="updateMessage">修改密码</van-button>
@@ -63,11 +64,11 @@ export default {
                     this.user.picSrc = res.data
                     const params = {
                         picSrc: this.user.picSrc,
-                        u_id: localStorage.getItem("ms_username")
+                        u_id: localStorage.getItem("u_id")
                     }
+                    console.log(params)
                     userPicSrcEdit(params).then((resp) => {
                         if (res.code === '200') {
-
                             localStorage.setItem("head", res.data);
                             Toast("头像修改成功！");
                         }

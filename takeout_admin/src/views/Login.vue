@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="ms-login">
-            <div class="ms-title">饱了吗外卖后台管理系统</div>
+            <div class="ms-title">餐饮外卖管理系统</div>
             <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
                 <el-form-item prop="username">
                     <el-input v-model="param.username" placeholder="username">
@@ -77,29 +77,6 @@ export default {
         const submitForm = () => {
             login.value.validate((valid) => {
                 if (valid) {
-                    // if (radio.value === 3) {
-                    //     UserLogin(param).then((res) => {
-                    //         if (res.code === '200') {
-                    //             if (res.data.r_id === 1) {
-                    //                 if (res.data.stat === 1) {
-                    //                     router.push("/allShop");
-                    //                     ElMessage.success("登录成功");
-                    //                     localStorage.setItem("r_id", res.data.r_id);
-                    //                     localStorage.setItem("u_id", res.data.u_id);
-                    //                     localStorage.setItem("ms_username", res.data.username);
-                    //                     localStorage.setItem("head", res.data.picSrc);
-                    //                 } else {
-                    //                     ElMessage.error("该账号已被停用！");
-                    //                 }
-
-                    //             } else {
-                    //                 ElMessage.error('非普通用户账号！');
-                    //             }
-                    //         } else {
-                    //             ElMessage.error(res.msg);
-                    //         }
-                    //     })
-                    // } else
                     if (radio.value === 6) {
                         ManagerLogin(param).then((res) => {
                             if (res.code === '200') {

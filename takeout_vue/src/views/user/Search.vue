@@ -10,14 +10,6 @@
             <div slot="header" class="clearfix">
                 <span>{{ title }}</span>
             </div>
-            <!-- <van-card  v-for="(good,index) in goods" :key="index"
-                       :num="good.num"
-                       :price="good.price"
-                       :desc="good.desc"
-                       :title="good.title"
-                       :thumb="good.thumb"
-            >
-            </van-card> -->
             <van-card v-for="(shop, index) in shops" :key="index" @click="toShop(shop)">
                 <template #title>
                     <span>
@@ -39,31 +31,6 @@
                 </template>
             </van-card>
 
-            <!-- <ul>
-                <li v-for="(shop, index) in shops" :key="index">
-                    <div style="border-radius: 10px;background-color: white" @click="toShop(shop)">
-                        <div style="display:inline-block;float: left">
-                            <img :src="shop.logo_src" width="80" height="80" alt="">
-                        </div>
-                        <div style="">
-                            <h3 style="width: 195px;margin-bottom: 5px;padding-left: 80px;text-align: left">
-                                {{ shop.shop_name }}</h3>
-                            <div style="width: 195px;padding-left: 80px;text-align: left">
-                                <span style="font-size: 15px;">月售{{ shop.total_sales }}</span><br>
-                            </div>
-                            <div style="width: 195px;font-size: 15px;padding-left: 80px;text-align: left">
-                                <span style="">起送￥{{ shop.delivery_cost }}</span>
-                                <span style="margin: 5px">配送￥{{ shop.min_cost }}</span>
-                                <span style="margin: 5px" v-if="shop.delivery_time === null">40分钟</span>
-                                <span style="margin: 5px" v-if="shop.delivery_time !== null">{{ shop.delivery_time
-                                }}分钟</span>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-            </ul> -->
         </el-card>
         <!--填充-->
         <div style="height:60px;display:block;background-color: white"></div>
@@ -83,15 +50,6 @@ export default {
             cardShow: true,
             title: '',
             shops: [
-                // {
-                //     shopName: "蜜雪冰城",
-                //     desc: "冰淇淋与茶",
-                //     totalSales: 2000,
-                //     minCost: "15",
-                //     deliveryCost: "3",
-                //     deliveryTime: "40",
-                //     logoSrc: "upload/蜜雪冰城logo_20210905175221.png"
-                // },
 
             ],
         }
@@ -112,7 +70,7 @@ export default {
             }
             GetAllShop(params).then(resp => {
                 console.log(resp.data);
-                this.shops = resp.data.data.list;
+                this.shops = resp.data.list;
             })
         },
 

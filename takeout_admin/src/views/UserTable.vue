@@ -32,12 +32,12 @@
                 <el-table-column label="状态" align="center">
                     <template #default="scope">
                         <el-tag :type="
-                                scope.row.state === '成功'
-                                    ? 'success'
-                                    : scope.row.state === '失败'
+                            scope.row.state === '成功'
+                                ? 'success'
+                                : scope.row.state === '失败'
                                     ? 'danger'
                                     : ''
-                            ">{{ scope.row.state }}</el-tag>
+                        ">{{ scope.row.state }}</el-tag>
                     </template>
                 </el-table-column>
 
@@ -97,7 +97,7 @@ export default {
         const getData = () => {
             fetchData(query).then((res) => {
                 tableData.value = res.list;
-                pageTotal.value = res.pageTotal || 50;
+                pageTotal.value = res.pageTotal || 0;
             });
         };
         getData();
@@ -123,7 +123,7 @@ export default {
                     ElMessage.success("删除成功");
                     tableData.value.splice(index, 1);
                 })
-                .catch(() => {});
+                .catch(() => { });
         };
 
         // 表格编辑时弹窗和保存
@@ -177,20 +177,23 @@ export default {
     width: 300px;
     display: inline-block;
 }
+
 .table {
     width: 100%;
     font-size: 14px;
 }
+
 .red {
     color: #ff0000;
 }
+
 .mr10 {
     margin-right: 10px;
 }
+
 .table-td-thumb {
     display: block;
     margin: auto;
     width: 40px;
     height: 40px;
-}
-</style>
+}</style>

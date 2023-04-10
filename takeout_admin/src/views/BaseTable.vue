@@ -97,7 +97,7 @@ export default {
         const getData = () => {
             fetchData(query).then((res) => {
                 tableData.value = res.list;
-                pageTotal.value = res.pageTotal || 50;
+                pageTotal.value = res.pageTotal || 0;
             });
         };
         getData();
@@ -196,4 +196,5 @@ export default {
     margin: auto;
     width: 40px;
     height: 40px;
-}</style>
+}
+</style>

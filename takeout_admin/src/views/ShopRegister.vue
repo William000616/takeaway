@@ -53,7 +53,7 @@
                         <el-input v-model="form.address_detail"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmit">提交修改</el-button>
+                        <el-button type="primary" @click="onSubmit">注册</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -183,7 +183,7 @@ export default {
     },
 };
 </script>
-<style scoped>
+<style >
 .header {
     position: relative;
     box-sizing: border-box;
@@ -284,6 +284,7 @@ export default {
     position: relative;
     overflow: hidden;
     transition: var(--el-transition-duration-fast);
+    width: 178px;
 }
 
 .avatar-uploader .el-upload:hover {
@@ -310,6 +311,7 @@ export default {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    width: 178px;
 }
 
 .avatar-uploader .el-upload:hover {

@@ -136,6 +136,7 @@ export default {
     position: relative;
     overflow: hidden;
     transition: var(--el-transition-duration-fast);
+    width: 178px;
 }
 
 .avatar-uploader .el-upload:hover {
@@ -162,6 +163,7 @@ export default {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    width: 178px;
 }
 
 .avatar-uploader .el-upload:hover {

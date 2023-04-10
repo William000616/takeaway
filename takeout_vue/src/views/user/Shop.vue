@@ -69,17 +69,6 @@
 
                             </template>
                         </el-tabs>
-                        <!-- <template v-for="item in goodList.category" >
-                        <el-tab-pane :label="item.name">
-                            <ul v-for="good in item.goods">
-                                <li>{{good.name}}</li>
-                            </ul>
-                        </el-tab-pane>
-                    </template>-->
-                        <!--<el-tab-pane label="用户管理" lazy>用户管理</el-tab-pane>
-                    <el-tab-pane label="配置管理">配置管理</el-tab-pane>
-                    <el-tab-pane label="角色管理">角色管理</el-tab-pane>
-                    <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>-->
                     </van-tab>
 
                     <van-tab title="评价" name="comment">
@@ -236,16 +225,6 @@
                     <span style="margin-left: 120px;"><van-icon name="arrow" /></span>
                 </div>
                 <br>
-                <!-- <div style="height: 40px;margin: 0;">
-                    <span>
-                        <h4
-                            style="display:inline-block;margin-bottom:0;margin-top: 5px;margin-left: 5px;margin-right: 50px">
-                            预计送达时间</h4>
-                    </span>
-                    <span style="margin-left: 50px;"><van-icon name="clock-o" />尽快送达<van-icon name="arrow"
-                            @click="chooseTime" /></span>
-
-                </div> -->
                 <div style="height: 40px;margin: 0;">
                     <span>
                         <h4
@@ -517,13 +496,7 @@ export default {
     },
     data() {
         return {
-            /*存储订单信息*/
-            /*u_id:this.u_id,
-                s_id:this.shopId,
-                total_price:this.total_price,
-                goods:this.selectedGoods,
-                addressMessage:this.addressMessage,
-                delivery_price:this.delivery_price,*/
+
             orderInfo: {
                 u_id: '',
                 s_id: '',
@@ -640,46 +613,7 @@ export default {
                             count: 0
                         }
                     ]
-                }/*,
-                        {
-                            categoryName:"中式套餐",
-                            goods:[
-                                {
-                                    name:"全家桶1",
-                                    desc:'法国现做汉堡',
-                                    pic:'pic/dinner.png',
-                                    price:'5',
-                                    salesMonth:'100',
-                                    count: 0
-                                }
-                            ]
-                        },
-                        {
-                            categoryName:"风味小吃",
-                            goods:[
-                                {
-                                    name:"肉串1",
-                                    desc:'法国现做汉堡',
-                                    pic:'pic/dinner.png',
-                                    price:'7',
-                                    salesMonth:'100',
-                                    count: 0
-                                }
-                            ]
-                        },
-                        {
-                            categoryName:"烧烤",
-                            goods:[
-                                {
-                                    name:"骨肉相连1",
-                                    desc:'法国现做汉堡',
-                                    pic:'pic/dinner.png',
-                                    price:'5',
-                                    salesMonth:'100',
-                                    count: 0
-                                }
-                            ]
-                        }*/
+                }
             ]
         }
     },
@@ -826,17 +760,7 @@ export default {
                 }
 
             })
-            // const that = this;
-            // this.axios.get("http://localhost:8084/listAddress", {
-            //     params: {
-            //         u_id: this.u_id
-            //     }
-            // }).then(resp => {
-            //     console.log(resp.data);
-            //     this.addressList = resp.data;
-            //     this.showPay = false;
-            //     this.showAddress = true;
-            // });
+
 
         },
 
@@ -880,15 +804,6 @@ export default {
             this.showPay = true;
             this.showShopInfo = false;
 
-            /*this.goodList.category.forEach(function (item) {
-                item.goods.forEach(function (good) {
-                    if(good.count>0){
-                        console.log(good)
-                    }
-                })
-            });*/
-            /*console.log(this.selectedGoods);*/
-            //this.$router.push({path:'/pay'});
         },
 
 

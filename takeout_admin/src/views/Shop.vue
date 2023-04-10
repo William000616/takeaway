@@ -129,7 +129,7 @@ export default {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
-                    pageTotal.value = res.data.total || 50;
+                    pageTotal.value = res.data.total || 0;
                 }
 
             });
@@ -145,7 +145,7 @@ export default {
                 if (res.code === '200') {
                     var list = res.data.list
                     tableData.value = list;
-                    pageTotal.value = res.data.total || 50;
+                    pageTotal.value = res.data.total || 0;
                 }
             });
         };

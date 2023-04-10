@@ -78,38 +78,6 @@ export default {
     return {
       value: '',
       shops: [
-        /*{
-        sid: 1,
-        logoSrc:"https://img01.yzcdn.cn/vant/ipad.jpeg",
-        totalSales: "3576",
-        shopName:"华莱士·全鸡汉堡",
-        minCost:20,
-        deliveryCost:0,
-        },
-        {
-            id: 2,
-            logoSrc:"https://img01.yzcdn.cn/vant/ipad.jpeg",
-            totalSales: "4696",
-            shopName:"汉堡王",
-            minCost:20,
-            deliveryCost:5,
-        },
-        {
-            id: 3,
-            logoSrc:"https://img01.yzcdn.cn/vant/ipad.jpeg",
-            totalSales: "4696",
-            shopName:"汉堡王",
-            minCost:20,
-            deliveryCost:5,
-        },
-        {
-            id: 4,
-            logoSrc:"https://img01.yzcdn.cn/vant/ipad.jpeg",
-            totalSales: "4696",
-            shopName:"汉堡王",
-            minCost:20,
-            deliveryCost:5,
-        }*/
       ],
       homeShow: true,
       showSearch: true,

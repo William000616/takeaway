@@ -30,12 +30,12 @@
             </div>
             <div class="op2">
                 <div v-if="data.showPL" class="btng1">
-                    <el-button type="primary" @click="dialogVisible = true" >新建公告</el-button>
+                    <el-button type="primary" @click="dialogVisible = true">新建公告</el-button>
                     <!-- <el-button @click="handleSearch" style="margin-left:30px" disabled>批量发布</el-button>
                 <el-button @click="handleCreate" style="margin-left:30px" disabled>批量删除</el-button> -->
                 </div>
                 <div v-else class="btng2">
-                    <el-button type="primary" @click="dialogVisible = true" >新建公告</el-button>
+                    <el-button type="primary" @click="dialogVisible = true">新建公告</el-button>
                     <!-- <el-button type="primary" @click="handleSearch" style="margin-left:30px">批量发布</el-button>
                     <el-button type="primary" @click="handleCreate" style="margin-left:30px">批量删除</el-button> -->
                 </div>
@@ -65,7 +65,7 @@
                 <el-table-column prop="fontColor" label="字体颜色"></el-table-column>
                 <el-table-column prop="fontPosition" label="字体位置"></el-table-column>
                 <el-table-column prop="author" label="作者"></el-table-column>
-                
+
                 <el-table-column label="操作" width="180" align="center">
                     <template #default="scope">
                         <el-button type="text" @click="handleImg(scope.$index, scope.row)">详情</el-button>
@@ -75,7 +75,7 @@
                             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                         <el-button type="text"  @click="handleEdit(scope.$index, scope.row)">加密下载
                         </el-button> -->
-                        <el-button type="text"  @click="handlePub(scope.$index, scope.row)">发布
+                        <el-button type="text" @click="handlePub(scope.$index, scope.row)">发布
                         </el-button>
                         <el-button type="text" class="red" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                     </template>
@@ -86,7 +86,7 @@
                     :page-size="query.pageSize" :total="pageTotal" @current-change="handlePageChange"></el-pagination>
             </div>
         </div>
-        
+
         <el-dialog :data="tableData" v-model="visible" :show-close="false">
             <template #default="scope">
                 <div class="my-header">
@@ -103,7 +103,7 @@
                                 </el-row>
                             </div>
                         </el-tab-pane>
-                        
+
                     </el-tabs>
                     <div class="backBtn">
                         <el-button type="primary" @click="visible = false">返回</el-button>
@@ -131,14 +131,14 @@
 <script>
 import { ref, reactive } from "vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { NoticeData,imgPub } from "../api/index";
+import { NoticeData, imgPub } from "../api/index";
 import { useRouter } from "vue-router";
 export default {
     name: "basetable",
     setup() {
         const query = reactive({
-            id:"",
-            codeId:"2"
+            id: "",
+            codeId: "2"
 
         });
         const data = reactive({
@@ -148,13 +148,13 @@ export default {
         const tableData = ref([
             {
                 noticeTitle: "123",
-                body:"123",
+                body: "123",
                 fontSize: "12",
                 fontColor: "red",
                 fontPosition: "1",
                 author: "jx",
                 startTime: "",
-                id:""
+                id: ""
             }
         ]);
         const pageTotal = ref(0);
@@ -164,7 +164,7 @@ export default {
 
                 tableData.value = res.data.records;
                 // console.log(tableData.value[0])
-                pageTotal.value = res.data.records.length || 50;
+                pageTotal.value = res.data.records.length || 0;
                 // for (var i = 0; i < res.data.records.length; i++) {
                 //     tableData.value[i].programMaterial = '/api/imgs/' + tableData.value[i].programMaterial
                 // }
@@ -208,22 +208,22 @@ export default {
         const dialogVisible = ref(false)
         let form = reactive({
             noticeTitle: "123",
-                body:"123",
-                fontSize: "12",
-                fontColor: "red",
-                fontPosition: "1",
-                author: "jx",
-                startTime: ""
+            body: "123",
+            fontSize: "12",
+            fontColor: "red",
+            fontPosition: "1",
+            author: "jx",
+            startTime: ""
 
         });
         let form1 = reactive({
             noticeTitle: "",
-                body:"123",
-                fontSize: "12",
-                fontColor: "red",
-                fontPosition: "1",
-                author: "jx",
-                startTime: ""
+            body: "123",
+            fontSize: "12",
+            fontColor: "red",
+            fontPosition: "1",
+            author: "jx",
+            startTime: ""
 
         });
         let idx = -1;
@@ -265,17 +265,17 @@ export default {
                 // console.log(form1.noticeTitle)
                 route.push({
                     path: '/noticeadd',
-                    query: { noticeTitle: form1.noticeTitle}
+                    query: { noticeTitle: form1.noticeTitle }
                 })
                 dialogVisible.value = false
             }
-                
 
-            
+
+
 
         }
         const handlePub = (index, row) => {
-            query.id=row.id
+            query.id = row.id
             // query.body=row.body
             // query.fontColor=row.fontColor
             // query.fontPosition=row.fontPosition
@@ -283,13 +283,13 @@ export default {
             console.log(query)
             imgPub(query).then((res) => {
                 console.log(res)
-                if(res!='failed'){
+                if (res != 'failed') {
                     ElMessage.success('发布成功！')
-                }else{
+                } else {
                     ElMessage.error('发布失败！')
                 }
-                
-                
+
+
             })
         }
         const num = ref(1)

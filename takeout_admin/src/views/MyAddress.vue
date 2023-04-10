@@ -114,7 +114,7 @@ export default {
                 if (res.code === '200') {
                     var list = res.data
                     tableData.value = list;
-                    pageTotal.value = list.length || 50;
+                    pageTotal.value = list.length || 0;
                 }
 
             });

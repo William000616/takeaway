@@ -7,8 +7,7 @@
         <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100">
 
         </div>
-        <!--:search-result="searchResult"
-        :search-result="searchResult"-->
+
     </div>
 </template>
 

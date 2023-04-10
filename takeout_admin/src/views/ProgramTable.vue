@@ -165,7 +165,7 @@ export default {
     name: "basetable",
     setup() {
         const query = reactive({
-            id:"",
+            id: "",
             codeId: '1'
 
         });
@@ -204,7 +204,7 @@ export default {
 
                 tableData.value = res.data.records;
                 // console.log(tableData.value[0])
-                pageTotal.value = res.data.records.length || 50;
+                pageTotal.value = res.data.records.length || 0;
                 for (var i = 0; i < res.data.records.length; i++) {
                     tableData.value[i].programMaterial = '/api/file/' + tableData.value[i].programMaterial
                 }
@@ -322,17 +322,17 @@ export default {
         const handlePub = (index, row) => {
             // query.msg = row.programMaterial.slice(4)
             // query.msg = 'http://192.168.123.21:3000' + query.msg
-            query.id=row.id
+            query.id = row.id
             console.log(query)
             imgPub(query).then((res) => {
                 console.log(res)
-                if(res!='failed'){
+                if (res != 'failed') {
                     ElMessage.success('发布成功！')
-                }else{
+                } else {
                     ElMessage.error('发布失败！')
                 }
-                
-                
+
+
             })
 
         }

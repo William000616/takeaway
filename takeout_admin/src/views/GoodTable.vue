@@ -47,14 +47,14 @@
                 <el-form-item label="商品名" prop="good_name">
                     <el-input v-model="form.good_name"></el-input>
                 </el-form-item>
-                <el-form-item label="图片" prop="password">
+                <el-form-item label="图片" prop="good_pic">
                     <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload" :show-file-list="false"
                         :on-success="handleAvatarSuccessEdit" :before-upload="beforeAvatarUpload">
                         <img v-if="form.good_pic" :src="form.good_pic" class="avatar" />
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload>
                 </el-form-item>
-                <el-form-item label="价格" prop="price">
+                <el-form-item label="价格(￥)" prop="price">
                     <el-input v-model="form.price"></el-input>
                 </el-form-item>
                 <el-form-item label="类别" prop="category">
@@ -72,19 +72,19 @@
         </el-dialog>
 
         <!-- 新建弹出框 -->
-        <el-dialog title="新建账户" v-model="createVisible" width="30%">
-            <el-form :model="New" :rules="rules" ref="Create" label-width="70px">
+        <el-dialog title="新增菜品" v-model="createVisible" width="30%">
+            <el-form :model="New" :rules="rules" ref="Create" label-width="90px">
                 <el-form-item label="商品名" prop="good_name">
                     <el-input v-model="New.good_name"></el-input>
                 </el-form-item>
-                <el-form-item label="图片" prop="password">
+                <el-form-item label="图片" prop="good_pic">
                     <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload" :show-file-list="false"
                         :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
                         <img v-if="New.good_pic" :src="New.good_pic" class="avatar" />
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload>
                 </el-form-item>
-                <el-form-item label="价格" prop="price">
+                <el-form-item label="价格(￥)" prop="price">
                     <el-input v-model="New.price"></el-input>
                 </el-form-item>
                 <el-form-item label="类别" prop="category">
@@ -117,26 +117,19 @@ export default {
             pageSize: 10,
         });
         const rules = {
-            // username: [
-            //     {
-            //         required: true,
-            //         message: "请输入用户名",
-            //         trigger: "blur",
-            //     },
-            // ],
-            // password: [
-            //     { required: true, message: "请输入密码", trigger: "blur" },
-            // ],
-            // phone: [
-            //     { required: true, message: "请输入手机号码", trigger: "blur" },
-            // ],
-            // score: [
-            //     { required: true, message: "请输入星级", trigger: "blur" },
-            //     { type: 'number', message: '积分必须是数字' },
-            // ],
-            // name: [
-            //     { required: true, message: "请输入姓名", trigger: "blur" },
-            // ],
+            good_name: [
+                {
+                    required: true,
+                    message: "商品名称不能为空",
+                    trigger: "blur",
+                },
+            ],
+            price: [
+                { required: true, message: "商品价格不能为空", trigger: "blur" },
+            ],
+            good_pic: [
+                { required: true, message: "商品照片不能为空", trigger: "blur" },
+            ],
         };
         const tableData = ref([]);
         const pageTotal = ref(0);
@@ -154,7 +147,7 @@ export default {
                         })
                     })
                     tableData.value = list;
-                    pageTotal.value = res.data.total || 50;
+                    pageTotal.value = res.data.total || 0;
                 }
 
             });
@@ -288,43 +281,43 @@ export default {
 
         };
         const saveCreate = (query) => {
-            // Create.value.validate((valid) => {
-            //     if (valid) {
-            query.s_id = localStorage.getItem("s_id");
-            goodAdd(query).then((res) => {
-                if (res.code === "200") {
-                    ElMessage.success(`创建成功`);
-                    createVisible.value = false;
-                    getData();
-                    New.good_name = '';
-                    New.good_pic = '';
-                    New.price = '';
-                    New.c_id = '';
-                    New.s_id = '';
-                } else {
-                    ElMessage.error(`创建失败`);
-                }
+            Create.value.validate((valid) => {
+                if (valid) {
+                    query.s_id = localStorage.getItem("s_id");
+                    goodAdd(query).then((res) => {
+                        if (res.code === "200") {
+                            ElMessage.success(`创建成功`);
+                            createVisible.value = false;
+                            getData();
+                            New.good_name = '';
+                            New.good_pic = '';
+                            New.price = '';
+                            New.c_id = '';
+                            New.s_id = '';
+                        } else {
+                            ElMessage.error(`创建失败，请检查填写内容`);
+                        }
 
-            });
-            //     }
-            // })
+                    });
+                }
+            })
 
         }
         const saveEdit = (query) => {
-            // Edit.value.validate((valid) => {
-            //     if (valid) {
-            goodEdit(query).then((res) => {
-                if (res.code === "200") {
-                    editVisible.value = false;
-                    ElMessage.success(`修改成功`);
-                    getData();
-                } else {
-                    ElMessage.error(`修改失败`);
-                }
+            Edit.value.validate((valid) => {
+                if (valid) {
+                    goodEdit(query).then((res) => {
+                        if (res.code === "200") {
+                            editVisible.value = false;
+                            ElMessage.success(`修改成功`);
+                            getData();
+                        } else {
+                            ElMessage.error(`修改失败`);
+                        }
 
-            });
-            //     }
-            // })
+                    });
+                }
+            })
         };
 
         return {
@@ -356,7 +349,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .handle-box {
     margin-bottom: 20px;
 }
@@ -397,6 +390,7 @@ export default {
     position: relative;
     overflow: hidden;
     transition: var(--el-transition-duration-fast);
+    width: 178px;
 }
 
 .avatar-uploader .el-upload:hover {
@@ -423,6 +417,7 @@ export default {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    width: 178px;
 }
 
 .avatar-uploader .el-upload:hover {

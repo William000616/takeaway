@@ -3,23 +3,6 @@
         <span>
             <h4>我的订单</h4>
         </span>
-        <!--<van-card  v-for="(good,index) in goods" :key="index"
-                   :num="good.count"
-                   :price="good.price"
-                   :desc="good.desc"
-                   :title="good.title"
-                   :thumb="good.thumb"
-        >
-            <template #tags>
-                <van-tag plain type="danger">标签</van-tag>
-            </template>
-            <template #tags>
-                <van-tag plain type="danger">标签</van-tag>
-            </template>
-            <template #footer>
-                <van-button round hairline style="width: 80px" type="small" @click="deleteOrder(good.num)">删除订单</van-button>
-            </template>
-        </van-card>-->
         <van-card v-for="(order, index) in orders" :key="index">
             <template #title>
                 <div style="width: 200px">

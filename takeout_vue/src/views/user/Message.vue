@@ -1,21 +1,6 @@
 <template>
     <div>
         <van-nav-bar title="个人信息" left-text="返回" left-arrow @click-left="onClickLeft" />
-        <!-- 
-        <div>
-            <h3>修改头像</h3>
-            <van-form @submit="onSubmitPic">
-                <van-field name="uploader" label="上传头像">
-                    <template #input>
-                        <van-uploader :max-count="1" v-model="uploader" :after-read="uploadImg" accept="image/*" />
-                    </template>
-                </van-field>
-
-                <div style="margin: 16px;">
-                    <van-button round block type="info" native-type="submit">提交</van-button>
-                </div>
-            </van-form>
-        </div> -->
         <div>
             <h3>修改密码</h3>
             <van-form @submit="onSubmit">
@@ -50,8 +35,6 @@ export default {
             username: '',
             password: '',
             newPassword: '',
-            /*username:this.$route.params.username,
-            password:this.$route.params.password*/
         }
     },
     methods: {
@@ -92,13 +75,6 @@ export default {
                 console.log(resp.data);
                 this.user.picSrc = resp.data.message
             })
-            /* let config = {
-                 headers:{'Content-Type':'multipart/form-data'} //这里是重点，需要和后台沟通好请求头，Content-Type不一定是这个值
-             };
-             this.axios.post("http://localhost:8084/upload", file.file,config).then(resp=>{
-                 console.log("上传后");
-                 console.log(resp.data);
-             })*/
         }
 
     }

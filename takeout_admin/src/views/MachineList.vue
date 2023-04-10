@@ -224,7 +224,7 @@ export default {
             MachineData().then((res) => {
                 // console.log(res.data)
                 tableData.value = res.data.records;
-                pageTotal.value = res.data.records.length || 50;
+                pageTotal.value = res.data.records.length || 0;
                 console.log(tableData.value)
             });
             // console.log(tableData)
@@ -320,7 +320,7 @@ export default {
                         editVisible.value = false;
                         ElMessage.success(`修改第 ${idx + 1} 行成功`);
                         getData();
-                    }else{
+                    } else {
                         ElMessage.error(`修改失败`);
                     }
 

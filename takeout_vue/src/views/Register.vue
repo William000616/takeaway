@@ -9,8 +9,6 @@
                     <van-uploader :after-read="afterRead">
                         <van-image round width="150" height="150" :src="picSrc" />
                     </van-uploader>
-
-                    <!-- <van-image v-if="user.picSrc !== null" round width="150" height="150" :src="user.picSrc" /> -->
                 </div>
             </div>
             <div style="margin: 16px;">

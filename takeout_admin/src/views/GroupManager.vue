@@ -82,8 +82,7 @@
                     <el-input v-model="form.deviceName"></el-input>
                 </el-form-item>
                 <el-col :span="24">设备选择：</el-col>
-                <el-table :data="tableData" border class="table" ref="multipleTable"
-                    header-cell-class-name="table-header">
+                <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
                     <!-- <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column> -->
                     <el-table-column type="selection"></el-table-column>
                     <el-table-column prop="id" label="设备名称"></el-table-column>
@@ -170,7 +169,7 @@ export default {
             GroupData().then((res) => {
                 // console.log(res.data)
                 tableData.value = res.data.records;
-                pageTotal.value = res.data.records.length || 50;
+                pageTotal.value = res.data.records.length || 0;
                 console.log(tableData.value)
             });
             // console.log(tableData)

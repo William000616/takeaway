@@ -7,10 +7,7 @@
         <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100">
 
         </div>
-        <!--显示搜索结果-->
-        <!--:search-result="searchResult"-->
-        <!--show-search-result-->
-        <!--@change-detail="onChangeDetail"-->
+
     </div>
 </template>
 
@@ -52,18 +49,7 @@ export default {
         onDelete() {
             Toast('delete');
         },
-        /*onChangeDetail(val) {
-            if (val) {
-                this.searchResult = [
-                    {
-                        name: '黄龙万科中心',
-                        address: '杭州市西湖区',
-                    },
-                ];
-            } else {
-                this.searchResult = [];
-            }
-        },*/
+
     },
 }
 </script>

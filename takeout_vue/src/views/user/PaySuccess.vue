@@ -2,14 +2,6 @@
     <div>
         <van-image width="100" height="100" src="/pic/paysuccess.png" />
         <van-cell-group>
-            <!--<van-cell>
-                <van-col span="21" style="width: 140px">商品总金额</van-col>
-                <van-col style="width: 50px;margin-left: 80px">￥{{goodTotalPrice}}</van-col>
-            </van-cell>
-            <van-cell>
-                <van-col span="21" style="width: 140px">配送费</van-col>
-                <van-col style="width: 50px;margin-left: 80px">￥{{deliveryPrice}}</van-col>
-            </van-cell>-->
             <van-cell>
                 <van-col span="21" style="width: 140px">支付金额</van-col>
                 <van-col style="width: 50px;margin-left: 80px">￥{{ orderInfo.total_price }}</van-col>
@@ -33,10 +25,6 @@
                 <van-col span="21" style="width: 60px">创建时间</van-col>
                 <van-col style="width: 140px;margin-left: 80px">{{ orderInfo.create_time }}</van-col>
             </van-cell>
-            <!--<van-cell>
-                <van-col span="21" style="width: 140px">配送方式</van-col>
-                <van-col style="width: 80px;margin-left: 60px">旋风骑士</van-col>
-            </van-cell>-->
         </van-cell-group>
         <van-button type="primary" size="large" @click="showOrderInfo">查看订单详情</van-button>
         <!--遮挡板-->
@@ -51,11 +39,6 @@ import OrderInfo from "./OrderInfo";
 import Toast from "vant/lib/toast";
 
 export default {
-    /*orderNumber:"202108040080",
-    total_price:this.total_price,
-    goods:this.selectedGoods,
-    addressMessage:this.addressMessage,
-    order_Stat:1*/
     name: "PaySuccess",
     created() {
         Toast("支付成功");
@@ -72,14 +55,6 @@ export default {
     },
     data() {
         return {
-            /*goodTotalPrice:null,
-            deliveryPrice:null,
-            total_price:null,
-            orderNumber:null,
-            goods:null,
-            addressMessage: null,
-            order_Stat:null,
-            create_time:null,*/
             orderInfo: {
                 good_total_price: null,
                 delivery_price: null,

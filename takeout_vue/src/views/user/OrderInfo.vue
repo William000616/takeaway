@@ -21,12 +21,6 @@
         <van-card v-for="(good, index) in orderDetail.goods" :key="index" :num="good.count" :price="good.price"
             :title="good.good_name" :thumb="good.good_pic" />
 
-        <!--<van-cell-group v-if="deliveryMan!=null">
-            <van-cell>
-                <van-col span="21">配送骑士</van-col>
-                <van-col>{{deliveryMan}}</van-col>
-            </van-cell>
-        </van-cell-group>-->
         <van-cell-group class="goods-cell-group">
             <van-cell class="goods-express" style="font-weight: bold">
                 <van-col span="20">商品金额</van-col>
@@ -66,10 +60,7 @@
                 <van-col span="20" style="width:90px">送达时间</van-col>
                 <van-col style="color: red;width: 140px;margin-left: 60px;">{{ orderDetail.arrive_time }}</van-col>
             </van-cell>
-            <!-- <van-cell class="goods-express" style="font-weight: bold" v-if="deliveryMan !== null">
-                <van-col span="20" style="width:90px">骑手联系方式</van-col>
-                <van-col style="color: red;width: 140px;margin-left: 60px;">{{ deliveryMan.phone }}</van-col>
-            </van-cell> -->
+
 
             <van-cell class="goods-express" style="font-weight: bold">
                 <van-col span="20" style="width:80px">订单状态</van-col>
