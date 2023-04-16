@@ -3,7 +3,7 @@
 
 <mapper namespace="com.hjx.takeout.mapper.UserMapper">
 
-    <!--根据用户id查询所有普通user-->
+    <!--查询所有普通user-->
     <select id="list" resultType="com.hjx.takeout.entity.User">
         select * from user
         <where>
@@ -20,7 +20,7 @@
         </where>
     </select>
 
-    <!--uid查询所有user-->
+    <!--查询所有user-->
     <select id="listAll" resultType="com.hjx.takeout.entity.User">
         select * from user
         <where>

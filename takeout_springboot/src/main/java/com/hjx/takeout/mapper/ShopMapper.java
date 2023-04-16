@@ -18,4 +18,6 @@ public interface ShopMapper {
     List<Shop> listById(Integer s_id);
 
     void add(Shop shop);
+
+    List<Shop> listOpen(ShopRequest shopRequest);
 }

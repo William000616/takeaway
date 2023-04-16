@@ -115,7 +115,7 @@ export const CreateOrder = query => {
 
 export const GetAllShop = query => {
     return request({
-        url: '/shop/list',
+        url: '/shop/listOpen',
         method: 'get',
         params: query
     });

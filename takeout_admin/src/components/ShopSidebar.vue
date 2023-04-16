@@ -73,6 +73,11 @@ export default {
                     },
                 ]
             },
+            {
+                icon: "el-icon-lx-home",
+                index: "/comments",
+                title: "店铺评价",
+            },
         ];
 
         const route = useRoute();

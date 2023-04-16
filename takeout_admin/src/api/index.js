@@ -286,6 +286,15 @@ export const getOrderInfo = query => {
         params: query
     });
 };
+
+export const GetComment = query => {
+    return request({
+        url: '/comment/list',
+        method: 'get',
+        params: query
+    });
+};
+
 export const MachineData = query => {
     // console.log(query)
     return request({

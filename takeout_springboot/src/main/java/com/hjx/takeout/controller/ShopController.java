@@ -21,6 +21,11 @@ public class ShopController {
         return Result.success(shopService.list(shopRequest));
     }
 
+    @GetMapping("/listOpen")
+    public Result listOpen(ShopRequest shopRequest){
+        return Result.success(shopService.listOpen(shopRequest));
+    }
+
     @GetMapping("/listById")
     public Result listById(@RequestParam Integer s_id){
         return Result.success(shopService.listById(s_id));

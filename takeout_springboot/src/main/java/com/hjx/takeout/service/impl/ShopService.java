@@ -48,4 +48,11 @@ public class ShopService implements IShopService {
         shopMapper.add(shop);
     }
 
+    @Override
+    public Object listOpen(ShopRequest shopRequest) {
+        PageHelper.startPage(shopRequest.getPageNum(), shopRequest.getPageSize());
+        List<Shop> shop =shopMapper.listOpen(shopRequest);
+        return new PageInfo<>(shop);
+    }
+
 }

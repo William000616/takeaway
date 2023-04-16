@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1 style="display: flex; justify-content: center;margin-top: 10%;">饱了么外卖</h1>
-        <h4 style="display: flex; justify-content: center;margin-top: 10%;">头像</h4>
+        <h1 style="display: flex; justify-content: center;margin-top: 10%;">餐饮外卖管理系统前台</h1>
+
         <van-form @submit="onSubmit">
 
             <div style="margin: 16px;">
@@ -11,18 +11,19 @@
                     </van-uploader>
                 </div>
             </div>
-            <div style="margin: 16px;">
+            <p style="display: flex; justify-content: center;">点击上传头像</p>
+            <div style="margin: 16px; border-style: solid; border-radius: 10px;border-color: dimgray;">
                 <van-field v-model="username" name="username" label="用户名"
                     :rules="[{ required: true, message: '请填写用户名' }]" />
             </div>
-            <div style="margin: 16px;">
+            <div style="margin: 16px; border-style: solid; border-radius: 10px;border-color: dimgray;">
                 <van-field v-model="password" type="password" name="password" label="密码"
                     :rules="[{ required: true, message: '请填写密码' }]" />
             </div>
-            <div style="margin: 16px;">
+            <div style="margin: 16px; border-style: solid; border-radius: 10px;border-color: dimgray;">
                 <van-field v-model="name" name="name" label="姓名" :rules="[{ required: true, message: '请填写姓名' }]" />
             </div>
-            <div style="margin: 16px;">
+            <div style="margin: 16px; border-style: solid; border-radius: 10px;border-color: dimgray;">
                 <van-field v-model="phone" name="phone" label="联系方式" :rules="[{ required: true, message: '请填写联系方式' }]" />
             </div>
             <div style="margin: 16px;">

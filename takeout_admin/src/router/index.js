@@ -111,6 +111,14 @@ const routes = [
         },
         component: () => import( /* webpackChunkName: "user" */ '../views/Manager.vue')
       },
+      {
+        path: "/comments",
+        name: "comments",
+        meta: {
+          title: '店铺评价'
+        },
+        component: () => import( /* webpackChunkName: "charts" */ "../views/CommentsTable.vue")
+      },
     ]
   },
   {
@@ -168,14 +176,6 @@ const routes = [
           title: '店铺账号管理'
         },
         component: () => import( /* webpackChunkName: "table" */ "../views/ShopManager.vue")
-      },
-      {
-        path: "/charts",
-        name: "basecharts",
-        meta: {
-          title: '图表'
-        },
-        component: () => import( /* webpackChunkName: "charts" */ "../views/BaseCharts.vue")
       },
 
       {

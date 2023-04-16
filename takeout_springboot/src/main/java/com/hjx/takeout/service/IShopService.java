@@ -15,4 +15,6 @@ public interface IShopService {
     Object listById(Integer s_id);
 
     void add(Shop shop);
+
+    Object listOpen(ShopRequest shopRequest);
 }
