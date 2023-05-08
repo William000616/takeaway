@@ -82,10 +82,7 @@ public class OrderService implements IOrderService {
         order.setOrder_Number(orderNumber);
         Integer flag= orderMapper.createOrder(order);
         if(flag>0){
-            //2、存储订单商品表
-            //2.1 根据存储的订单号找到刚存储的order
             Order order1 = orderMapper.findOrderByOrderNumber(orderNumber);
-            //2.2 遍历存储OrderGood表
             int count = 0;
             for (GoodOrder good : order.getGoods()) {
                 GoodOrder orderGood = new GoodOrder(order1.getO_id(), good.getG_id(), good.getCount());
@@ -102,20 +99,5 @@ public class OrderService implements IOrderService {
 
     }
 
-
-//    @Override
-//    public void update(Good good) {
-//        goodMapper.updateById(good);
-//    }
-//
-//    @Override
-//    public void add(Good good) {
-//        goodMapper.add(good);
-//    }
-//
-//    @Override
-//    public void delete(Integer g_id) {
-//        goodMapper.delete(g_id);
-//    }
 
 }

@@ -19,7 +19,7 @@
         </where>
     </select>
 
-    <!--根据用户id查询所有good-->
+    <!--查询所有good-->
     <select id="listGood" resultType="com.hjx.takeout.entity.Good">
         select * from good where s_id = #{s_id}
     </select>
@@ -35,7 +35,7 @@
         insert into good(good_name,good_pic,price,c_id,sales,s_id) values (#{good_name},#{good_pic},#{price},#{c_id},0,#{s_id})
     </insert>
 
-    <!--根据uid删除good-->
+    <!--根据id删除good-->
     <delete id="delete">
         delete from good where g_id = #{g_id}
     </delete>

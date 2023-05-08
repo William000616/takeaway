@@ -8,16 +8,16 @@
             <span style="margin-top: 10px;right: 10px; font-size: 25px; position: absolute;z-index: 10;">
                 <van-icon name="search" @click="searchGoods" />
             </span>
-            <van-image width="100%" height="150" :src="shopMessage.logo_src" style="position: relative" />
+            <van-image width="100%" height="320" :src="shopMessage.logo_src" style="position: relative " />
 
 
             <!--店面logo和相关信息-->
             <div
-                style="top:80px;left: 30px;width: 80%;height: 100px;box-shadow:3px 3px 3px 2px rgba(0,0,0,.5);border-radius:10px;background-color: white;position: absolute;z-index: 10">
-                <div style="width: 50px;display: inline-block;float: left">
+                style="top:190px;left: 30px;width: 80%;height: 100px;box-shadow:3px 3px 3px 2px rgba(0,0,0,.5);border-radius:10px;background-color: white;position: absolute;z-index: 10">
+                <div style="width: 50px;display: inline-block;">
                     <van-image width="50" height="50" :src="shopMessage.logo_src" round />
                 </div>
-                <div style="width: 150px;display: inline-block;margin-left: 5px;margin-top:5px;float: left">
+                <div style="width: 150px;display: inline-block;margin-left: 5px;margin-top:5px;">
                     <h3 style="margin: 0">{{ shopMessage.shop_name }}</h3>
                     <h6 style="margin: 0">月售{{ shopMessage.total_sales }}</h6>
                     <h6 style="margin: 0">配送时间约{{ shopMessage.delivery_time }}分钟</h6>
@@ -26,7 +26,7 @@
                 <h5>销量：{{shopMessage.totalSales}}</h5>
             </div>-->
             </div>
-            <div style="margin-top: 30px">
+            <div style="margin-top: -26px">
                 <!--商品和评价标签页-->
                 <van-tabs v-model="activeName" @click="hide(activeName)">
                     <van-tab title="点餐" name="good" style="color: #409EFF;margin-left: 0;">

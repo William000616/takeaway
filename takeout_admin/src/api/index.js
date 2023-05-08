@@ -138,6 +138,14 @@ export const GetShop = query => {
         params: query
     });
 };
+
+export const GetShopOpen = query => {
+    return request({
+        url: '/shop/listOpen',
+        method: 'get',
+        params: query
+    });
+};
 export const GetShopById = query => {
     return request({
         url: '/shop/listById',

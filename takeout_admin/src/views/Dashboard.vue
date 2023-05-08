@@ -39,6 +39,58 @@
         </el-row>
       </el-col>
     </el-row>
+    <el-row :gutter="20">
+      <el-col :span="12">
+        <el-card class="box-card" style="height:400px">
+          <div class="card-header">
+            <span style="font-size:25px">店铺状态</span>
+            <!-- <el-button class="button" text>Operation button</el-button> -->
+          </div>
+          <div class="con">
+            <div class="left">
+              <div class="demo-progress">
+                <el-progress type="circle" :percentage="sbtotal" width="150"><span class="s1">{{ num_m }}家</span>
+                </el-progress>
+              </div>
+            </div>
+            <div class="right">
+              <ul>
+                <li class="l1">
+                  <div class="d1">
+                    <span>停业</span>
+                    <span>{{ sb_l }}</span>
+                    <span>家</span>
+                  </div>
+                </li>
+                <li class="l2">
+                  <div class="d1">
+                    <span>营业</span>
+                    <span>{{ sb_z }}</span>
+                    <span>家</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="12">
+        <el-card class="box-card">
+          <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+
+            <el-tab-pane label="订单" name="second" :lazy="true">
+              <!-- <el-card > -->
+              <div>
+                <schart class="schart" :canvasId="canvasId2" :options="options">
+                </schart>
+              </div>
+
+              <!-- </el-card> -->
+            </el-tab-pane>
+          </el-tabs>
+        </el-card>
+      </el-col>
+    </el-row>
 
   </div>
 </template>
@@ -46,7 +98,7 @@
 <script>
 import Schart from "vue-schart";
 import { onMounted, reactive, ref } from "vue";
-import { GetShop, GetShopAdd, GetUser } from "../api/index";
+import { GetShop, GetShopAdd, GetUser, GetShopOpen, GetOrder } from "../api/index";
 export default {
   name: "dashboard",
   components: { Schart },
@@ -54,6 +106,11 @@ export default {
     onMounted(() => {
       GetShop().then((res) => {
         num_m.value = res.data.total;
+        GetShopOpen().then((resq) => {
+          sb_z.value = resq.data.total;
+          sbtotal.value = sb_z.value * 100 / num_m.value;
+          console.log(sb_z.value, num_m.value, sbtotal.value)
+        })
       })
       GetShopAdd().then((res) => {
         num_g.value = res.data.total;
@@ -61,14 +118,42 @@ export default {
       GetUser().then((res) => {
         num_u.value = res.data.total;
       })
+
+      GetOrder().then((res) => {
+
+        let orderShopList = []
+        res.data.list.map((item) => {
+          if (orderShopList.length === 0) {
+            orderShopList.push({ shopName: item.shop_name, orderNum: 1 })
+          } else {
+            let a = orderShopList.some((i) => {
+              if (i.shopName === item.shop_name) {
+                i.orderNum++;
+                return true
+              }
+            })
+            if (!a) {
+              orderShopList.push({ shopName: item.shop_name, orderNum: 1 })
+            }
+          }
+
+        })
+        options.value.labels = orderShopList.map((i) => {
+          return i.shopName
+        })
+        options.value.datasets[0].data = orderShopList.map((i) => {
+          return i.orderNum
+        })
+
+      })
     })
     let num_u = ref("321");
     let num_g = ref("321");
     let num_m = ref("321");
+    let sb_z = ref("321");
     let sb_l = 0;
-    let sb_z = 1;
     let sb_k = 0;
-    let sbtotal = sb_l + sb_z + sb_k;
+    let sbtotal = ref(100);;
     let picture = "20";
     let ship = "10";
     let music = "20";
@@ -120,10 +205,10 @@ export default {
     const handleClick = () => {
       console.log(activeName.value)
     }
-    const options = {
+    const options = ref({
       type: "bar",
       title: {
-        text: "分组设备分布",
+        text: "商家订单分布",
       },
       xRorate: 10,
       labels: ["测试分组1", "测试分组2", "测试分组3", "测试分组4"],
@@ -133,11 +218,11 @@ export default {
           data: [0, 1, 0, 0],
         },
       ],
-    };
+    });
     const options2 = {
       type: "bar",
       title: {
-        text: "机构设备分布",
+        text: "商家订单分布",
       },
       xRorate: 10,
       labels: ["城院测试", "城院测试2"],
