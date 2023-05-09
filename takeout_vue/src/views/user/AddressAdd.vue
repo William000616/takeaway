@@ -3,7 +3,6 @@
         <slot><van-nav-bar title="新的地址" left-text="返回" left-arrow @click-left="onClickLeft" /></slot>
         <van-address-edit :show-area="false" :address-info="addressInfo" save-button-text="新建" @save="onSave"
             @delete="onDelete" @change-detail="onChangeDetail" />
-        <!--遮挡板-->
         <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100">
 
         </div>
@@ -12,7 +11,6 @@
 </template>
 
 <script>
-/*引入Toast*/
 import Toast from 'vant/lib/toast';
 import { areaList } from '@vant/area-data';
 import { CreateAddress } from "../../api/api.js";

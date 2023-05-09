@@ -18,5 +18,8 @@ public class Shop {
     private String delivery_time;
     private String desc;
     private String name;//外
+    private String shop_pic;
+    private String shop_env_pic;
+    private String license_pic;
 
 }

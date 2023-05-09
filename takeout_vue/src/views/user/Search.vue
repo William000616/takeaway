@@ -32,7 +32,6 @@
             </van-card>
 
         </el-card>
-        <!--填充-->
         <div style="height:60px;display:block;background-color: white"></div>
     </div>
 </template>
@@ -63,8 +62,6 @@ export default {
         },
 
         search() {
-            console.log(this.value);
-            // this.axios.get("http://localhost:3000/shop/list", {
             const params = {
                 shop_name: this.value
             }

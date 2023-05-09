@@ -50,7 +50,6 @@
         <div v-if="orders.length === 0">
             <van-empty description="您还没有订单噢~~现在去下单吧！！" />
         </div>
-        <!--填充-->
         <div style="height:50px;display:block;"></div>
         <van-popup v-model="show" position="bottom" :style="{ height: '30%' }">
             <van-field :style="{ height: '30%' }" v-model="commentMessage" rows="2" autosize label="写评价" type="textarea"

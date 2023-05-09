@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <!--    <div id="nav">-->
     <span v-show="showSearch">
       <van-search placeholder="请输入搜索关键词" v-on:click="search" />
     </span>
-    <!--</div>-->
     <div>
       <swipe></swipe>
     </div>
@@ -30,8 +28,6 @@
         </div>
       </template>
     </van-card>
-
-    <!--填充-->
     <div style="height:50px;display:block;"></div>
 
   </div>
@@ -66,8 +62,6 @@ export default {
   },
 
   created() {
-    /*初始化数据，获取首页的店铺*/
-    // this.axios.get("http://localhost:3000/shop/list")
     GetAllShop().then(res => {
       console.log(res.data);
       this.shops = res.data.list;

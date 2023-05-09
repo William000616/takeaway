@@ -61,6 +61,27 @@
                     <el-form-item label="详细地址" prop="address_detail">
                         <el-input v-model="form2.address_detail"></el-input>
                     </el-form-item>
+                    <el-form-item label="店铺门脸图" prop="shop_pic">
+                        <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload"
+                            :show-file-list="false" :on-success="handleAvatarSuccess1" :before-upload="beforeAvatarUpload">
+                            <img v-if="form2.shop_pic" :src="form2.shop_pic" class="avatar" />
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                    </el-form-item>
+                    <el-form-item label="店内环境图" prop="shop_env_pic">
+                        <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload"
+                            :show-file-list="false" :on-success="handleAvatarSuccess2" :before-upload="beforeAvatarUpload">
+                            <img v-if="form2.shop_env_pic" :src="form2.shop_env_pic" class="avatar" />
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                    </el-form-item>
+                    <el-form-item label="营业执照" prop="license_pic">
+                        <el-upload class="avatar-uploader" action="http://localhost:3000/file/upload"
+                            :show-file-list="false" :on-success="handleAvatarSuccess3" :before-upload="beforeAvatarUpload">
+                            <img v-if="form2.license_pic" :src="form2.license_pic" class="avatar" />
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                    </el-form-item>
                     <el-form-item prop="checked">
                         <el-checkbox
                             v-model="form2.checked">勾选表示您同意注册成为本系统的入驻商家，并同意管理员到您提供的详细地址考察以及对您提供的营业许可证进行核验。</el-checkbox>
@@ -176,11 +197,17 @@ export default {
             address_detail: [
                 { required: true, message: "请输入详细地址", trigger: "blur" },
             ],
-            address_detail: [
-                { required: true, message: "请输入详细地址", trigger: "blur" },
-            ],
             checked: [
                 { type: "array", required: true, message: "请勾选", trigger: "blur" },
+            ],
+            shop_pic: [
+                { required: true, message: "请上传店铺门面图", trigger: "blur" },
+            ],
+            shop_env_pic: [
+                { required: true, message: "请上传店内环境图", trigger: "blur" },
+            ],
+            license_pic: [
+                { required: true, message: "请上传营业执照", trigger: "blur" },
             ],
 
         };
@@ -222,7 +249,9 @@ export default {
             shop_phone: "",
             address_detail: "",
             s_m_id: 0,
-
+            shop_pic: "",
+            shop_env_pic: "",
+            license_pic: "",
         });
         const form1 = ref({
             password: "",
@@ -245,12 +274,30 @@ export default {
             address_detail: "",
             s_m_id: 0,
             checked: [],
+            shop_pic: "",
+            shop_env_pic: "",
+            license_pic: "",
 
         });
 
         const handleAvatarSuccess = (res) => {
             if (res.code === '200') {
                 form2.value.logo_src = res.data
+            }
+        };
+        const handleAvatarSuccess1 = (res) => {
+            if (res.code === '200') {
+                form2.value.shop_pic = res.data
+            }
+        };
+        const handleAvatarSuccess2 = (res) => {
+            if (res.code === '200') {
+                form2.value.shop_env_pic = res.data
+            }
+        };
+        const handleAvatarSuccess3 = (res) => {
+            if (res.code === '200') {
+                form2.value.license_pic = res.data
             }
         };
 
@@ -285,6 +332,9 @@ export default {
             back,
             onSubmit,
             handleAvatarSuccess,
+            handleAvatarSuccess1,
+            handleAvatarSuccess2,
+            handleAvatarSuccess3,
             next,
             active,
             rules1,

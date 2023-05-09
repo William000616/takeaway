@@ -56,7 +56,6 @@ export default {
             });
         },
         afterRead(file) {
-            // 此时可以自行将文件上传至服务器
             let formData = new FormData();
             formData.append('file', file.file);
             Upload(formData).then(res => {

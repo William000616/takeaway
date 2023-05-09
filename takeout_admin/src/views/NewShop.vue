@@ -23,6 +23,26 @@
                         </el-image>
                     </template>
                 </el-table-column>
+                <el-table-column label="店铺门面图(查看大图)" align="center">
+                    <template #default="scope">
+                        <el-image class="table-td-thumb" :src="scope.row.shop_pic" :preview-src-list="[scope.row.shop_pic]">
+                        </el-image>
+                    </template>
+                </el-table-column>
+                <el-table-column label="店内环境图(查看大图)" align="center">
+                    <template #default="scope">
+                        <el-image class="table-td-thumb" :src="scope.row.shop_env_pic"
+                            :preview-src-list="[scope.row.shop_env_pic]">
+                        </el-image>
+                    </template>
+                </el-table-column>
+                <el-table-column label="营业执照(查看大图)" align="center">
+                    <template #default="scope">
+                        <el-image class="table-td-thumb" :src="scope.row.license_pic"
+                            :preview-src-list="[scope.row.license_pic]">
+                        </el-image>
+                    </template>
+                </el-table-column>
                 <el-table-column prop="license" label="营业许可证"></el-table-column>
                 <el-table-column prop="min_cost" label="起送费"></el-table-column>
                 <el-table-column prop="delivery_cost" label="配送费"></el-table-column>

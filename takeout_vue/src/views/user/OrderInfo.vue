@@ -68,7 +68,6 @@
                 }}</van-col>
             </van-cell>
         </van-cell-group>
-        <!--填充-->
         <div style="height:50px;display:block;"></div>
     </div>
 </template>
@@ -81,8 +80,6 @@ export default {
         this.orderDetail = this.$route.params.orderInfo;
 
         getOrderInfo(this.orderDetail).then(resp => {
-
-            // this.goods = resp.data.list;
             this.orderDetail = { ...this.orderDetail, goods: resp.data.list }
             console.log(this.orderDetail);
         })
@@ -95,12 +92,9 @@ export default {
             }
 
         })
-        // this.goods = this.$route.params.goods;
         this.totalPrice = this.$route.params.orderInfo.good_total_price;
         this.orderNumber = this.orderDetail.order_Number;
-        // this.addressMessage = this.$route.params.addressMessage;
         this.orderStat = this.orderDetail.order_Stat;
-        // this.deliveryPrice = this.$route.params.deliveryPrice;
         this.orderInfo = this.orderDetail;
 
         console.log(this.orderDetail)

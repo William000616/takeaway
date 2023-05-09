@@ -13,7 +13,6 @@
                 </div>
             </van-form>
         </div>
-        <!--遮挡板-->
         <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100">
 
         </div>
@@ -63,19 +62,6 @@ export default {
         onClickLeft() {
             this.$router.replace('/my_user');
         },
-
-        /*上传图片文件*/
-        uploadImg(file) {
-            let data = new FormData();
-            data.append('picture', file.file);
-            this.axios.post("http://localhost:8084/upload", data, {
-                headers: { "Content-Type": "multipart/form-data" }
-            }).then(resp => {
-                console.log("上传后");
-                console.log(resp.data);
-                this.user.picSrc = resp.data.message
-            })
-        }
 
     }
 }

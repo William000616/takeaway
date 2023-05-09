@@ -33,28 +33,12 @@ const routes = [
         component: () => import( /* webpackChunkName: "table" */ "../views/MyOrder.vue")
       },
       {
-        path: "/myAddress",
-        name: "myAddress",
-        meta: {
-          title: '我的地址'
-        },
-        component: () => import( /* webpackChunkName: "table" */ "../views/MyAddress.vue")
-      },
-      {
         path: '/user',
         name: 'user',
         meta: {
           title: '个人中心'
         },
         component: () => import( /* webpackChunkName: "user" */ '../views/User.vue')
-      },
-      {
-        path: '/shopGood',
-        name: 'shopGood',
-        meta: {
-          title: '商品列表'
-        },
-        component: () => import( /* webpackChunkName: "user" */ '../views/ShopGood.vue')
       },
     ]
   },
@@ -151,7 +135,14 @@ const routes = [
         component: () => import( /* webpackChunkName: "table" */ "../views/NewShop.vue")
       },
 
-
+      {
+        path: '/admin',
+        name: 'admin',
+        meta: {
+          title: '管理员个人中心'
+        },
+        component: () => import( /* webpackChunkName: "user" */ '../views/Admin.vue')
+      },
 
       {
         path: "/users",

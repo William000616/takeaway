@@ -27,7 +27,6 @@
             </van-cell>
         </van-cell-group>
         <van-button type="primary" size="large" @click="showOrderInfo">查看订单详情</van-button>
-        <!--遮挡板-->
         <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100">
 
         </div>
@@ -48,8 +47,6 @@ export default {
         this.orderInfo.delivery_price = this.$route.params.delivery_price;
         this.orderInfo.order_Number = this.$route.params.order_Number;
         this.orderInfo.a_id = this.$route.params.a_id;
-        // this.orderInfo.addressMessage = this.$route.params.addressMessage;
-        // this.orderInfo.shopName = this.$route.params.shopName;
         this.orderInfo.order_Stat = this.$route.params.order_Stat;
         this.orderInfo.create_time = this.$route.params.create_time;
     },
@@ -65,7 +62,6 @@ export default {
                 shopName: null,
                 order_Stat: null,
                 create_time: null,
-                /*deliveryManId*/
                 o_id: '',
                 a_id: '',
             }
@@ -73,7 +69,6 @@ export default {
     },
     methods: {
         showOrderInfo() {
-            //Toast("查看订单详情");
             this.$router.push({
                 name: 'orderInfo_user',
                 params: {

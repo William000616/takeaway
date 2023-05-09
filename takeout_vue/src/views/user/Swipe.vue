@@ -12,10 +12,6 @@ export default {
     data() {
         return {
             images: [
-                /*'/upload/p1.png',
-                '/upload/p2.png',
-                '/upload/p3.png',
-                '/upload/p4.png',*/
                 '/upload/p5.png',
                 '/upload/p6.png',
                 '/upload/p7.png',

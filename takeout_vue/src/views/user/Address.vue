@@ -46,7 +46,6 @@ export default {
             this.$router.push('/addressAdd')
         },
         onEdit(item, index) {
-            //Toast('编辑地址:' + index);
             let data = JSON.stringify(item);
             this.$router.push({
                 name: 'addressEdit',

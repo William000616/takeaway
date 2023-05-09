@@ -22,9 +22,6 @@
                     <h6 style="margin: 0">月售{{ shopMessage.total_sales }}</h6>
                     <h6 style="margin: 0">配送时间约{{ shopMessage.delivery_time }}分钟</h6>
                 </div>
-                <!--<div style="width:100px">
-                <h5>销量：{{shopMessage.totalSales}}</h5>
-            </div>-->
             </div>
             <div style="margin-top: -26px">
                 <!--商品和评价标签页-->
@@ -47,7 +44,6 @@
                                                     <div style="width: 100%;font-size: 15px;">
                                                         <span style="float: left;color: crimson;display: inline-block">￥{{
                                                             good.price }}</span>
-                                                        <!--<van-stepper style="margin:10px;display:inline-block;" :default-value="0" theme="round" button-size="15" disable-input @plus="add" @minus="reduce"/>-->
                                                         <template>
                                                             <button style="border-radius: 50%;border: solid 1px"
                                                                 @click="reduce(index1, index2)"
@@ -90,13 +86,7 @@
                         </template>
                     </van-tab>
 
-                    <!-- <van-tab title="商家" name="sell">
-
-
-                    </van-tab> -->
-
                 </van-tabs>
-                <!--填充-->
                 <div style="height:50px;display:block;"></div>
             </div>
 
@@ -177,16 +167,12 @@
                         </ul>
 
                     </template>
-                    <!--填充-->
                     <div style="height:50px;display:block;"></div>
                 </div>
                 <div>
 
                 </div>
             </el-drawer>
-
-
-            <!--遮挡板-->
             <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100"
                 v-if="hider">
 
@@ -206,7 +192,7 @@
                             请选择收货地址</h3>
                     </span>
                     <span v-if="addressMessage !== null">
-                        <div style="font-size: 13px;width: 150px;display: inline-block;">
+                        <div style="padding-top: 15px;display: inline-block;">
                             <span>
                                 {{ addressMessage.name }}
                             </span>
@@ -215,9 +201,6 @@
                             </span>
                             <div>
                                 {{ addressMessage.address }}
-                            </div>
-                            <div>
-
                             </div>
                         </div>
 
@@ -270,7 +253,6 @@
 
                 </template>
             </div>
-            <!--填充-->
             <div style="height:50px;display:block;"></div>
 
             <!--总价格+结算按钮-->
@@ -293,13 +275,10 @@
             <slot><van-nav-bar title="新的地址" left-text="返回" left-arrow @click-left="backChooseAddress" /></slot>
             <van-address-edit :show-area="false" show-set-default :area-columns-placeholder="['请选择', '请选择', '请选择']"
                 @save="onSave" />
-            <!--遮挡板-->
             <div style="width:100%; height: 50px;bottom: 0; position: fixed;background-color: #ffffff; z-index: 100"
                 v-if="showAddAddress">
 
             </div>
-            <!--:search-result="searchResult"
-            :search-result="searchResult"-->
         </div>
 
     </div>
@@ -516,16 +495,15 @@ export default {
             /*所选择的收货地址*/
             addressMessage: null,
 
-            /*默认显示请选择收货地址*/
+
             showChooseAddress: true,
             areaList,
             showAddAddress: false,
             showAddress: false,
             showPay: false,
 
-            /*用来保存新增的address信息*/
             addressInfo: {
-                /*(aId=0, areaCode=null, name=null, tel=null, addressDetail=null, province=null, city=null, county=null, u_id=1)*/
+
                 u_id: localStorage.getItem("u_id"),
                 areaCode: "",
                 name: "",
@@ -641,15 +619,14 @@ export default {
                 title: '微信支付',
                 message: '确认支付吗？',
             }).then(() => {
-                // on confirm
-                //Toast("提交订单");
+
                 const toast = Toast.loading({
                     duration: 2000,
                     forbidClick: true,
                     message: "支付中..."
                 });
                 setTimeout(() => {
-                    /*将订单信息发给后端*/
+
 
                     const data = { ...this.orderInfo, a_id: this.orderInfo.addressMessage.a_id }
                     console.log(data)
@@ -664,9 +641,7 @@ export default {
                                     good_total_price: res.data.good_total_price,
                                     delivery_price: res.data.delivery_price,
                                     total_price: res.data.total_price,
-                                    // goods: this.selectedGoods,
                                     a_id: res.data.a_id,
-                                    // shop_name: this.shopMessage.shop_name,
                                     order_Stat: res.data.order_Stat,
                                     create_time: res.data.create_time
                                 }
@@ -692,9 +667,6 @@ export default {
 
         /*新增收货地址*/
         onSave(item) {
-            /*let addressInfo = JSON.stringify(item);
-            console.log(addressInfo);
-            Toast(addressInfo);*/
             this.addressInfo.areaCode = item.areaCode;
             this.addressInfo.name = item.name;
             if (this.addressInfo.province === this.addressInfo.city) {
@@ -707,7 +679,6 @@ export default {
             this.addressInfo.city = item.city;
             this.addressInfo.county = item.county;
             console.log(this.addressInfo.addressDetail);
-            //console.log(this.addressInfo);
             this.axios.post("http://localhost:8084/addAddress",
                 this.addressInfo
             ).then(resp => {
@@ -723,8 +694,6 @@ export default {
 
         /*添加收货地址页面*/
         onAdd() {
-            // this.showAddAddress = true;
-            // this.showAddress = false;
             Toast("请到个人中心添加地址！");
         },
 
@@ -743,7 +712,6 @@ export default {
 
         /*点击选择收货地址，获取所有收货地址*/
         chooseAddress() {
-            //Toast("选择收货地址");
             const params = {
                 u_id: localStorage.getItem("u_id")
             }
@@ -756,7 +724,6 @@ export default {
                     this.addressList.map((item) => {
                         item.id = item.a_id
                     })
-                    // this.chosenAddressId = this.addressList[0].id
                 }
 
             })
@@ -805,9 +772,6 @@ export default {
             this.showShopInfo = false;
 
         },
-
-
-        /*遮盖*/
         hide(index) {
             if (index === 'good') {
                 this.shoppingCart = true;
@@ -831,7 +795,6 @@ export default {
             const good = this.goodList[index1].goods[index2];
             good.count++;
             this.totalCount++;
-            //Toast(this.goodList.category[index1].goods[index2].count);
         },
 
         /*点击减少按钮*/
@@ -842,15 +805,11 @@ export default {
             if (this.totalCount === 0) {
                 this.totalCount = null;
             }
-            //Toast(this.goodList.category[index1].goods[index2].count);
 
         },
 
         /*返回上一页*/
         back() {
-            //this.$router.push('../views/user/Search.vue')
-            //this.$router.go(-1);
-            //this.$router.replace({name:'search'})
             history.go(-1)
         },
 
